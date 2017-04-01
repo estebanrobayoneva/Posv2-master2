@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Purchase Receipts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Fecha</th>
+      <th>Numero factura</th>
+      <th>Valor total</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @purchase_receipts.each do |purchase_receipt| %>
+      <tr>
+        <td><%= purchase_receipt.fecha %></td>
+        <td><%= purchase_receipt.numero_factura %></td>
+        <td><%= purchase_receipt.valor_total %></td>
+        <td><%= link_to 'Show', purchase_receipt %></td>
+        <td><%= link_to 'Edit', edit_purchase_receipt_path(purchase_receipt) %></td>
+        <td><%= link_to 'Destroy', purchase_receipt, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Purchase receipt', new_purchase_receipt_path %>

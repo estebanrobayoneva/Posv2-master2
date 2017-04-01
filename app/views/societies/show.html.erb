@@ -1,0 +1,28 @@
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @society.nombre %>
+</p>
+
+<p>
+  <strong>Descripcio:</strong>
+  <%= @society.descripcio %>
+</p>
+
+<p>
+  <strong>Valor anual:</strong>
+  <%= @society.valor_anual %>
+</p>
+
+<p>
+  <strong>Valor semestral:</strong>
+  <%= @society.valor_semestral %>
+</p>
+
+<p>
+  <strong>Valor mensual:</strong>
+  <%= @society.valor_mensual %>
+</p>
+
+<%= link_to 'Edit', edit_society_path(@society) %> |
+<%= link_to 'Back', societies_path %>

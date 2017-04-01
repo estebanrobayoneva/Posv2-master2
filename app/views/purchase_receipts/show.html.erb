@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Fecha:</strong>
+  <%= @purchase_receipt.fecha %>
+</p>
+
+<p>
+  <strong>Numero factura:</strong>
+  <%= @purchase_receipt.numero_factura %>
+</p>
+
+<p>
+  <strong>Valor total:</strong>
+  <%= @purchase_receipt.valor_total %>
+</p>
+
+<%= link_to 'Edit', edit_purchase_receipt_path(@purchase_receipt) %> |
+<%= link_to 'Back', purchase_receipts_path %>

@@ -1,0 +1,34 @@
+
+<p id="notice"><%= notice %></p>
+
+<h1 align="center">Categorías</h1>
+<%= link_to "<i class='fa fa-plus-circle'></i> Nueva Categoría".html_safe,
+            new_category_path, class: 'btn btn-primary btn-lg'%>
+<table class = "table table-hover">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Descripcion</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @categories.each do |category| %>
+      <tr>
+        <td><%= category.nombre %></td>
+        <td><%= category.descripcion %></td>
+        <td><%= link_to 'Ver', category %></td>
+        <td><%= link_to 'Editar', edit_category_path(category) %></td>
+        <td><%= link_to 'Eliminar', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
+      
+
+

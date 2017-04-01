@@ -1,0 +1,12 @@
+
+<li class="control-group nested-fields">
+  <div class="controls">
+    <table width="500" >
+      <tr>
+        <td><%= f.collection_select :category_id, Category.order(:nombre), :id, :nombre, include_blank: true%></td>
+        <td> <%= f.number_field :porcentaje_descuento %>
+          <%=link_to_remove_association "Eliminar", f %></td>
+      </tr>
+    </table>
+  </div>
+</li>

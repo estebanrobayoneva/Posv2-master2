@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Detail Purchase Receipts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Cantidad</th>
+      <th>Valor unitario</th>
+      <th>Valor final</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @detail_purchase_receipts.each do |detail_purchase_receipt| %>
+      <tr>
+        <td><%= detail_purchase_receipt.cantidad %></td>
+        <td><%= detail_purchase_receipt.valor_unitario %></td>
+        <td><%= detail_purchase_receipt.valor_final %></td>
+        <td><%= link_to 'Show', detail_purchase_receipt %></td>
+        <td><%= link_to 'Edit', edit_detail_purchase_receipt_path(detail_purchase_receipt) %></td>
+        <td><%= link_to 'Destroy', detail_purchase_receipt, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Detail purchase receipt', new_detail_purchase_receipt_path %>

@@ -1,0 +1,29 @@
+<%= form_for(@detail_purchase_receipt) do |f| %>
+  <% if @detail_purchase_receipt.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@detail_purchase_receipt.errors.count, "error") %> prohibited this detail_purchase_receipt from being saved:</h2>
+
+      <ul>
+      <% @detail_purchase_receipt.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :cantidad %><br>
+    <%= f.number_field :cantidad %>
+  </div>
+  <div class="field">
+    <%= f.label :valor_unitario %><br>
+    <%= f.text_field :valor_unitario %>
+  </div>
+  <div class="field">
+    <%= f.label :valor_final %><br>
+    <%= f.text_field :valor_final %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

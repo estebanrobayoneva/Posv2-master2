@@ -1,0 +1,35 @@
+<li class="control-group nested-fields">
+  <div class="controls">
+    <table width="500" >
+      <thead>
+      <tr>
+        <th align="left">Producto</th>
+        <th align="center">Cantidad</th>
+        <th align="center">Valor Unitario</th>
+        <th align="center">Valor total</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+
+        <td><%= f.collection_select :product_id, Product.order(:nombre), :id, :nombre, include_blank: true%></td>
+        <td> <%= f.number_field :cantidad %>
+        </td>
+
+        <td>
+          <%= f.number_field :valor_unitario %>
+
+        </td>
+        <td>
+          <%= f.number_field :valor_final %>
+
+        </td>
+        <td>
+          <%=link_to_remove_association "Eliminar", f %>
+        </td>
+      </tr>
+      </tbody>
+
+    </table>
+  </div>
+</li>

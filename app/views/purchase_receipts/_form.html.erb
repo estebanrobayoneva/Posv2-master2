@@ -1,0 +1,50 @@
+<%= form_for(@purchase_receipt) do |f| %>
+  <% if @purchase_receipt.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@purchase_receipt.errors.count, "error") %> prohibited this purchase_receipt from being saved:</h2>
+
+      <ul>
+      <% @purchase_receipt.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :fecha %><br>
+    <%= f.date_select :fecha %>
+  </div>
+  <div class="field">
+    <%= f.label :numero_factura %><br>
+    <%= f.number_field :numero_factura %>
+  </div>
+
+
+  <div class="field">
+    <%= f.label :provider_id %><br>
+    <%= f.select(:provider_id, @provider_options) %>
+  </div>
+
+    <!-- agregar productos -->
+    <div align="center">
+      <%= link_to_add_association 'Añadir producto', f,:detail_purchase_receipts,
+                                  'data-association-insertion-node' => "#discounts-category ",
+                                  'data-association-insertion-method' => "append",
+                                  :wrap_object => Proc.new {|discount| discount.build_product; discount }%>
+      <hr/>
+      <fieldset id="discounts-category">
+        <%= f.fields_for :detail_purchase_receipts do |discount| %>
+            <%= render partial: "detail_purchase_receipt_fields", locals: {f:discount} %>
+        <%end%>
+      </fieldset>
+    </div>
+
+    <div class="field">
+      <%= f.label :valor_total %><br>
+      <%= f.text_field :valor_total %>
+    </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

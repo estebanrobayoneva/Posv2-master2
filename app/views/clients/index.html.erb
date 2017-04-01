@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<h1 align="center">Participantes</h1>
+<%= link_to "<i class='fa fa-plus-circle'></i> Nuevo Participante".html_safe,
+            new_client_path, class: 'btn btn-primary btn-lg'%>
+<table class = "table table-hover">
+  <thead>
+    <tr>
+      <th>Tipo documento</th>
+      <th>Numero documento</th>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Correo</th>
+      <th>Direccion</th>
+      <th>Telefono</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @clients.each do |client| %>
+      <tr>
+        <td><%= client.tipo_documento %></td>
+        <td><%= client.numero_documento %></td>
+        <td><%= client.nombre %></td>
+        <td><%= client.apellido %></td>
+        <td><%= client.correo %></td>
+        <td><%= client.direccion %></td>
+        <td><%= client.telefono %></td>
+        <td><%= link_to 'Show', client %></td>
+        <td><%= link_to 'Edit', edit_client_path(client) %></td>
+        <td><%= link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+

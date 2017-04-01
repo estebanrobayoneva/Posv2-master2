@@ -1,0 +1,33 @@
+<div id="friend-lookup">
+    <h3>Busqueda categorias</h3>
+    <%= form_tag search_categories_path, remote: true, method: :get, id: 'category-lookup-form' do %>
+    <div class="form-group row no-padding text-center col-md-12">
+        <div class="col-md-10">
+            <%= text_field_tag :search_param,
+            params[:search_param],
+            placeholder: 'Nombre de la categoria',
+            autofocus: true,
+            class: 'form-control search-box input-lg' %>
+        </div>
+        <div class="col-md-2">
+        <%= button_tag(type: :submit, class: 'btn btn-lg btn-success') do %>
+        <i class='fa fa-search'></i> Buscar categoria
+        <% end %>
+        </div>
+    </div>
+    <% end %>
+    <% if @categories %>
+        <% if @categories.size > 0 %>
+            <h3>Buscar resultados</h3>
+            <div id="category-lookup-results" class="well results-block col-md-10">
+            <table class="search-results-table col-md-12">
+            <tbody>
+            <% @categories.each do |category| %>
+                <tr>
+                <td><strong>Name:</strong> <%= category.nombre %></td>
+                <td><strong>Email:</strong> <%= category.descripcion %></td>
+    </tr>
+<% end %>
+</tbody>
+</table>
+</div>

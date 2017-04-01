@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Discounts</h1>
+
+<table class = "table table-hover">
+  <thead>
+    <tr>
+      <th>Porcentaje descuento</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @discounts.each do |discount| %>
+      <tr>
+        <td><%= discount.porcentaje_descuento %></td>
+        <td><%= link_to 'Show', discount %></td>
+        <td><%= link_to 'Edit', edit_discount_path(discount) %></td>
+        <td><%= link_to 'Destroy', discount, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to "<i class='fa fa-plus-circle'></i> Nueva descuento".html_safe,
+              new_discount_path, class: 'btn btn-primary btn-lg'%>
+
+

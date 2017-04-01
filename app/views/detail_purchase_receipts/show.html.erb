@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Cantidad:</strong>
+  <%= @detail_purchase_receipt.cantidad %>
+</p>
+
+<p>
+  <strong>Valor unitario:</strong>
+  <%= @detail_purchase_receipt.valor_unitario %>
+</p>
+
+<p>
+  <strong>Valor final:</strong>
+  <%= @detail_purchase_receipt.valor_final %>
+</p>
+
+<%= link_to 'Edit', edit_detail_purchase_receipt_path(@detail_purchase_receipt) %> |
+<%= link_to 'Back', detail_purchase_receipts_path %>
