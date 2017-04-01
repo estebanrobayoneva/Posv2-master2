@@ -7,12 +7,9 @@ class User < ActiveRecord::Base
   ROLES = %i[administrador cajero]
   
   def full_name
-
-return "#{first_name} #{last_name}".strip if (first_name || last_name)
-
-"Anonymous"
-
-end
+  return "#{first_name} #{last_name}".strip if (first_name || last_name)
+ 
+  end
 
   def roles=(roles)
   	roles = [*roles].map { |r| r.to_sym}

@@ -10,36 +10,46 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
+<div class="row">
+  <div class="form-group col-md-offset-1">
     <%= f.label :tipo_documento %><br>
-    <%= f.text_field :tipo_documento %>
+    <%= f.text_field :tipo_documento, autofocus: true, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group col-md-offset-1">
     <%= f.label :numero_documento %><br>
-    <%= f.number_field :numero_documento %>
+    <%= f.number_field :numero_documento, autofocus: true, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group col-md-offset-1">
     <%= f.label :nombre %><br>
-    <%= f.text_area :nombre %>
+    <%= f.text_field :nombre, autofocus: true, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group col-md-offset-1">
     <%= f.label :apellido %><br>
-    <%= f.text_area :apellido %>
+    <%= f.text_field :apellido, autofocus: true, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group col-md-offset-1">
     <%= f.label :correo %><br>
-    <%= f.text_area :correo %>
+    <%= f.text_field :correo, autofocus: true, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group col-md-offset-1">
     <%= f.label :direccion %><br>
-    <%= f.text_area :direccion %>
+    <%= f.text_field :direccion, autofocus: true, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group col-md-offset-1">
     <%= f.label :telefono %><br>
-    <%= f.number_field :telefono %>
+    <%= f.number_field :telefono, autofocus: true, class: 'form-control' %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+ 
+  <div class="col-md-2 col-md-offset-1 ">
+            <%= button_tag(type: :submit, class: "btn btn-lg btn-success") do %>
+            <i class="fa fa-check-square" aria-hidden="true"></i> Crear cliente
+            <% end %>
+        </div>
+<div class="col-md-2 col-md-offset-1">
+<%= link_to "<i class='fa fa-reply' aria-hidden='true'></i> Volver".html_safe,
+            clients_path, class: 'btn btn-success btn-lg'%>
+</div>
+
 <% end %>
+  </div>
+ </div>

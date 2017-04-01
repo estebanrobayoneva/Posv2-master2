@@ -25,9 +25,9 @@
         <td><%= client.correo %></td>
         <td><%= client.direccion %></td>
         <td><%= client.telefono %></td>
-        <td><%= link_to 'Show', client %></td>
-        <td><%= link_to 'Edit', edit_client_path(client) %></td>
-        <td><%= link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Ver', client,class:"btn btn-primary btn-xs" %></td>
+        <td><%= link_to 'Editar', edit_client_path(client), class:"btn btn-success btn-xs" %></td>
+        <td><%= link_to 'Eliminar',client, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger btn-xs" %></td>
       </tr>
     <% end %>
   </tbody>
