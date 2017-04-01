@@ -10,12 +10,14 @@
       <div class="navbar-collapse collapse navbar-responsive-collapse">
         <ul class="nav navbar-nav col-md-6">
           <li><%= link_to "Mi Perfil", edit_registration_path(current_user)  %></li>
-          <li><%= link_to "Crear usuario", new_user_registration_path %></li>
           <li><%= link_to "Membresías", societies_path  %></li>
           <li><%= link_to "Clientes", clients_path  %></li>
           <li><%= link_to "Productos", products_path  %></li>
-      <!--    <li><%= link_to "Descuentos", discounts_path  %></li>
-          <li><%= link_to "Categorias", categories_path  %></li> -->
+          <li><%= link_to "Descuentos", discounts_path  %></li>
+          <%if current_user.admin?%>
+          <li><a href="/admin">admin</a></li>
+          <% end %>
+          <li><%= link_to "Categorias", categories_path  %></li> 
           <ul class="nav navbar-right col-md-6">
           <li class="col-md-6 user-name text-right">
             <i class="fa fa-user"></i>
