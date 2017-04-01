@@ -36,4 +36,6 @@
 </p>
 <%= link_to 'afiliar', membership_client_path %>
 <%= link_to 'Edit', edit_client_path(@client) %> |
-<%= link_to 'Back', clients_path %>
+<%= link_to "<i class='fa fa-reply' aria-hidden='true'></i> Volver".html_safe,
+            clients_path, class: 'btn btn-success btn-sm'%>
+
