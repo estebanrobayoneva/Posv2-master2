@@ -8,6 +8,8 @@ gem 'sqlite3'
 
 gem 'twitter-bootstrap-rails'
 
+gem 'rails_admin', '~> 1.1.1'
+
 gem 'devise-bootstrap-views'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
