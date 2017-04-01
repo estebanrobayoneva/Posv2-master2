@@ -10,7 +10,12 @@
       </ul>
     </div>
   <% end %>
-
+<div>
+  Miembro
+  <p>
+    <%= hidden_field :client_id, :value =>  params[:id]%>
+  </p>
+</div>
     <div>
       <strong>Membreisa</strong><br>
       <%= f.select(:society_id, @society_options) %>

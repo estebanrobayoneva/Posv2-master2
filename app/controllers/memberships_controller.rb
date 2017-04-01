@@ -16,6 +16,8 @@ class MembershipsController < ApplicationController
   def new
     @membership = Membership.new
     @society_options = Society.all.map{ |u| [ u.nombre, u.id ] }
+
+
   end
 
   # GET /memberships/1/edit
@@ -25,7 +27,9 @@ class MembershipsController < ApplicationController
   # POST /memberships
   # POST /memberships.json
   def create
+
     @membership = Membership.new(membership_params)
+    @membership.afiliarCliente = params[:client_id]
 
     respond_to do |format|
       if @membership.save
