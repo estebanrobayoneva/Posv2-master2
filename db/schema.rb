@@ -22,14 +22,14 @@ ActiveRecord::Schema.define(version: 20170330140552) do
 
   create_table "clients", force: :cascade do |t|
     t.string   "tipo_documento"
-    t.integer  "numero_documento"
+    t.integer  "numero_documento", limit: 8
     t.text     "nombre"
     t.text     "apellido"
     t.text     "correo"
     t.text     "direccion"
     t.integer  "telefono"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.integer  "membership_id"
   end
 
@@ -115,6 +115,7 @@ ActiveRecord::Schema.define(version: 20170330140552) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.boolean  "admin"
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
