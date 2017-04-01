@@ -16,7 +16,7 @@ class MembershipsController < ApplicationController
   def new
     @membership = Membership.new
     @society_options = Society.all.map{ |u| [ u.nombre, u.id ] }
-
+    @formasDePago = Payment.all
 
   end
 
@@ -30,6 +30,7 @@ class MembershipsController < ApplicationController
 
     @membership = Membership.new(membership_params)
     @membership.afiliarCliente = params[:client_id]
+    @membership.create_receipt( params[:valor_pago], params[:formaDePago]  )
 
     respond_to do |format|
       if @membership.save
@@ -74,6 +75,7 @@ class MembershipsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def membership_params
-      params.require(:membership).permit(:periodicidad, :fecha_afiliacion, :fecha_vencimiento, :fecha_cuota, :estado, :society_id, :client_id)
+      params.require(:membership).permit(:periodicidad, :fecha_afiliacion, :fecha_vencimiento, :fecha_cuota, :estado, :society_id, :client_id,
+      :valor_pago, :formaDePago)
     end
 end

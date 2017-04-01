@@ -29,6 +29,23 @@
     <%= f.date_select :fecha_afiliacion %>
   </div>
 
+  <!-- Campos para el pago -->
+    <hr>
+  <div>
+    <strong>Valor a pagar </strong>
+    <input id="valor_pago" name="valor_pago" type="number">
+  </div>
+  <div>
+   <strong>Forma de pago:</strong> <select name="formaDePago">
+    <%= @formasDePago.each do |forma| %>
+        <option value="<%= forma.id %>"><%= forma.nombre %></option>
+    <% end %>
+  </select>
+  </div>
+  <div>
+   <strong>Valor Recibido:</strong>  <input id="valor_recibido" name="valor_recibido" placeholder="Valor Recibido" type="number">
+  </div>
+
 
   <div class="actions">
     <%= f.submit %>

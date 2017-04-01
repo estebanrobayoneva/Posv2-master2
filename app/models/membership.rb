@@ -1,7 +1,9 @@
 class Membership < ActiveRecord::Base
   belongs_to :society
   has_many :clients
+
   after_create :afilia
+  after_create :fechas
 
 
 
@@ -21,5 +23,21 @@ class Membership < ActiveRecord::Base
   end
   def afilia
     Client.find(@numeroid).update(membership_id: self.id)
+  end
+  def create_receipt( valor, formaPago)
+    Receipt.create(fecha: self.fecha_afiliacion, valor: valor, client_id: @numeroid, payment_id: formaPago)
+  end
+  def fechas
+    t = Time.new
+    self.update(fecha_afiliacion: t)
+    if self.periodicidad == 'Anual'
+      self.update(fecha_vencimiento: t+(60*60*24*365))
+      self.update(fecha_cuota: t+(60*60*24*365))
+    elsif self.periodicidad == 'Mensual'
+      self.update(fecha_vencimiento: t+2592000)
+      self.update(fecha_cuota: t+2592000 )
+
+    end
+    self.update(estado: TRUE)
   end
 end
