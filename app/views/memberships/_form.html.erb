@@ -11,7 +11,6 @@
     </div>
   <% end %>
 <div>
-  Miembro
   <p>
     <%= hidden_field :client_id, :value =>  params[:id]%>
   </p>
@@ -34,20 +33,22 @@
   <div>
     <strong>Valor a pagar </strong>
     <input id="valor_pago" name="valor_pago" type="number">
-  </div>
+  </div><br>
   <div>
    <strong>Forma de pago:</strong> <select name="formaDePago">
     <%= @formasDePago.each do |forma| %>
         <option value="<%= forma.id %>"><%= forma.nombre %></option>
     <% end %>
   </select>
-  </div>
+  </div><br>
   <div>
    <strong>Valor Recibido:</strong>  <input id="valor_recibido" name="valor_recibido" placeholder="Valor Recibido" type="number">
-  </div>
+  </div><br>
 
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<div class="col-md-1 ">
+            <%= button_tag(type: :submit, class: "btn btn-lg btn-success") do %>
+            <i class="fa fa-check-square" aria-hidden="true"></i> Afiliar
+            <% end %>
+        </div>
 <% end %>

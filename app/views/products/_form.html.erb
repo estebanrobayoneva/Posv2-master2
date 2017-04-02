@@ -11,23 +11,25 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :nombre %><br>
-    <%= f.text_field :nombre %>
+    <%= f.text_field :nombre, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :cantidad %><br>
-    <%= f.number_field :cantidad %>
+    <%= f.number_field :cantidad, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :valor_unitario %><br>
-    <%= f.text_field :valor_unitario %>
+    <%= f.text_field :valor_unitario, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :valor_total_curso %><br>
-    <%= f.text_field :valor_total_curso %>
+    <%= f.text_field :valor_total_curso, class: 'form-control' %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <div class="col-md-1 ">
+            <%= button_tag(type: :submit, class: "btn btn-lg btn-success") do %>
+            <i class="fa fa-check-square" aria-hidden="true"></i> Crear producto
+            <% end %>
+        </div>
 <% end %>

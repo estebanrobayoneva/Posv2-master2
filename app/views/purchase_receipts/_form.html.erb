@@ -44,7 +44,9 @@
       <%= f.label :valor_total %><br>
       <%= f.text_field :valor_total %>
     </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+ <div class="col-md-1 ">
+            <%= button_tag(type: :submit, class: "btn btn-lg btn-success") do %>
+            <i class="fa fa-check-square" aria-hidden="true"></i> Comprar producto
+            <% end %>
+        </div>
 <% end %>
