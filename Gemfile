@@ -6,6 +6,8 @@ gem 'rails', '4.2.6'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 
+gem 'devise-i18n'
+
 gem 'twitter-bootstrap-rails'
 
 gem 'rails_admin', '~> 1.1.1'
