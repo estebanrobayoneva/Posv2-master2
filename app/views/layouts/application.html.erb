@@ -7,6 +7,7 @@
     <title><%= content_for?(:title) ? yield(:title) : "PosWeb" %></title>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag :all %>
+    <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
 
     <%= stylesheet_link_tag "application", :media => "all" %>
 

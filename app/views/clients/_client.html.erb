@@ -1,0 +1,18 @@
+<div class="container">
+  <table class="table table-striped">
+
+
+    <tbody>
+    <tr>
+      <td width="120"><%= client.tipo_documento %></td>
+      <td width="120"><%= client.numero_documento %></td>
+      <td width="120"><%= client.nombre %></td>
+      <td width="120"><%= client.apellido%></td>
+      <td width="120"><%if client.membership != nil%>
+            <%= client.membership.society.nombre %>
+        <% end %></td>
+    </tr>
+
+    </tbody>
+  </table>
+</div>
