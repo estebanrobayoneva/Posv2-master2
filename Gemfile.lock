@@ -221,11 +221,8 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   devise
   devise-bootstrap-views
-<<<<<<< HEAD
-  groupdate
-=======
   devise-i18n
->>>>>>> 9ace0d83bf0c19c4e4a624a8feef304b568301af
+  groupdate
   jbuilder (~> 2.0)
   jquery-rails
   rails (= 4.2.6)

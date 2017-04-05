@@ -5,7 +5,6 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = Product.all
-<<<<<<< HEAD
     respond_to do |format|
       format.html
       format.csv { send_data @products.to_csv}
@@ -17,10 +16,8 @@ class ProductsController < ApplicationController
     Product.import(params[:file])
     redirect_to products_path, notice: "Productos importados"
 
-
-=======
     @provider = Provider.new
->>>>>>> 9ace0d83bf0c19c4e4a624a8feef304b568301af
+
   end
   def error
     redirect_to products_path, notice: "Extension desconocida"
