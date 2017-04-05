@@ -1,0 +1,11 @@
+$("#mynewprovider").modal('hide');
+$(".provider_nombre").val('');
+$(".provider_nit").val('');
+$(".provider_telefono").val('');
+$(".provider_direccion").val('');
+
+
+
+$("#container_providers").prepend('<%= j render @provider %>');
+
+$("#provider_<%= @provider.id %>").hide().fadeIn(1000);

@@ -15,6 +15,7 @@ class PurchaseReceiptsController < ApplicationController
   # GET /purchase_receipts/new
   def new
     @purchase_receipt = PurchaseReceipt.new
+    @provider = Provider.new
     @provider_options = Provider.all.map{ |u| [ u.nombre, u.id ] }
 
   end
@@ -27,6 +28,7 @@ class PurchaseReceiptsController < ApplicationController
   # POST /purchase_receipts
   # POST /purchase_receipts.json
   def create
+    @provider = Provider.new
     @purchase_receipt = PurchaseReceipt.new(purchase_receipt_params)
 
     respond_to do |format|

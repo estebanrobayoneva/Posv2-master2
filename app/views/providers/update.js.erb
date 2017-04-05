@@ -1,0 +1,8 @@
+$("#myupdateprovider_<%= @provider.id %>").modal('hide');
+
+$("#provider_<%= @provider.id %>").fadeOut(500, function(){
+
+	$(this).remove();
+	$("#container_providers").prepend('<%= j render @provider %>');
+	
+});
