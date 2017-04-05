@@ -1,5 +1,8 @@
+<div class="container">
 <p id="notice"><%= notice %></p>
 
+  <h4><strong>Datos Personales</strong></h4>
+  <hr><br>
 <p>
   <strong>Tipo documento:</strong>
   <%= @client.tipo_documento %>
@@ -34,8 +37,39 @@
   <strong>Telefono:</strong>
   <%= @client.telefono %>
 </p>
-<%= link_to 'afiliar', membership_client_path %>
-<%= link_to 'Edit', edit_client_path(@client) %> |
+</div>
+
+<% if @client.membership != nil%>
+    <div class="container">
+      <h4><strong>Datos de afiliación</strong></h4>
+      <hr>
+      <strong>Membresia:</strong><%= @client.membership.society.nombre %>
+      <strong>Estado de afiliacion: </strong>
+      <% if @client.membership.estado == true %>
+      <p>Activa</p>
+      <% end %>
+      <strong>Fecha de afiliación: </strong>
+      <p> <%= @client.membership.fecha_afiliacion %> </p>
+      <strong>Fecha de vencimiento: </strong>
+      <p> <%= @client.membership.fecha_vencimiento %> </p>
+      <strong>Valor cuota: </strong>
+
+      <% if @client.membership.periodicidad == "Mensual" %>
+
+        <p> <%= @client.membership.society.valor_mensual %></p>
+      <% else %>
+          <p> hh</p>
+      <% end %>
+    </div>
+
+<% end %>
+<br>
 <%= link_to "<i class='fa fa-reply' aria-hidden='true'></i> Volver".html_safe,
             clients_path, class: 'btn btn-success btn-sm'%>
 
+<%= link_to "<i class='fa fa-pencil-square-o' aria-hidden='true'></i> Editar".html_safe,
+            edit_client_path(@client), class: 'btn btn-success btn-sm'%>
+
+
+<%= link_to "<i class='fa fa-users' aria-hidden='true'></i> Afiliar".html_safe,
+            membership_client_path, class: 'btn btn-success btn-sm'%>
