@@ -40,6 +40,12 @@ gem 'cancancan'
 #gem for forms
 gem "cocoon"
 
+gem 'chartkick'
+gem 'groupdate'
+gem 'roo'
+gem 'roo-xls'#importar archivos
+
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
