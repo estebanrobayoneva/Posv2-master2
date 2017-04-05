@@ -70,7 +70,7 @@ class SocietiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def society_params
-      params.require(:society).permit(:nombre, :descripcion, :valor_anual, :valor_semestral, :valor_mensual,
+      params.require(:society).permit(:nombre, :descripcio, :valor_anual, :valor_semestral, :valor_mensual,
                                       :discounts_attributes => [:id, :porcentaje_descuento, :society_id, :category_id, :_destroy,
                                                                 :category_attributes => [:id, :nombre]] )
     end

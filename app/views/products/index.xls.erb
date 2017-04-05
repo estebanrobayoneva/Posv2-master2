@@ -1,0 +1,23 @@
+<table border="1">
+  <tr>
+
+    <th>id</th>
+    <th>nombre</th>
+    <th>cantidad</th>
+    <th>valor_unitario</th>
+    <th>valor_total_curso</th>
+    <th>created_at</th>
+    <th>updated_at</th>
+  </tr>
+  <% @products.each do |product| %>
+      <tr>
+        <td><%= product.id %></td>
+        <td><%= product.nombre %></td>
+        <td><%= product.cantidad %></td>
+        <td><%= product.valor_unitario %></td>
+        <td><%= product.valor_total_curso%></td>
+        <td><%= product.created_at%></td>
+        <td><%= product.updated_at%></td>
+      </tr>
+  <% end %>
+</table>

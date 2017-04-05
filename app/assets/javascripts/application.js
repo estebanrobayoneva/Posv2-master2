@@ -9,10 +9,13 @@
 //
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
-//
+//// = requiere Chart.bundle
+
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require turbolinks
 //= require cocoon
+// = requiere Chart.bundle
+// = requiere chartkick
 //= require_tree .

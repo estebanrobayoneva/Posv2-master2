@@ -1,0 +1,37 @@
+<div class="col-sm-3">
+ <table>
+  <tr><td>
+<h3>Busqueda</h3>
+
+<%= form_tag "/search/create", method: 'get', remote: true, id:"search-form" do %>
+    <div>
+      <strong>Nombre: </strong><br><br><%= text_field_tag :keyword, nil, placeholder: 'nombre', :size => 40 %><br><br>
+            <strong>Cantidad: </strong><br><br><%= text_field_tag :keyword1, nil, placeholder: 'cantidad', :size => 40 %><br><hr>
+
+      <%= content_tag :button,class:"btn btn-primary btn-lg" , type: :submit do%> Buscar <% end %>
+
+<% end %>
+</div>
+  </td><td>
+<div id="graficas">
+
+</div>
+  </td></tr>
+ </table>
+  <div class="container">
+  <table class="table table-striped" width="300">
+    <thead >
+    <tr>
+      <th width="70">Producto</th>
+      <th width="80">Cantidad</th>
+      <th width="80">Valor Unitario</th>
+      <th width="80">Fecha de Creación</th>
+      <th width="80">Fecha de Modificación</th>
+    </tr>
+    </thead>
+  </table>
+  <div id="resultados">
+  </div>
+</div>
+
+</div>
