@@ -30,9 +30,11 @@ class ProvidersController < ApplicationController
       if @provider.save
         format.html { redirect_to @provider, notice: 'Provider was successfully created.' }
         format.json { render :show, status: :created, location: @provider }
+        format.js
       else
         format.html { render :new }
         format.json { render json: @provider.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -44,9 +46,11 @@ class ProvidersController < ApplicationController
       if @provider.update(provider_params)
         format.html { redirect_to @provider, notice: 'Provider was successfully updated.' }
         format.json { render :show, status: :ok, location: @provider }
+        format.js
       else
         format.html { render :edit }
         format.json { render json: @provider.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -58,6 +62,7 @@ class ProvidersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to providers_url, notice: 'Provider was successfully destroyed.' }
       format.json { head :no_content }
+      format.js
     end
   end
 

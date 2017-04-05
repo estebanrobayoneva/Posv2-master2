@@ -1,0 +1,72 @@
+<div class="col-md-4 blog-main box text-center" id="provider_<%= provider.id %>">
+
+            <div class="panel panel-info"><!-- Panel Info -->
+
+                  <div class="panel-heading">
+                    <h3 class="panel-title"><%= provider.nombre %></h3>
+                  </div>
+
+                  <div class="panel-body"><!-- Panel Body -->
+                    <div style="color: #3BB2D6;"><%= time_ago_in_words(provider.created_at) %></div>
+                    <span class="label label-default">Nit</span>
+                    <p><%= provider.nit %></p>
+                    <span class="label label-default">telefono</span>
+                    <p><%= provider.telefono %></p>
+                    <span class="label label-default">direccion</span>
+                    <p><%= provider.direccion %></p>
+                    <br>
+
+                    <div class="btn-group" role="group" aria-label="...">
+                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myupdateprovider_<%= provider.id %>">
+                          Edit
+                        </button>
+                        <%= link_to 'Destroy', provider, method: :delete, class: "btn btn-danger", remote: true %>
+                    </div>
+                  </div><!-- Panel Body -->
+
+            </div><!-- Panel Info -->
+
+
+            <!-- Modal - update providers -->
+                  <%= form_for(provider, :method => :put, remote: true) do |f| %>
+                  <div class="modal fade" id="myupdateprovider_<%= provider.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Editar</h4>
+                      </div>
+                      <div class="modal-body">
+                      
+                      <div class="field">
+                        <%= f.label :nombre %><br>
+                        <%= f.text_area :nombre, class: "form-control" %>
+                      </div>
+                      
+                      <div class="field">
+                        <%= f.label :nit %><br>
+                        <%= f.text_area :nit, class: "form-control" %>
+                      </div>
+                      <div class="field">
+                        <%= f.label :telefono %><br>
+                        <%= f.text_area :telefono, class: "form-control" %>
+                      </div>
+                      <div class="field">
+                        <%= f.label :direccion %><br>
+                        <%= f.text_area :direccion, class: "form-control" %>
+                      </div>
+
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" id="myupdatebutton_<%= provider.id %>" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <%= submit_tag "Update", class: "btn btn-primary" %>
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+                  <% end %>
+            <!-- Modal -->
+
+
+</div>
+
