@@ -31,7 +31,8 @@ class MembershipsController < ApplicationController
     @membership = Membership.new(membership_params)
     @membership.afiliarCliente = params[:client_id]
     @membership.create_receipt( params[:valor_pago], params[:formaDePago]  )
-
+    @receipt = @membership.receipt
+    
     respond_to do |format|
       if @membership.save
         format.html { redirect_to @membership, notice: 'Membership was successfully created.' }

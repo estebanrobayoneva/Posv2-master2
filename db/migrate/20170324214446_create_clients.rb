@@ -7,7 +7,7 @@ class CreateClients < ActiveRecord::Migration
       t.text :apellido
       t.text :correo
       t.text :direccion
-      t.integer :telefono
+      t.integer :telefono, :limit => 8
 
       t.timestamps null: false
     end
