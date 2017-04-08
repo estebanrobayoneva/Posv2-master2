@@ -34,19 +34,19 @@ ActiveRecord::Schema.define(version: 20170330140552) do
   end
 
   create_table "detail_purchase_receipts", force: :cascade do |t|
-    t.integer  "cantidad"
+    t.integer  "cantidad",            limit: 8
     t.decimal  "valor_unitario"
     t.decimal  "valor_final"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.integer  "purchase_receipt_id"
     t.integer  "product_id"
   end
 
   create_table "discounts", force: :cascade do |t|
-    t.integer  "porcentaje_descuento"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.integer  "porcentaje_descuento", limit: 8
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.integer  "society_id"
     t.integer  "category_id"
   end
@@ -70,28 +70,28 @@ ActiveRecord::Schema.define(version: 20170330140552) do
 
   create_table "products", force: :cascade do |t|
     t.string   "nombre"
-    t.integer  "cantidad"
+    t.integer  "cantidad",          limit: 8
     t.decimal  "valor_unitario"
     t.decimal  "valor_total_curso"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   create_table "providers", force: :cascade do |t|
-    t.integer  "nit"
+    t.integer  "nit",        limit: 8
     t.string   "nombre"
-    t.integer  "telefono"
+    t.integer  "telefono",   limit: 8
     t.text     "direccion"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   create_table "purchase_receipts", force: :cascade do |t|
     t.date     "fecha"
-    t.integer  "numero_factura"
+    t.integer  "numero_factura", limit: 8
     t.decimal  "valor_total"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.integer  "provider_id"
   end
 
