@@ -23,6 +23,6 @@ Things you may want to cover:
 
 * ...
 
-* Quite caracteres raros
+* ahora si
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.

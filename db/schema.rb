@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20170330140552) do
     t.text     "apellido"
     t.text     "correo"
     t.text     "direccion"
-    t.integer  "telefono"
+    t.integer  "telefono",         limit: 8
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.integer  "membership_id"
