@@ -10,10 +10,12 @@
       </ul>
     </div>
   <% end %>
-<div class="row">
+    <div class="jumbotron nuevo div-formulario" >
+<div class="row" >
   <div class="form-group col-md-offset-1">
     <%= f.label :tipo_documento %><br>
-    <%= f.text_field :tipo_documento, autofocus: true, class: 'form-control' %>
+
+    <%= f.select :tipo_documento, ['C.C', 'T.I', 'C.E'], :prompt => 'Tipo de documento'  %>
   </div>
   <div class="form-group col-md-offset-1">
     <%= f.label :numero_documento %><br>
@@ -42,7 +44,7 @@
  
   <div class="col-md-2 col-md-offset-1 ">
             <%= button_tag(type: :submit, class: "btn btn-lg btn-success") do %>
-            <i class="fa fa-check-square" aria-hidden="true"></i> Crear cliente
+            <i class="fa fa-check-square" aria-hidden="true"></i> Guardar
             <% end %>
         </div>
 <div class="col-md-2 col-md-offset-1">
@@ -52,4 +54,4 @@
 
 <% end %>
   </div>
- </div>
+</div>

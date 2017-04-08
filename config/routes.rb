@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'home/index'
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :payments
   resources :receipts
@@ -19,8 +21,9 @@ Rails.application.routes.draw do
   resources :societies
   devise_for :users
   resources :categories
-  root 'categories#index'
+  root 'home#index'
   get 'clients/:id' => 'clients#afiliacion'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

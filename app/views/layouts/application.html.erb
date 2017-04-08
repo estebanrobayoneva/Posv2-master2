@@ -7,6 +7,7 @@
     <title><%= content_for?(:title) ? yield(:title) : "PosWeb" %></title>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag :all %>
+    <link href="https://fonts.googleapis.com/css?family=Macondo" rel="stylesheet">
 
     <%= stylesheet_link_tag "application", :media => "all" %>
 
@@ -42,7 +43,7 @@
 
     <div class="container">
       <div class="row">
-        <div class="col-lg-9">
+        <div class="col -align-center">
           <%= bootstrap_flash %>
           <%= yield %>
         </div>

@@ -1,0 +1,24 @@
+<div class="container" >
+  <div class="jumbotron">
+
+    <h2 align="center" class="titulo"><strong>Inicio</strong></h2>
+    <hr>
+    <div  align="center">
+
+      <table  align="center" >
+        <tr>
+          <td  width="400" align="center"><%= link_to image_tag('venta.png', title: 'Tienda', :width => "150px", :height => "150px" ), root_path  %><br><strong>Tienda</strong> </td>
+          <td width="400" align="center"><%= link_to image_tag('clients.png', title: 'Participantes', :width => "150px", :height => "150px" ), clients_path  %><br><strong>Participantes</strong> </td>
+          <td width="400" align="center"><%= link_to image_tag('afiliacion.png', title: 'Membresias', :width => "150px", :height => "150px" ), societies_path  %><br><strong>Membresías</strong> </td>
+        </tr>
+        <tr>
+          <td  align="center"><%= link_to image_tag('product.png', title: 'Productos', :width => "150px", :height => "150px" ), products_path  %><br><strong>Productos</strong> </td>
+          <td  align="center"><%= link_to image_tag('bud.png', title: 'Cursos', :width => "150px", :height => "150px" ), root_path  %><br><strong>Cursos</strong> </td>
+          <td  align="center"><%= link_to image_tag('dona.png', title: 'Donaciones', :width => "200px", :height => "160px" ), root_path  %><br><strong>Donaciones</strong> </td>
+
+
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
