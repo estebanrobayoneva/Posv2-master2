@@ -1,3 +1,26 @@
+<script>
+  $(document).ready(function() {
+
+      if($("#membership_periodicidad").val() == "Anual"){
+        $("#valor_pago").val(115000)
+      } else if($("#membership_periodicidad").val() == "Mensual") {
+        $("#valor_pago").val(555)
+      }
+
+  });
+</script>
+<script>
+  $("#membership_periodicidad").on('change', function() {
+
+    if($("#membership_periodicidad").val() == "Anual"){
+      $("#valor_pago").val(115000)
+    } else if($("#membership_periodicidad").val() == "Mensual") {
+      $("#valor_pago").val(555)
+    }
+
+  });
+</script>
+
 <%= form_for(@membership) do |f| %>
   <% if @membership.errors.any? %>
     <div id="error_explanation">
@@ -27,13 +50,14 @@
   </div>
     <div class="field">
       <%= f.label :fecha_afiliacion %><br>
-      <%= f.date_select :fecha_afiliacion %>
+      <%= f.date_select :fecha_afiliacion, :readonly => true %>
     </div>
 
   <!-- Campos para el pago -->
     <hr>
   <div>
     <strong>Valor a pagar </strong>
+
     <input id="valor_pago" name="valor_pago" type="number" >
   </div><br>
   <div>

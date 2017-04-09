@@ -35,7 +35,7 @@ class MembershipsController < ApplicationController
     
     respond_to do |format|
       if @membership.save
-        format.html { redirect_to @receipt, notice: 'Se ha afiliao exitosamente' }
+        format.html { redirect_to @receipt, notice: 'Se ha afiliado exitosamente' }
         format.json { render :show, status: :created, location: @membership }
       else
         format.html { render :new }

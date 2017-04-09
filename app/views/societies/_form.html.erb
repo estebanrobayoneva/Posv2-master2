@@ -13,7 +13,7 @@
 <div class="jumbotron div-formulario nuevo">
   <div class="field">
     <%= f.label :nombre %><br>
-    <%= f.text_field :nombre,autofocus: true, class: 'form-control' %>
+    <%= f.text_field :nombre,autofocus: true, class: 'form-control', :required => true%>
   </div>
   <div class="field">
     <%= f.label :descripcion %><br>
@@ -24,7 +24,7 @@
     <%= f.label :valor_anual %><br>
     <div class="input-group">
     <span class="input-group-addon">$</span>
-    <%= f.text_field :valor_anual,autofocus: true, class: "form-control" %>
+    <%= f.number_field :valor_anual,autofocus: true, class: "form-control" %>
     <span class="input-group-addon">.00</span>
     </div>
   </div>
@@ -34,7 +34,7 @@
 
     <div class="input-group">
       <span class="input-group-addon">$</span>
-      <%= f.text_field :valor_mensual,autofocus: true, class: 'form-control' %>
+      <%= f.number_field :valor_mensual,autofocus: true, class: 'form-control' %>
       <span class="input-group-addon">.00</span>
     </div>
   </div>
