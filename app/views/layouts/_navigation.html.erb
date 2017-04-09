@@ -12,11 +12,12 @@
           <li><%= link_to "Membresías", societies_path  %></li>
           <li><%= link_to "Participantes", clients_path  %></li>
           <li><%= link_to "Productos", products_path  %></li>
-          <li><%= link_to "Mi Perfil", edit_registration_path(current_user)  %></li>
+          <li><%= link_to "Categorias", categories_path  %></li>
+          <li><%= link_to "Recibos", receipts_path  %></li>
           <%if current_user.admin?%>
-          <li><a href="/admin">admin</a></li>
+              <li><a href="/admin">admin</a></li>
           <% end %>
-          <li><%= link_to "Categorias", categories_path  %></li> 
+          <li><%= link_to "Mi Perfil", edit_registration_path(current_user)  %></li>
         </ul>
         <ul>
         

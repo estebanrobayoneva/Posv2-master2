@@ -26,6 +26,7 @@ class Membership < ActiveRecord::Base
   end
   def create_receipt( valor, formaPago)
     Receipt.create(fecha: self.fecha_afiliacion, valor: valor, client_id: @numeroid, payment_id: formaPago)
+
   end
   def fechas
     t = Time.new

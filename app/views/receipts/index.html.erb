@@ -1,6 +1,6 @@
 
 
-<h1>Recibos</h1>
+<h1 class="titulo">Recibos</h1>
 
 <table class = "table table-hover">
   <thead>
@@ -24,9 +24,11 @@
           <% end %>
         </td>
 
-        <td><%= link_to 'Show', receipt %></td>
-        <td><%= link_to 'Edit', edit_receipt_path(receipt) %></td>
-        <td><%= link_to 'Destroy', receipt, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Ver', receipt,class:"btn btn-primary btn-xs" %></td>
+        <td><%= link_to 'Editar', edit_receipt_path(receipt), class:"btn btn-success btn-xs" %></td>
+        <td><%= link_to 'Eliminar',receipt, method: :delete, data: { confirm: 'Eliminar?' }, class:"btn btn-danger btn-xs" %></td>
+
+
       </tr>
     <% end %>
   </tbody>

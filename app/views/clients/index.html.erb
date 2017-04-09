@@ -9,9 +9,8 @@
       <th>Nombre</th>
       <th>Apellido</th>
       <th>Membresía</th>
-      <th>Correo</th>
-      <th>Direccion</th>
-      <th>Telefono</th>
+
+
       <th colspan="4"></th>
     </tr>
   </thead>
@@ -25,10 +24,11 @@
         <td><%= client.apellido %></td>
         <td> <%if client.membership != nil%>
               <%= client.membership.society.nombre %>
+              <% else %>
+                <p>-</p>
           <% end %></td>
-        <td><%= client.correo %></td>
-        <td><%= client.direccion %></td>
-        <td><%= client.telefono %></td>
+
+
 
         <td><%= link_to 'Ver', client,class:"btn btn-primary btn-xs" %></td>
         <td><%= link_to 'Editar', edit_client_path(client), class:"btn btn-success btn-xs" %></td>
