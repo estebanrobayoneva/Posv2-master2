@@ -58,6 +58,7 @@
       <p> <%= @client.membership.fecha_afiliacion %> </p>
       <strong>Fecha de vencimiento: </strong>
       <p> <%= @client.membership.fecha_vencimiento %> </p>
+
       <strong>Valor cuota: </strong>
 
       <% if @client.membership.periodicidad == "Mensual" %>
@@ -83,4 +84,8 @@
 
 <%= link_to "<i class='fa fa-users' aria-hidden='true'></i> Afiliar".html_safe,
             membership_client_path, class: 'btn btn-success btn-sm'%>
+<% end %>
+<% if @client.membership != nil %>
+<%= link_to "<i class='fa fa-money' aria-hidden='true'></i> Pagar cuota".html_safe,
+            pagocuota_client_path(:membership_id => @client.membership_id ), class: 'btn btn-success btn-sm'%>
 <% end %>

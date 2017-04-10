@@ -29,7 +29,7 @@ class SocietiesController < ApplicationController
 
     respond_to do |format|
       if @society.save
-        format.html { redirect_to @society, notice: 'Society was successfully created.' }
+        format.html { redirect_to @society, notice: 'Se ha creado exitosamente.' }
         format.json { render :show, status: :created, location: @society }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class SocietiesController < ApplicationController
   def update
     respond_to do |format|
       if @society.update(society_params)
-        format.html { redirect_to @society, notice: 'Society was successfully updated.' }
+        format.html { redirect_to @society, notice: 'Se ha editado exitosamente.' }
         format.json { render :show, status: :ok, location: @society }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ class SocietiesController < ApplicationController
   def destroy
     @society.destroy
     respond_to do |format|
-      format.html { redirect_to societies_url, notice: 'Society was successfully destroyed.' }
+      format.html { redirect_to societies_url, notice: 'Se ha eliminado exitosamente.' }
       format.json { head :no_content }
     end
   end

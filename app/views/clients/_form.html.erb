@@ -19,19 +19,19 @@
   </div>
   <div class="form-group col-md-offset-1">
     <%= f.label :numero_documento %><br>
-    <%= f.number_field :numero_documento, autofocus: true, class: 'form-control' %>
+    <%= f.number_field :numero_documento, autofocus: true, class: 'form-control', :required => true %>
   </div>
   <div class="form-group col-md-offset-1">
     <%= f.label :nombre %><br>
-    <%= f.text_field :nombre, autofocus: true, class: 'form-control' %>
+    <%= f.text_field :nombre, autofocus: true, class: 'form-control', :required => true %>
   </div>
   <div class="form-group col-md-offset-1">
     <%= f.label :apellido %><br>
-    <%= f.text_field :apellido, autofocus: true, class: 'form-control' %>
+    <%= f.text_field :apellido, autofocus: true, class: 'form-control', :required => true %>
   </div>
   <div class="form-group col-md-offset-1">
     <%= f.label :correo %><br>
-    <%= f.text_field :correo, autofocus: true, class: 'form-control' %>
+    <%= f.email_field :correo, autofocus: true, class: 'form-control' %>
   </div>
   <div class="form-group col-md-offset-1">
     <%= f.label :direccion %><br>

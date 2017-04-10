@@ -12,7 +12,11 @@ Rails.application.routes.draw do
   resources :clients do
     member do
       get 'membership' => 'memberships#new'
+      get 'pagocuota' => 'memberships#payQuota'
+      get 'pagocuota/:id' => 'memberships#payQuotaReceipt'
+      patch 'pagocuota/:id' => 'memberships#payQuotaReceipt'
     end
+
   end
   resources :memberships
   resources :detail_purchase_receipts

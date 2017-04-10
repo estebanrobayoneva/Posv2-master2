@@ -1,4 +1,4 @@
-
+<h1 class="titulo">Membresía </h1>
 <p>
   <strong>Nombre:</strong>
   <%= @society.nombre %>
@@ -19,6 +19,13 @@
   <strong>Valor mensual:</strong>
   <%= @society.valor_mensual %>
 </p>
+<%= link_to "<i class='fa fa-reply' aria-hidden='true'></i> Volver".html_safe,
+            societies_path, class: 'btn btn-success btn-sm'%>
 
-<%= link_to 'Edit', edit_society_path(@society) %> |
-<%= link_to 'Back', societies_path %>
+<%= link_to "<i class='fa fa-pencil-square-o' aria-hidden='true'></i> Editar".html_safe,
+            edit_society_path(@society), class: 'btn btn-success btn-sm'%>
+
+
+
+
+
