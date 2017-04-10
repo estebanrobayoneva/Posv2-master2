@@ -67,6 +67,35 @@ class MembershipsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  def payQuota
+      @membership = Membership.find(params[:membership_id])
+      @formasDePago = Payment.all
+      if @membership.periodicidad=='Mensual'
+        @valor_pago = @membership.society.valor_mensual
+      elsif @membership.periodicidad=='Anual'
+        @valor_pago = 0
+      end
+
+
+  end
+  def payQuotaReceipt
+    @membership = Membership.find(params[:id])
+    if @membership.periodicidad=='Mensual'
+      @valor_pago = @membership.society.valor_mensual
+    elsif @membership.periodicidad=='Anual'
+      @valor_pago = 0
+    end
+    t = Time.new
+    id = 0
+    @membership.clients.each do |client|
+      id = client.id
+    end
+    @membership.s_receipt(t, id, params[:formaDePago], @membership.id, @valor_pago)
+    @membership.updateAcomulado(@valor_pago)
+
+    @receipt = Receipt.last
+    redirect_to @receipt, notice: 'Pago de cuota exitoso.'
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

@@ -1,0 +1,119 @@
+
+  <h1 class="titulo">Pago cuota Membresía</h1>
+  <%= form_for @membership, :url => {:action => :payQuotaReceipt}, :html => {:multipart => true} do |form| %>
+
+      <br><div>
+
+</div>
+      <% @membership.errors.full_messages.each do |message| %>
+          <div>
+            * <%= message %>
+          </div>
+      <% end %>
+<div class="jumbotron div-formulario nuevo">
+      <div>
+        <!--Datos scoico-->
+        <table align="center">
+          <tr>
+            <td>
+
+             <strong> Nombre del afiliado: </strong>
+
+            </td>
+            <td>
+              <% @membership.clients.each do |client| %>
+                  <%= client.nombre %> <%= client.apellido %>
+              <% end %>
+            </td>
+
+          </tr>
+          <tr>
+            <td width="200">
+             <strong> Documento:</strong>
+
+            </td>
+
+            <td >
+
+              <% @membership.clients.each do |client| %>
+                  <%= client.tipo_documento %> <%= client.numero_documento %>
+              <% end %>
+
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Correo electronico:</strong>
+            </td>
+            <td>
+              <% @membership.clients.each do |client| %>
+                  <%= client.correo %>
+              <% end %>
+            </td>
+          </tr><br>
+          <br>
+        </table>
+
+        <hr>
+      </div>
+      <!--datos membresia-->
+      <div>
+        <table  width="600" >
+          <tr>
+            <td width="170">
+              Membresía afiliada:
+            </td>
+            <td align="left">
+              <%= @membership.society.nombre %>
+            </td>
+            <td width="130">
+              Fecha de afiliacion:
+            </td>
+            <td align="left">
+              <%=@membership.fecha_afiliacion %>
+            </td>
+
+          </tr>
+        </table><br>
+        <table>
+
+          <tr>
+            <td width="200">
+              Valor cuota: <%= @valor_pago  %>
+            </td>
+            <td width="260">Fecha periodo de pago:
+              <%= @membership.fecha_cuota %>
+            </td>
+          </tr>
+
+        </table><br>
+      </div>
+      <div>
+      </div>
+      <div>
+
+        Forma de pago: <select name="formaDePago">
+        <%= @formasDePago.each do |forma| %>
+            <option value="<%= forma.id %>"><%= forma.nombre %></option>
+        <% end %>
+      </select>
+        <input id="valor_recibido" name="valor_recibido" placeholder="Valor a recibido" type="number" min="1">
+        <h5><%=  %></h5>
+      </div>
+
+      <div>
+        <h5>Soporte de pago:</h5>
+        <input id="soporte" name="soporte" type="file">
+
+      </div><br>
+  <div class="col-md-1 ">
+    <%= button_tag(type: :submit, class: "btn btn-lg btn-success") do %>
+        <i class="fa fa-check-square" aria-hidden="true" data-toggle="modal" data-target="#mynewreceipt"></i> Guardar
+    <% end %>
+  </div>
+
+  <% end %>
+  </div>
+
+
+

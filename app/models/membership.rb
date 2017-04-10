@@ -41,4 +41,29 @@ class Membership < ActiveRecord::Base
     end
     self.update(estado: TRUE)
   end
+  def s_receipt(fecha, cliente_id, formaPago, membership_id, valor)
+    Receipt.create(fecha: fecha, client_id: cliente_id, payment_id: formaPago, valor: valor)
+  end
+
+  def updateAcomulado(valor)
+    #modificar el volor acomulado por cada cuota
+
+    #valorF = self.pago_acomulado+valor
+    #self.update(pago_acomulado: valorF)
+
+    #cambio de fecha poxima cuota
+    fecha = self.fecha_cuota
+    if self.periodicidad == 'Anual'
+
+      #self.update(fecha_vencimiento: t+(60*60*24*365))
+      #self.update(fecha_cuota: t+(60*60*24*365))
+    elsif self.periodicidad == 'Mensual'
+      puts (self.fecha_cuota + 2592000)
+      #self.update(fecha_vencimiento: fecha+2592000)
+      #self.update(fecha_cuota: fecha+2592000 )
+
+    end
+
+  end
+
 end
