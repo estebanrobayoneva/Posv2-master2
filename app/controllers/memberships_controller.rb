@@ -31,10 +31,11 @@ class MembershipsController < ApplicationController
     @membership = Membership.new(membership_params)
     @membership.afiliarCliente = params[:client_id]
     @membership.create_receipt( params[:valor_pago], params[:formaDePago]  )
-
+    @receipt = Receipt.last
+    
     respond_to do |format|
       if @membership.save
-        format.html { redirect_to @membership, notice: 'Membership was successfully created.' }
+        format.html { redirect_to @receipt, notice: 'Se ha afiliado exitosamente' }
         format.json { render :show, status: :created, location: @membership }
       else
         format.html { render :new }
@@ -48,7 +49,7 @@ class MembershipsController < ApplicationController
   def update
     respond_to do |format|
       if @membership.update(membership_params)
-        format.html { redirect_to @membership, notice: 'Membership was successfully updated.' }
+        format.html { redirect_to @membership, notice: 'Se ha modificado exitosamente' }
         format.json { render :show, status: :ok, location: @membership }
       else
         format.html { render :edit }
@@ -62,9 +63,38 @@ class MembershipsController < ApplicationController
   def destroy
     @membership.destroy
     respond_to do |format|
-      format.html { redirect_to memberships_url, notice: 'Membership was successfully destroyed.' }
+      format.html { redirect_to memberships_url, notice: 'Se ha eliminado exitosamente.' }
       format.json { head :no_content }
     end
+  end
+  def payQuota
+      @membership = Membership.find(params[:membership_id])
+      @formasDePago = Payment.all
+      if @membership.periodicidad=='Mensual'
+        @valor_pago = @membership.society.valor_mensual
+      elsif @membership.periodicidad=='Anual'
+        @valor_pago = 0
+      end
+
+
+  end
+  def payQuotaReceipt
+    @membership = Membership.find(params[:id])
+    if @membership.periodicidad=='Mensual'
+      @valor_pago = @membership.society.valor_mensual
+    elsif @membership.periodicidad=='Anual'
+      @valor_pago = 0
+    end
+    t = Time.new
+    id = 0
+    @membership.clients.each do |client|
+      id = client.id
+    end
+    @membership.s_receipt(t, id, params[:formaDePago], @membership.id, @valor_pago)
+    @membership.updateAcomulado(@valor_pago)
+
+    @receipt = Receipt.last
+    redirect_to @receipt, notice: 'Pago de cuota exitoso.'
   end
 
   private

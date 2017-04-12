@@ -31,9 +31,14 @@
         <td><%= society.valor_anual %></td>
 
         <td><%= society.valor_mensual %></td>
-        <td><%= link_to 'Ver', society %></td>
-        <td><%= link_to 'Editar', edit_society_path(society) %></td>
-        <td><%= link_to 'Eliminar', society, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+
+
+        <td><%= link_to 'Ver', society,class:"btn btn-primary btn-xs" %></td>
+        <td><%= link_to 'Editar', edit_society_path(society), class:"btn btn-success btn-xs" %></td>
+        <td><%= link_to 'Eliminar',society, method: :delete, data: { confirm: 'Eliminar?' }, class:"btn btn-danger btn-xs" %></td>
+
+
       </tr>
     <% end %>
   </tbody>

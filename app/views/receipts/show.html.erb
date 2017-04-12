@@ -1,14 +1,43 @@
+<div class="jumbotron">
 
-
-<p>
+<div align="center">
+<h3>Centro de Meditación Budista Yamantaka</h3>
+<h5>NIT. ########</h5>
+<h5> Dirección Cra. 27 #61D-27, Bogotá</h5>
+<h5>teléfono 305 7068754</h5>
+</div>
+<h4 align="left">
   <strong>Fecha:</strong>
   <%= @receipt.fecha %>
-</p>
+</h4>
+<h4 align="left"><strong>Participante: </strong><%=  @receipt.client.nombre %> </h4>
+  <h4 align="left"><strong>Detalle</strong></h4>
+  <hr>
+<table align="left" width="450">
+  <tr>
+    <td><strong>Concepto</strong></td>
+    <td><strong>Valor</strong></td>
+  </tr>
+  <tr>
+    <td>
+      <%= @receipt.client.membership.society.nombre %>
+    </td>
+    <td>
+      <%= @receipt.valor %>
+    </td>
+  </tr>
+</table>
+  <br>
 
-<p>
-  <strong>Valor:</strong>
-  <%= @receipt.valor %>
-</p>
 
-<%= link_to 'Edit', edit_receipt_path(@receipt) %> |
-<%= link_to 'Back', receipts_path %>
+</div>
+
+<%= link_to "<i class='fa fa-reply' aria-hidden='true'></i> Volver".html_safe,
+            receipts_path, class: 'btn btn-success btn-sm'%>
+<%= link_to "<i class='fa fa-print' aria-hidden='true'></i> Imprimir".html_safe,
+            receipts_path, class: 'btn btn-success btn-sm'%>
+<%= link_to "<i class='fa fa-envelope' aria-hidden='true'></i> Eviar a Email".html_safe,
+            receipts_path, class: 'btn btn-success btn-sm'%>
+<!--<%= link_to "<i class='fa fa-pencil-square-o' aria-hidden='true'></i> Editar".html_safe,
+            edit_receipt_path(@receipt), class: 'btn btn-success btn-sm'%>-->
+

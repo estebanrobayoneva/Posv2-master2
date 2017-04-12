@@ -1,5 +1,7 @@
 body {
-  background-color: #fff;
+  //fafbd4
+  background-color: #fafbd4;
+  background-image: url("grid.png");
   color: #333;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
@@ -19,15 +21,18 @@ pre {
 }
 
 a {
-  color: #000;
+  color: white;
 
+  &:default {
+    color: white;
+  }
   &:visited {
-    color: #666;
+    color: white;
   }
 
   &:hover {
     color: #fff;
-    background-color: #000;
+    background-color: transparent;
   }
 }
 
@@ -70,4 +75,33 @@ div {
     font-size: 12px;
     list-style: square;
   }
+}
+.navbar-default {
+  background-color: #440F0F;
+ border-bottom-color: #e4b640;
+  color: #DADADA;
+
+
+  border-bottom-width: thick;
+  border-left-width: thin;
+}
+
+.nuevo {
+  background-color: #124162;
+  color: white;
+
+  
+}
+.titulo{
+  font-family: 'Macondo', cursive;
+}
+.div-formulario {
+  height: auto;
+  width: 800px;
+}
+select{
+  color: black;
+}
+input{
+  color: black;
 }

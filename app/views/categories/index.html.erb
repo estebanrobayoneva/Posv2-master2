@@ -17,9 +17,10 @@
       <tr>
         <td><%= category.nombre %></td>
         <td><%= category.descripcion %></td>
-        <td><%= link_to 'Ver', category %></td>
-        <td><%= link_to 'Editar', edit_category_path(category) %></td>
-        <td><%= link_to 'Eliminar', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Ver', category,class:"btn btn-primary btn-xs" %></td>
+        <td><%= link_to 'Editar', edit_category_path(category), class:"btn btn-success btn-xs" %></td>
+        <td><%= link_to 'Eliminar',category, method: :delete, data: { confirm: 'Elimiar?' }, class:"btn btn-danger btn-xs" %></td>
+
       </tr>
     <% end %>
   </tbody>

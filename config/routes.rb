@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'home/index'
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :payments
   resources :receipts
@@ -9,7 +11,11 @@ Rails.application.routes.draw do
   resources :clients do
     member do
       get 'membership' => 'memberships#new'
+      get 'pagocuota' => 'memberships#payQuota'
+      get 'pagocuota/:id' => 'memberships#payQuotaReceipt'
+      patch 'pagocuota/:id' => 'memberships#payQuotaReceipt'
     end
+
   end
   resources :memberships
   resources :detail_purchase_receipts
@@ -22,12 +28,16 @@ Rails.application.routes.draw do
   resources :societies
   devise_for :users
   resources :categories
-  root 'categories#index'
+
+  root 'home#index'
+  get 'clients/:id' => 'clients#afiliacion'
+
   get 'search/create'
   get 'search/createcli'
   get 'clients/:id' => 'clients#afiliacion'
   get 'reportes'=>'products#reports'
   get 'reportclientes'=>'clients#reports'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

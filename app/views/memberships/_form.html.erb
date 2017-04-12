@@ -1,3 +1,26 @@
+<script>
+  $(document).ready(function() {
+
+      if($("#membership_periodicidad").val() == "Anual"){
+        $("#valor_pago").val(115000)
+      } else if($("#membership_periodicidad").val() == "Mensual") {
+        $("#valor_pago").val(555)
+      }
+
+  });
+</script>
+<script>
+  $("#membership_periodicidad").on('change', function() {
+
+    if($("#membership_periodicidad").val() == "Anual"){
+      $("#valor_pago").val(115000)
+    } else if($("#membership_periodicidad").val() == "Mensual") {
+      $("#valor_pago").val(555)
+    }
+
+  });
+</script>
+
 <%= form_for(@membership) do |f| %>
   <% if @membership.errors.any? %>
     <div id="error_explanation">
@@ -10,29 +33,32 @@
       </ul>
     </div>
   <% end %>
+    <div class="jumbotron div-formulario nuevo">
 <div>
   <p>
     <%= hidden_field :client_id, :value =>  params[:id]%>
   </p>
 </div>
-    <div>
-      <strong>Membreisa</strong><br>
+    <div class="field">
+      <strong>Tipo de Membresia</strong><br>
       <%= f.select(:society_id, @society_options) %>
+
     </div>
   <div class="field">
     <%= f.label :periodicidad %><br>
     <%= f.select :periodicidad, ['Anual', 'Mensual']%>
   </div>
-  <div class="field">
-    <%= f.label :fecha_afiliacion %><br>
-    <%= f.date_select :fecha_afiliacion %>
-  </div>
+    <div class="field">
+      <%= f.label :fecha_afiliacion %><br>
+      <%= f.date_select :fecha_afiliacion, :readonly => true %>
+    </div>
 
   <!-- Campos para el pago -->
     <hr>
   <div>
     <strong>Valor a pagar </strong>
-    <input id="valor_pago" name="valor_pago" type="number">
+
+    <input id="valor_pago" name="valor_pago" type="number" >
   </div><br>
   <div>
    <strong>Forma de pago:</strong> <select name="formaDePago">
@@ -48,7 +74,63 @@
 
 <div class="col-md-1 ">
             <%= button_tag(type: :submit, class: "btn btn-lg btn-success") do %>
-            <i class="fa fa-check-square" aria-hidden="true"></i> Afiliar
+            <i class="fa fa-check-square" aria-hidden="true" data-toggle="modal" data-target="#mynewreceipt"></i> Afiliar
             <% end %>
         </div>
-<% end %>
+        
+        
+<!--    <div class="container">-->
+<!--    <div class="row" id="container_receipts">-->
+<!--        <#%= render partial: "receipts/receipt" %>-->
+<!--    </div>-->
+
+
+    <!-- Modal  create action -->
+<!--      <#%= form_for(@receipt, remote: true) do |f| %>-->
+<!--        <div class="modal fade" id="mynewreceipt" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">-->
+<!--        <div class="modal-dialog">-->
+<!--          <div class="modal-content">-->
+
+<!--            <div class="modal-header">-->
+<!--              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
+<!--              <h4 class="modal-title" id="myModalLabel">receipt</h4>-->
+<!--            </div>-->
+            
+<!--            <div class="modal-body">-->
+<!--              <div class="field">-->
+<!--                        <#%= f.label :nombre %><br>-->
+<!--                        <#%= f.text_area :nombre, class: "form-control" %>-->
+<!--                      </div>-->
+                      
+<!--                      <div class="field">-->
+<!--                        <#%= f.label :nit %><br>-->
+<!--                        <#%= f.text_area :nit, class: "form-control" %>-->
+<!--                      </div>-->
+<!--                      <div class="field">-->
+<!--                        <#%= f.label :telefono %><br>-->
+<!--                        <#%= f.text_area :telefono, class: "form-control" %>-->
+<!--                      </div>-->
+<!--                      <div class="field">-->
+<!--                        <%#= f.label :direccion %><br>-->
+<!--                        <#%= f.text_area :direccion, class: "form-control" %>-->
+<!--                      </div>-->
+
+<!--            </div>-->
+
+<!--            <div class="modal-footer">-->
+<!--              <button type="button" class="btn btn-default" data-dismiss="modal" id="mynewreceiptclose">Close</button>-->
+<!--              <#%= submit_tag "Create", class: "btn btn-primary" %>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        </div>-->
+<!--      <#% end %>-->
+    <!-- Modal -->
+
+
+
+<!--</div>-->
+        
+        
+<!--<% end %>-->
+</div>
