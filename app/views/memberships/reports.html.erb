@@ -1,0 +1,42 @@
+<div class="col-sm-3">
+ <table>
+  <tr><td>
+<h3>Busqueda</h3>
+
+<%= form_tag "/search/createmembership", method: 'get', remote: true, id:"search-form" do %>
+    <div>
+      <strong>Fecha de Afiliación: </strong><br><br><%= date_field_tag :keyword, nil, :size => 40 %><br><br>
+
+      <strong>Membresía: </strong><br><br><strong>Fecha de Afiliación: </strong><br><br>
+
+      <%=select("",:keyword1,Society.all.collect {|p| [ p.nombre, p.id ] })%> <br><br><br>
+
+
+      <%= content_tag :button,class:"btn btn-primary btn-lg" , type: :submit do%> Buscar <% end %>
+
+
+
+  <% end %>
+</div>
+  </td>
+ </table>
+  <div class="container">
+  <table class="table table-striped" width="300">
+    <thead >
+    <tr>
+      <th width="80">Periocidad</th>
+      <th width="80">Fecha de Afiliación</th>
+      <th width="80">Fecha de Vencimiento</th>
+      <th width="80">Fecha Cuota</th>
+      <th width="80">Estado</th>
+      <th width="80">Sociedad</th>
+    </tr>
+    </thead>
+  </table>
+  <div id="resultadosmembership">
+  </div>
+</div>
+
+
+
+</div>
