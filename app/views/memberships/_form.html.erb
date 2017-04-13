@@ -1,22 +1,17 @@
-<script>
-  $(document).ready(function() {
 
-      if($("#membership_periodicidad").val() == "Anual"){
-        $("#valor_pago").val(115000)
-      } else if($("#membership_periodicidad").val() == "Mensual") {
-        $("#valor_pago").val(555)
-      }
-
-  });
-</script>
 <script>
   $("#membership_periodicidad").on('change', function() {
+    var a = $("#membership_society_id").val();
+    console.log(a);
+    var value = ('<% Society.first.nombre %>');
+    console.log(value);
 
     if($("#membership_periodicidad").val() == "Anual"){
       $("#valor_pago").val(115000)
     } else if($("#membership_periodicidad").val() == "Mensual") {
       $("#valor_pago").val(555)
     }
+
 
   });
 </script>
