@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :courses
   get 'home/index'
   root 'home#index'
 
@@ -32,11 +33,11 @@ Rails.application.routes.draw do
 
   get 'clients/:id' => 'clients#afiliacion'
 
+  get 'search/createmembership'
   get 'search/create'
-  get 'search/createcli'
   get 'clients/:id' => 'clients#afiliacion'
   get 'reportes'=>'products#reports'
-  get 'reportclientes'=>'clients#reports'
+  get 'reportmembresias'=>'memberships#reports'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
