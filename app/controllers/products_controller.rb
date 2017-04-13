@@ -6,7 +6,6 @@ class ProductsController < ApplicationController
   def index
     @products = Product.all
     @provider = Provider.new
-
     respond_to do |format|
       format.html
       format.csv { send_data @products.to_csv}
@@ -17,8 +16,6 @@ class ProductsController < ApplicationController
   def import
     Product.import(params[:file])
     redirect_to products_path, notice: "Productos importados"
-
-    @provider = Provider.new
 
 
   

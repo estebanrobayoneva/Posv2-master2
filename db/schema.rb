@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170413012017) do
+ActiveRecord::Schema.define(version: 20170330140552) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "nombre"
@@ -27,19 +27,10 @@ ActiveRecord::Schema.define(version: 20170413012017) do
     t.text     "apellido"
     t.text     "correo"
     t.text     "direccion"
-    t.integer  "telefono"
+    t.integer  "telefono",         limit: 8
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.integer  "membership_id"
-  end
-
-  create_table "courses", force: :cascade do |t|
-    t.string   "nombre"
-    t.integer  "numero_sesiones"
-    t.integer  "valor_sesion",      limit: 8
-    t.integer  "valor_total_curso", limit: 8
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
   end
 
   create_table "detail_purchase_receipts", force: :cascade do |t|
