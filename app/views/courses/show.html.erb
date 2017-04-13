@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @course.nombre %>
+</p>
+
+<p>
+  <strong>Numero sesiones:</strong>
+  <%= @course.numero_sesiones %>
+</p>
+
+<p>
+  <strong>Valor sesion:</strong>
+  <%= @course.valor_sesion %>
+</p>
+
+<p>
+  <strong>Valor total curso:</strong>
+  <%= @course.valor_total_curso %>
+</p>
+
+<%= link_to 'Edit', edit_course_path(@course) %> |
+<%= link_to 'Back', courses_path %>

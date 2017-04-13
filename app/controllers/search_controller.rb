@@ -30,29 +30,29 @@ class SearchController < ApplicationController
 
   end
 
-  def createcli
+  def createmembership
     palabra = "%#{params[:keyword]}%"
     palabra1 = "%#{params[:keyword1]}%"
 
     if palabra != "" && palabra1 != ""
-      @clients = Client.where('numero_documento LIKE ? AND membership_id LIKE ?', palabra, palabra1)
+      @memberships = Membership.where('fecha_afiliacion LIKE ? AND society_id LIKE ?', palabra, palabra1)
       respond_to do |format|
         format.html { redirect_to root_path}
-        format.json {render json: @clients}
+        format.json {render json: @memberships}
         format.js
       end
     elsif palabra !="" && palabra1 == ""
-      @clients = Client.where('numero_documento LIKE ?', palabra)
+      @memberships = Membership.where('fecha_afiliacion LIKE ?', palabra)
       respond_to do |format|
         format.html { redirect_to root_path}
-        format.json {render json: @clients}
+        format.json {render json: @memberships}
         format.js
       end
     else
-      @clients = Client.where('membership_id LIKE ?', palabra1)
+      @memberships = Membership.where('society_id LIKE ?', palabra1)
       respond_to do |format|
         format.html { redirect_to root_path}
-        format.json {render json: @clients}
+        format.json {render json: @memberships}
         format.js
       end
     end
