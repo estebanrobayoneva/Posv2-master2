@@ -1,3 +1,4 @@
+<div id="membership_<%= membership.id %>">
 <script>
   $(document).ready(function() {
 
@@ -11,7 +12,7 @@
 </script>
 <script>
   $("#membership_periodicidad").on('change', function() {
-
+    
     if($("#membership_periodicidad").val() == "Anual"){
       $("#valor_pago").val(115000)
     } else if($("#membership_periodicidad").val() == "Mensual") {
@@ -21,7 +22,7 @@
   });
 </script>
 
-<%= form_for(@membership) do |f| %>
+<%= form_for(@membership, remote: true) do |f| %>
   <% if @membership.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@membership.errors.count, "error") %> prohibited this membership from being saved:</h2>
@@ -133,4 +134,5 @@
         
         
 <!--<% end %>-->
+</div>
 </div>

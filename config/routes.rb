@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'home/index'
+  root 'home#index'
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :payments
@@ -29,7 +30,6 @@ Rails.application.routes.draw do
   devise_for :users
   resources :categories
 
-  root 'home#index'
   get 'clients/:id' => 'clients#afiliacion'
 
   get 'search/create'
