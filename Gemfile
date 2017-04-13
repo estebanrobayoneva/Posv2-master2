@@ -38,6 +38,8 @@ gem 'cancancan'
 # gem 'unicorn'
 #gem for forms
 gem "cocoon"
+# bd
+gem 'pg'
 
 gem 'chartkick'
 gem 'groupdate'

@@ -31,25 +31,25 @@ class SearchController < ApplicationController
   end
 
   def createmembership
-    palabra = "%#{params[:keyword]}%"
-    palabra1 = "%#{params[:keyword1]}%"
+    palabra = "#{params[:keyword]}"
+    palabra1 = "#{params[:keyword1]}"
 
     if palabra != "" && palabra1 != ""
-      @memberships = Membership.where('fecha_afiliacion LIKE ? AND society_id LIKE ?', palabra, palabra1)
+      @memberships = Membership.where('fecha_afiliacion = ? AND society_id = ?', palabra, palabra1)
       respond_to do |format|
         format.html { redirect_to root_path}
         format.json {render json: @memberships}
         format.js
       end
     elsif palabra !="" && palabra1 == ""
-      @memberships = Membership.where('fecha_afiliacion LIKE ?', palabra)
+      @memberships = Membership.where('fecha_afiliacion = ?', palabra)
       respond_to do |format|
         format.html { redirect_to root_path}
         format.json {render json: @memberships}
         format.js
       end
     else
-      @memberships = Membership.where('society_id LIKE ?', palabra1)
+      @memberships = Membership.where('society_id = ?', palabra1)
       respond_to do |format|
         format.html { redirect_to root_path}
         format.json {render json: @memberships}
