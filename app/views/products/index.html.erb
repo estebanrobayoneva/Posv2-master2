@@ -3,7 +3,7 @@
 <h1>Productos</h1>
 <div class="container">
 
-<div class="row">
+    <div class="row">
       <div class="text-center">
           <!-- Button trigger modal -->
           <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#mynewprovider">
@@ -11,6 +11,7 @@
           </button>
       </div>
     </div>
+
     <div class="row">
       <div class="text-center">
           <!-- Button trigger modal -->
@@ -21,6 +22,7 @@
     </div>
   <table>
     <thead>
+
     <br>
     <hr>
 
@@ -84,39 +86,36 @@
       <th>Valor total curso</th>
       <th colspan="30"></th>
     </tr>
-    </thead>
+  </thead>
 
-    <tbody>
+  <tbody>
     <% @products.each do |product| %>
-        <tr>
-          <td><%= product.nombre %></td>
-          <td><%= product.cantidad %></td>
-          <td><%= product.valor_unitario %></td>
-          <td><%= product.valor_total_curso %></td>
-          <td><%= link_to 'Show', product %></td>
-          <td><%= link_to 'Edit', edit_product_path(product) %></td>
-          <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
+      <tr>
+        <td><%= product.nombre %></td>
+        <td><%= product.cantidad %></td>
+        <td><%= product.valor_unitario %></td>
+        <td><%= product.valor_total_curso %></td>
+        <td><%= link_to 'Show', product %></td>
+        <td><%= link_to 'Edit', edit_product_path(product) %></td>
+        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
     <% end %>
-    </tbody>
-  </table>
+  </tbody>
+</table>
 
-  <br>
+<br>
 
-  <%= link_to 'New Product', new_product_path %>
+<%= link_to 'New Product', new_product_path %>
 
-  <h3>Exportar</h3>
-  <%= link_to "CSV" , products_path(format: "csv") %>
-  <%= link_to "Excel" , products_path(format: "xls") %>
-
-
-  <h3>Importar</h3>
-  <%= form_tag import_products_path, multipart: true do %>
-      <%= file_field_tag :file%>
-      <%= submit_tag "Importar"%>
-  <%end %>
+<h3>Exportar</h3>
+<%= link_to "CSV" , products_path(format: "csv") %>
+<%= link_to "Excel" , products_path(format: "xls") %>
 
 
+<h3>Importar</h3>
+<%= form_tag import_products_path, multipart: true do %>
+<%= file_field_tag :file%>
+<%= submit_tag "Importar"%>
+<%end %>
 
 
-</div>
