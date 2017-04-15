@@ -3,6 +3,7 @@ class Product < ActiveRecord::Base
   has_many :purchase_receipts, through: :detail_purchase_receipts
   belongs_to :category
 
+
   def self.to_csv(options = {})
     CSV.generate(options) do |csv|
       csv << column_names

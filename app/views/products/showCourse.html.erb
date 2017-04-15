@@ -6,12 +6,12 @@
 </p>
 
 <p>
-  <strong>Cantidad:</strong>
+  <strong>Numero de sesiones:</strong>
   <%= @product.cantidad %>
 </p>
 
 <p>
-  <strong>Valor unitario:</strong>
+  <strong>Valor sesion:</strong>
   <%= @product.valor_unitario %>
 </p>
 
@@ -20,8 +20,8 @@
   <%= @product.valor_total_curso %>
 </p>
 <%= link_to "<i class='fa fa-reply' aria-hidden='true'></i> Volver".html_safe,
-            products_path, class: 'btn btn-success btn-sm'%>
+            cursos_path, class: 'btn btn-success btn-sm'%>
 
 <%= link_to "<i class='fa fa-pencil-square-o' aria-hidden='true'></i> Editar".html_safe,
-            edit_product_path(@product), class: 'btn btn-success btn-sm'%>
+            "course/#{@product.id}/edit", class: 'btn btn-success btn-sm'%>
 

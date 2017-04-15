@@ -11,8 +11,17 @@ class ProductsController < ApplicationController
       format.csv { send_data @products.to_csv}
       format.xls #{ send_data @products.to_csv(col_sep: "\t")}
     end
-  end
 
+  end
+  def indexCourse
+    @products = Product.all
+    @provider = Provider.new
+    respond_to do |format|
+      format.html
+      format.csv { send_data @products.to_csv}
+      format.xls #{ send_data @products.to_csv(col_sep: "\t")}
+    end
+  end
   def import
     Product.import(params[:file])
     redirect_to products_path, notice: "Productos importados"
@@ -28,24 +37,49 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show
   end
+  def showCourse
+    @product = Product.find(params[:id])
+  end
 
   # GET /products/new
   def new
+    @product = Product.new
+  end
+  def newCourse
     @product = Product.new
   end
 
   # GET /products/1/edit
   def edit
   end
+  def editCourse
+    @product = Product.find(params[:id])
+  end
 
   # POST /products
   # POST /products.json
   def create
     @product = Product.new(product_params)
+
     respond_to do |format|
       if @product.save
-        format.html { redirect_to @product, notice: 'Product was successfully created.' }
+        format.html { redirect_to @product, notice: 'Se ha creado exitosamente.' }
         format.json { render :show, status: :created, location: @product }
+        Product.last.update(tipo_producto: 1)
+      else
+        format.html { render :new }
+        format.json { render json: @product.errors, status: :unprocessable_entity }
+      end
+    end
+
+  end
+  def createCourse
+    @product = Product.new(product_params)
+    respond_to do |format|
+      if @product.save
+        format.html { redirect_to @product, notice: 'Se ha creado exitosamente.' }
+        format.json { render :show, status: :created, location: @product }
+        Product.last.update(tipo_producto: 2)
       else
         format.html { render :new }
         format.json { render json: @product.errors, status: :unprocessable_entity }
@@ -59,6 +93,18 @@ class ProductsController < ApplicationController
     respond_to do |format|
       if @product.update(product_params)
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
+        format.json { render :show, status: :ok, location: @product }
+      else
+        format.html { render :edit }
+        format.json { render json: @product.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+  def updateCourse
+    @product = Product.find(params[:id])
+    respond_to do |format|
+      if @product.update(product_params)
+        format.html { redirect_to @product, notice: 'Se ha editado exitosamente.' }
         format.json { render :show, status: :ok, location: @product }
       else
         format.html { render :edit }

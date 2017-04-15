@@ -30,6 +30,15 @@ Rails.application.routes.draw do
   devise_for :users
   resources :categories
 
+  get 'newCourse' => 'products#newCourse'
+  post 'newCourse' => 'products#createCourse'
+  get 'course/:id/edit' => 'products#editCourse'
+  put 'course/:id' => 'products#updateCourse'
+  patch 'course/:id' => 'products#updateCourse'
+  get 'cursos' => 'products#indexCourse'
+  get 'curso/:id' => 'products#showCourse'
+
+
   root 'home#index'
   get 'clients/:id' => 'clients#afiliacion'
 

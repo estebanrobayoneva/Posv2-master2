@@ -1,4 +1,4 @@
-<div class="jumbotron">
+<div class="jumbotron" id="recibo">
 
 <div align="center">
 <h3>Centro de Meditación Budista Yamantaka</h3>
@@ -35,9 +35,19 @@
 <%= link_to "<i class='fa fa-reply' aria-hidden='true'></i> Volver".html_safe,
             receipts_path, class: 'btn btn-success btn-sm'%>
 <%= link_to "<i class='fa fa-print' aria-hidden='true'></i> Imprimir".html_safe,
-            receipts_path, class: 'btn btn-success btn-sm'%>
+            receipts_path, class: 'btn btn-success btn-sm', onclick: 'PrintDiv()'%>
 <%= link_to "<i class='fa fa-envelope' aria-hidden='true'></i> Eviar a Email".html_safe,
             receipts_path, class: 'btn btn-success btn-sm'%>
 <!--<%= link_to "<i class='fa fa-pencil-square-o' aria-hidden='true'></i> Editar".html_safe,
             edit_receipt_path(@receipt), class: 'btn btn-success btn-sm'%>-->
+<!--<%= image_tag("print.jpg", :width=>50, :height=>30, :onclick=>"PrintDiv();", :class=>'btn') %>-->
 
+<script type="text/javascript">
+  function PrintDiv() {
+    var divToPrint = document.getElementById('recibo');
+    var popupWin = window.open('', '_blank', 'width=300,height=300');
+    popupWin.document.open();
+    popupWin.document.write('<html><body onload="window.print()">' + divToPrint.innerHTML + '</html>');
+    popupWin.document.close();
+  }
+</script>

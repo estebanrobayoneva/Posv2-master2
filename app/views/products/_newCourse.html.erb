@@ -1,0 +1,41 @@
+<%= form_for @product, :url => { :action => :createCourse } do |f| %>
+    <% if @product.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+          <ul>
+            <% @product.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+       <strong>Nombre: </strong> <br>
+      <%= f.text_field :nombre %>
+    </div>
+    <div class="field">
+      <strong>Numero de sesiones: </strong><br>
+      <%= f.number_field :cantidad %>
+    </div>
+    <div class="field">
+      <strong>valor sesion: </strong><br>
+      <%= f.text_field :valor_unitario %>
+    </div>
+    <div class="field">
+      <%= f.label :valor_total_curso %><br>
+      <%= f.text_field :valor_total_curso %>
+    </div>
+    <div class="actions">
+      <div class="col-md-2 col-md-offset-1 ">
+        <%= button_tag(type: :submit, class: "btn btn-lg btn-success") do %>
+            <i class="fa fa-check-square" aria-hidden="true"></i> Guardar
+        <% end %>
+      </div>
+      <div class="col-md-2 col-md-offset-1">
+        <%= link_to "<i class='fa fa-reply' aria-hidden='true'></i> Volver".html_safe,
+                    cursos_path, class: 'btn btn-success btn-lg'%>
+      </div>
+    </div>
+<% end %>

@@ -1,0 +1,116 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="titulo">Cursos</h1>
+<div class="container">
+
+  <div class="btn-group" role="group" aria-label="...">
+    <%= link_to "<i class='fa fa-plus-circle'></i> Nuevo Curso".html_safe,
+                newCourse_path, class: 'btn btn-primary btn-lg'%>
+  </div>
+
+
+
+  <thead>
+
+  <br>
+  <hr>
+
+  <div class="row" id="container_providers">
+    <%= render partial: "providers/provider", collection: @providers %>
+  </div>
+
+
+  <!-- Modal  create action -->
+  <%= form_for(@provider, remote: true) do |f| %>
+      <div class="modal fade" id="mynewprovider" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">proveedor</h4>
+            </div>
+
+            <div class="modal-body">
+              <div class="field">
+                <%= f.label :nombre %><br>
+                <%= f.text_area :nombre, class: "form-control" %>
+              </div>
+
+              <div class="field">
+                <%= f.label :nit %><br>
+                <%= f.text_area :nit, class: "form-control" %>
+              </div>
+              <div class="field">
+                <%= f.label :telefono %><br>
+                <%= f.text_area :telefono, class: "form-control" %>
+              </div>
+              <div class="field">
+                <%= f.label :direccion %><br>
+                <%= f.text_area :direccion, class: "form-control" %>
+              </div>
+
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal" id="mynewproviderclose">Cerrar</button>
+              <%= submit_tag "Guardar", class: "btn btn-primary" %>
+            </div>
+          </div>
+        </div>
+      </div>
+  <% end %>
+  <!-- Modal -->
+
+
+
+  </div>
+
+<table class = "table table-hover">
+  <thead>
+  <tr>
+    <th>Nombre</th>
+    <th>Numero sesiones</th>
+    <th>Valor sesion</th>
+    <th>valor total curso</th>
+
+    <th colspan="30"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @products.each do |product| %>
+      <% if product.tipo_producto == 2 %>
+          <tr>
+            <td><%= product.nombre %></td>
+            <td><%= product.cantidad %></td>
+            <td><%= product.valor_unitario %>
+            <td><%= product.valor_total_curso %></td>
+
+            <td><%= link_to 'Ver', "curso/#{product.id}",class:"btn btn-primary btn-xs" %></td>
+            <td><%= link_to 'Editar', "course/#{product.id}/edit", class:"btn btn-success btn-xs" %></td>
+            <td><%= link_to 'Eliminar',product, method: :delete, data: { confirm: 'Eliminar?' }, class:"btn btn-danger btn-xs" %></td>
+
+
+          </tr>
+      <% end %>
+  <%product end %>
+  </tbody>
+</table>
+
+<br>
+
+<!--
+
+<h3>Exportar</h3>
+<%= link_to "CSV" , products_path(format: "csv") %>
+<%= link_to "Excel" , products_path(format: "xls") %>
+
+
+<h3>Importar</h3>
+<%= form_tag import_products_path, multipart: true do %>
+    <%= file_field_tag :file%>
+    <%= submit_tag "Importar"%>
+<%end %>
+
+-->

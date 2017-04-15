@@ -1,19 +1,23 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Productos</h1>
+<h1 class="titulo">Productos</h1>
 <div class="container">
 
     
 
     <div class="row">
-      <div class="text-center">
-          <!-- Button trigger modal -->
+      <div class="btn-group" role="group" aria-label="...">
+        <%= link_to "<i class='fa fa-plus-circle'></i> Nuevo Producto".html_safe,
+                    new_product_path, class: 'btn btn-primary btn-lg'%>
+      </div>
+      <div class="btn-group" role="group" aria-label="...">
+          <!-- modal para crear proveedor -->
           <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#mynewprovider">
             Nuevo proveedor
           </button>
       </div>
     </div>
-  <table>
+
     <thead>
 
     <br>
@@ -32,7 +36,7 @@
 
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="myModalLabel">provider</h4>
+              <h4 class="modal-title" id="myModalLabel">proveedor</h4>
             </div>
             
             <div class="modal-body">
@@ -57,8 +61,8 @@
             </div>
 
             <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal" id="mynewproviderclose">Close</button>
-              <%= submit_tag "Create", class: "btn btn-primary" %>
+              <button type="button" class="btn btn-default" data-dismiss="modal" id="mynewproviderclose">Cerrar</button>
+              <%= submit_tag "Guardar", class: "btn btn-primary" %>
             </div>
           </div>
         </div>
@@ -76,39 +80,49 @@
       <th>Nombre</th>
       <th>Cantidad</th>
       <th>Valor unitario</th>
-      <th>Valor total curso</th>
+
       <th colspan="30"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @products.each do |product| %>
+    <% if product.tipo_producto == 1 %>
       <tr>
         <td><%= product.nombre %></td>
         <td><%= product.cantidad %></td>
         <td><%= product.valor_unitario %></td>
-        <td><%= product.valor_total_curso %></td>
-        <td><%= link_to 'Show', product %></td>
-        <td><%= link_to 'Edit', edit_product_path(product) %></td>
-        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+        <td><%= link_to 'Ver', product,class:"btn btn-primary btn-xs" %></td>
+        <td><%= link_to 'Editar', edit_product_path(product), class:"btn btn-success btn-xs" %></td>
+        <td><%= link_to 'Eliminar',product, method: :delete, data: { confirm: 'Eliminar?' }, class:"btn btn-danger btn-xs" %></td>
+
+
       </tr>
     <% end %>
+      <%product end %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Product', new_product_path %>
 
-<h3>Exportar</h3>
+<div>
+<h3 class="titulo">Exportar</h3><hr>
+<%= link_to "<i class='fa fa-file-text-o' aria-hidden='true'></i> CSV".html_safe,
+            products_path(format: "csv"), class: 'btn btn-success btn-sm'%>
+<%= link_to "<i class='fa fa-file-excel-o' aria-hidden='true'></i> Excel".html_safe,
+            products_path(format: "xls"), class: 'btn btn-success btn-sm'%>
+<!--
 <%= link_to "CSV" , products_path(format: "csv") %>
 <%= link_to "Excel" , products_path(format: "xls") %>
-
-
-<h3>Importar</h3>
+-->
+</div>
+<div>
+<h3 class="titulo">Importar</h3><hr>
 <%= form_tag import_products_path, multipart: true do %>
 <%= file_field_tag :file%>
 <%= submit_tag "Importar"%>
 <%end %>
-
+</div>
 
