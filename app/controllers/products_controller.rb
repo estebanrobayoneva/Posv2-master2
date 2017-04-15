@@ -77,7 +77,7 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     respond_to do |format|
       if @product.save
-        format.html { redirect_to @product, notice: 'Se ha creado exitosamente.' }
+        format.html { redirect_to cursos_path, notice: 'Se ha creado exitosamente.' }
         format.json { render :show, status: :created, location: @product }
         Product.last.update(tipo_producto: 2)
       else
