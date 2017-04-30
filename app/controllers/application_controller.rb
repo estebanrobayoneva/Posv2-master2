@@ -11,4 +11,15 @@ class ApplicationController < ActionController::Base
     #:email, :password, :password_confirmation, roles: [] )}
     devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :password, :password_confirmation, roles:[]])
   end
-end
+
+
+
+    def current_cart
+      Cart.find(session[:cart_id])
+    rescue ActiveRecord::RecordNotFound
+      cart = Cart.create
+      session[:cart_id] = cart.id
+      cart
+    end
+  end
+

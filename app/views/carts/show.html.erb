@@ -1,0 +1,13 @@
+<h2>Carrito</h2>
+<div class="cart_tittle">Carrito</div>
+<thead>
+<tr>
+  <td>Cantidad</td>
+  <td>Nombre</td>
+  <td>Valor unitario</td>
+
+</tr>
+</thead>
+  <%= render @cart%>
+<%= button_to 'Vaciar carrito', @cart, method: :delete,
+              data: { confirm: '¿Estas seguro?' } %>

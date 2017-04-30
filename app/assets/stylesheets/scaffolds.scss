@@ -78,7 +78,7 @@ div {
 }
 .navbar-default {
   background-color: #440F0F;
- border-bottom-color: #e4b640;
+  border-bottom-color: #e4b640;
   color: #DADADA;
 
 
@@ -90,7 +90,7 @@ div {
   background-color: #124162;
   color: white;
 
-  
+
 }
 .titulo{
   font-family: 'Macondo', cursive;
@@ -98,6 +98,11 @@ div {
 .div-formulario {
   height: auto;
   width: 800px;
+}
+.div-cart{
+  height: auto;
+  width: 450px;
+
 }
 select{
   color: black;

@@ -1,0 +1,6 @@
+<tr>
+  <td colspan="2"> <%= line_item.quantity %></td>
+  <td colspan="2"><%= line_item.product.nombre %></td>
+  <td colspan="2"><%= number_to_currency(line_item.product.valor_unitario) %></td>
+  <td class="item_price" colspan="2"><%= number_to_currency(line_item.total_price) %></td>
+</tr>
