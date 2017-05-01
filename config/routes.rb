@@ -40,6 +40,8 @@ Rails.application.routes.draw do
   patch 'course/:id' => 'products#updateCourse'
   get 'cursos' => 'products#indexCourse'
   get 'curso/:id' => 'products#showCourse'
+  
+  get 'search_products', to: 'products#search'
 
 
   root 'home#index'

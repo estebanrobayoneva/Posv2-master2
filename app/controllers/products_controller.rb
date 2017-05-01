@@ -13,6 +13,17 @@ class ProductsController < ApplicationController
     end
 
   end
+  
+  def search
+      @product = Product.search(params[:search_param])
+      if @product
+      render partial: 'products/lookup'
+      else
+      render status: :not_found, nothing: true
+      end
+  end
+  
+  
   def indexCourse
     @products = Product.all
     @provider = Provider.new
@@ -40,6 +51,8 @@ class ProductsController < ApplicationController
   def showCourse
     @product = Product.find(params[:id])
   end
+  
+ 
 
   # GET /products/new
   def new
