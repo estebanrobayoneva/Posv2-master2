@@ -52,7 +52,7 @@ Rails.application.routes.draw do
   get 'clients/:id' => 'clients#afiliacion'
   get 'reportes'=>'products#reports'
   get 'reportmembresias'=>'memberships#reports'
-  get 'store' => 'store#index'
+  get 'tienda' => 'store#index'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
