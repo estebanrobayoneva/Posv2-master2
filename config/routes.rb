@@ -42,6 +42,7 @@ Rails.application.routes.draw do
   get 'curso/:id' => 'products#showCourse'
   
   get 'search_products', to: 'products#search'
+  get 'search_clients', to: 'clients#search'
 
 
   root 'home#index'

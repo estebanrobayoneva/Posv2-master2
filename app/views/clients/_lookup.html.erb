@@ -1,0 +1,60 @@
+<div id="client-lookup">
+  <%= form_tag search_clients_path, remote: true, method: :get, id: 'client-lookup-form' do %>
+  <div class="form-group row no-padding text-center col-md-12">
+    <div class="col-md-10">
+      <%= text_field_tag :search_param,
+      params[:search_param],
+      placeholder: 'Nombre del client-apellido-cedula',
+      autofocus: true,
+      class: 'form-control search-box input-lg' %>
+    </div>
+    <div class="col-md-2">
+      <%= button_tag(type: :submit, class: 'btn btn-lg btn-success') do %>
+      <i class='fa fa-search'></i> Busca un client
+      <% end %>
+    </div>
+  </div>
+  <% end %>
+  <%= render 'common/spinner' %>
+ <% if @client %>
+     <% if @client.size > 0 %>
+     <div id="client-lookup-results" class="well results-block col-md-10">
+         <table class="search-results-table col-md-12">
+      <table class = "table table-hover">
+      <thead>
+        <tr>
+        <th>Tipo documento</th>
+        <th>Numero documento</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Membresía</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+        <% @client.each do |client| %>
+        <tr>
+        <td><%= client.tipo_documento %></td>
+        <td><%= client.numero_documento %></td>
+        <td><%= client.nombre %></td>
+        <td><%= client.apellido %></td>
+        <td> <%if client.membership != nil%>
+              <%= client.membership.society.nombre %>
+              <% else %>
+                <p>-</p>
+          <% end %></td>
+        <td><%= link_to 'Ver', client,class:"btn btn-primary btn-xs" %></td>
+        <td><%= link_to 'Editar', edit_client_path(client), class:"btn btn-success btn-xs" %></td>
+        <td><%= link_to 'Eliminar',client, method: :delete, data: { confirm: 'Eliminar?' }, class:"btn btn-danger btn-xs" %></td>
+      </tr>
+      <% end %>
+<% else %>
+<p class="lead col-md-12">
+Ningun client coincide con la busqueda
+</p>
+<div id="client-lookup-errors">
+</div>
+    <%  end %>
+ <% end %>
+ </div>
+ 
+ 
