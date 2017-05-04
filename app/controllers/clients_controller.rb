@@ -20,6 +20,16 @@ class ClientsController < ApplicationController
   def new
     @client = Client.new
   end
+  
+  
+  def search
+      @client = Client.search(params[:search_param])
+      if @client
+      render partial: 'clients/lookup'
+      else
+      render status: :not_found, nothing: true
+      end
+  end
 
   # GET /clients/1/edit
   def edit
