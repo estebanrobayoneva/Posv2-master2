@@ -33,7 +33,6 @@
           <% end %></td>
 
 
-
         <td><%= link_to 'Ver', client,class:"btn btn-primary btn-xs" %></td>
         <td><%= link_to 'Editar', edit_client_path(client), class:"btn btn-success btn-xs" %></td>
         <td><%= link_to 'Eliminar',client, method: :delete, data: { confirm: 'Eliminar?' }, class:"btn btn-danger btn-xs" %></td>
@@ -42,6 +41,7 @@
     <% end %>
   </tbody>
 </table>
+<%= will_paginate %>
 
 <br>
 
