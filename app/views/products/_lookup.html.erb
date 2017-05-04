@@ -1,0 +1,54 @@
+<div id="product-lookup">
+  <%= form_tag search_products_path, remote: true, method: :get, id: 'product-lookup-form' do %>
+  <div class="form-group row no-padding text-center col-md-12">
+    <div class="col-md-10">
+      <%= text_field_tag :search_param,
+      params[:search_param],
+      placeholder: 'Nombre del producto',
+      autofocus: true,
+      class: 'form-control search-box input-lg' %>
+    </div>
+    <div class="col-md-2">
+      <%= button_tag(type: :submit, class: 'btn btn-lg btn-success') do %>
+      <i class='fa fa-search'></i> Busca un producto
+      <% end %>
+    </div>
+  </div>
+  <% end %>
+  <%= render 'common/spinner' %>
+ <% if @product %>
+     <% if @product.size > 0 %>
+     <div id="product-lookup-results" class="well results-block col-md-10">
+         <table class="search-results-table col-md-12">
+      <tbody>
+          <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Cantidad</th>
+            <th>Valor unitario</th>
+          </tr>
+        <% @product.each do |product| %>
+        <tr>
+          <td><h3><%= product.nombre%></h3></td>
+          <td><%= product.cantidad %></td>
+          <td><div class="price_line">
+        <span class="price"><%= number_to_currency(product.valor_unitario)%></span>
+            <%= button_to 'Añadir a carrito', line_items_path(product_id: product)%>
+            </div>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% else %>
+<p class="lead col-md-12">
+Ningun producto coincide con la busqueda
+</p>
+<div id="product-lookup-errors">
+</div>
+     <%  end %>
+ <% end %>
+ </div>
+ 
+ 

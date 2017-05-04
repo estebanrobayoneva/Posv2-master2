@@ -15,6 +15,22 @@ class Product < ActiveRecord::Base
 
     end
     end
+    
+    def self.search(param)
+    return Product.none if param.blank?
+    param.strip!
+    param.downcase!
+    (nombre_matches(param)).uniq
+    end
+    
+    
+    def self.nombre_matches(param)
+    matches('nombre', param)
+    end
+    
+    def self.matches(field_name, param)
+    where("lower(#{field_name}) like ?", "%#{param}%")
+    end
 
 
 

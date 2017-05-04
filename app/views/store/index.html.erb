@@ -1,37 +1,40 @@
-<% if notice %>
-    <p id="notice"> <%= notice %>
-    </p>
-<% end %>
+
 <h1>Productos y Cursos</h1>
-<table>
+<%= render 'products/lookup' %>
 
- <td width="950">
-<table class = "table table-hover" >
-  <thead>
-  <tr>
-    <th>Nombre</th>
-    <th>Cantidad</th>
-    <th>Valor unitario</th>
-  </tr>
-  </thead>
-  <tbody>
-  <% @products.each do |product|%>
-    <tr>
 
-  <td><h3><%= product.nombre%></h3></td>
-  <td><%= product.cantidad %></td>
-  <td><div class="price_line">
-<span class="price"><%= number_to_currency(product.valor_unitario)%></span>
-    <%= button_to 'Añadir a carrito', line_items_path(product_id: product)%>
-    </div>
-  </td>
+ <table>
+         <td width="950">
+        <table class = "table table-hover" >
+          <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Cantidad</th>
+            <th>Valor unitario</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @products.each do |product|%>
+            <tr>
+              <% if product.tipo_producto == 1 %>
+          <td><h3><%= product.nombre%></h3></td>
+          <td><%= product.cantidad %></td>
+          <td><div class="price_line">
+        <span class="price"><%= number_to_currency(product.valor_unitario)%></span>
+            <%= button_to 'Añadir a carrito', line_items_path(product_id: product)%>
+            </div>
+          </td>
+            </tr>
+        <% end %>
+           </tbody>
+           <% end %>
+        </table>
+         </td>
+    </table>
 
-    </tr>
-<% end %>
 
-   </tbody>
-</table>
- </td>
+
+
   <td colspan="2">
     <table class = "table-hover" width="350" >
       <td ><div id="cart"><%= render @cart %> </div></td>
