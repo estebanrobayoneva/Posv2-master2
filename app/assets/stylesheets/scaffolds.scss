@@ -21,8 +21,8 @@ pre {
 }
 
 a {
-  color: white;
-
+  color: #bdc3c7;
+  
   &:default {
     color: white;
   }
@@ -34,6 +34,10 @@ a {
     color: #fff;
     background-color: transparent;
   }
+}
+
+.a coll{
+  color: #000;
 }
 
 div {
@@ -94,6 +98,7 @@ div {
 }
 .titulo{
   font-family: 'Macondo', cursive;
+  color: #000;
 }
 .div-formulario {
   height: auto;

@@ -24,6 +24,8 @@
     <%= f.text_field :valor_unitario %>
   </div>
 
+<%= f.collection_select :category_id, Category.all, :id, :nombre %>
+
   <div class="actions">
     <div class="col-md-2 col-md-offset-1 ">
       <%= button_tag(type: :submit, class: "btn btn-lg btn-success") do %>
