@@ -4,7 +4,7 @@
     <div class="col-md-10">
       <%= text_field_tag :search_param,
       params[:search_param],
-      placeholder: 'Nombre del client-apellido-cedula',
+      placeholder: 'Puedes buscar por nombre-apellido-cedula',
       autofocus: true,
       class: 'form-control search-box input-lg' %>
     </div>
@@ -19,8 +19,7 @@
  <% if @client %>
      <% if @client.size > 0 %>
      <div id="client-lookup-results" class="well results-block col-md-10">
-         <table class="search-results-table col-md-12">
-      <table class = "table table-hover">
+    <table class="search-results-table col-md-12">
       <thead>
         <tr>
         <th>Tipo documento</th>
@@ -47,6 +46,7 @@
         <td><%= link_to 'Eliminar',client, method: :delete, data: { confirm: 'Eliminar?' }, class:"btn btn-danger btn-xs" %></td>
       </tr>
       <% end %>
+      </table>
 <% else %>
 <p class="lead col-md-12">
 Ningun client coincide con la busqueda
@@ -56,5 +56,6 @@ Ningun client coincide con la busqueda
     <%  end %>
  <% end %>
  </div>
+</div>
  
  

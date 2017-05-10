@@ -57,6 +57,7 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
+    @categories = Category.all
   end
   def newCourse
     @product = Product.new
@@ -144,6 +145,6 @@ class ProductsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def product_params
-    params.require(:product).permit(:nombre, :cantidad, :valor_unitario, :valor_total_curso)
+    params.require(:product).permit(:nombre, :cantidad, :valor_unitario, :valor_total_curso, :category_id)
   end
 end

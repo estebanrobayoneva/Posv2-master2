@@ -1,6 +1,13 @@
 <div class="container">
-  <h1 class="titulo"><strong>Datos Personales</strong></h1>
-  <hr><br>
+  
+  <div id="accordion" class="panel-group">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+                <a data-toggle="collapse" data-parent="#accordion"  href="#collapseOne"><h1 class="titulo">Datos Personales</h1></a>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse">
+            <div class="panel-body">
+              <br>
 <p>
   <strong>Tipo documento:</strong>
   <%= @client.tipo_documento %>
@@ -38,12 +45,29 @@
 
 
 </div>
-
+            </div>
+        </div>
+    </div>
+  
+  
+  
 
 <% if @client.membership != nil%>
+
+
+
+<div class="panel-group" id="accordion1" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingTwo">
+     <h1 class="titulo">
+        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+         <h1 class="titulo"> Datos afiliacion</h1>
+        </a>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
+   
     <div class="container">
-      <h1 class="titulo"><strong>Datos de afiliación</strong></h1>
-      <hr>
+      
       <strong>Membresia:</strong>
       <p><%= @client.membership.society.nombre %></p>
       <strong>Estado de afiliacion: </strong>
@@ -89,3 +113,12 @@
 <%= link_to "<i class='fa fa-money' aria-hidden='true'></i> Pagar cuota".html_safe,
             pagocuota_client_path(:membership_id => @client.membership_id ), class: 'btn btn-success btn-sm'%>
 <% end %>
+
+    
+    </div>
+  </div>
+
+
+
+
+    
