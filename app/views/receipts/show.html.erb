@@ -10,7 +10,6 @@
   <strong>Fecha:</strong>
   <%= @receipt.fecha %>
 </h4>
-<h4 align="left"><strong>Participante: </strong><%=  @receipt.client.nombre %> </h4>
   <h4 align="left"><strong>Detalle</strong></h4>
   <hr>
 <table align="left" width="450">
@@ -20,7 +19,6 @@
   </tr>
   <tr>
     <td>
-      <%= @receipt.client.membership.society.nombre %>
     </td>
     <td>
       <%= @receipt.valor %>
