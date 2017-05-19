@@ -7,10 +7,22 @@ Rails.application.routes.draw do
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :payments
-  resources :receipts
+
+  resources :receipts do
+
+  end
+  resources :store do
+    member do
+      get 'pay/:id' => 'store#pay'
+      patch 'pay/:id' => 'store#pay'
+
+    end
+  end
   resources :products do
     collection { post :import }
   end
+
+
 
   resources :clients do
     member do
@@ -54,6 +66,13 @@ Rails.application.routes.draw do
   get 'reportes'=>'products#reports'
   get 'reportmembresias'=>'memberships#reports'
   get 'tienda' => 'store#index'
+
+
+  get 'send_receipt' => 'line_items#send_receipt'
+  post 'send_receipt' => 'line_items#send_receipt'
+
+  get 'findParticipante' => 'line_items#findParticipante'
+  post 'findParticipante' => 'line_items#findParticipante'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

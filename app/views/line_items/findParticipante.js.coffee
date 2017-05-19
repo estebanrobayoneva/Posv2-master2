@@ -1,0 +1,1 @@
+$("#clientefound").html("<%= j render 'findParticipante' %>")

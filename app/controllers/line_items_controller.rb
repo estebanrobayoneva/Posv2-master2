@@ -5,8 +5,26 @@ class LineItemsController < ApplicationController
   # GET /line_items.json
   def index
     @line_items = LineItem.all
+    def total_cuenta
+      line_items.to_a.sum { |item| item.total_price }
+    end
+  end
+  def send_receipt
+    valorTfactura = "#{params[:valor_total]}"
+
   end
 
+  def findParticipante
+
+    puts('ggggggggggggggggggggg')
+    numD = "#{params[:cedula_participante]}"
+    puts(numD)
+    @participante = Client.where("numero_documento = ?", numD)
+    respond_to do |format|
+      format.html { redirect_to findParticipante_path }
+      format.js
+    end
+  end
   # GET /line_items/1
   # GET /line_items/1.json
   def show
@@ -75,6 +93,6 @@ class LineItemsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def line_item_params
-    params.require(:line_item).permit(:product_id, :cart_id, :receipt_id)
+    params.require(:line_item).permit(:product_id, :cart_id, :receipt_id, :cedula_participante, :valor_total)
   end
 end
