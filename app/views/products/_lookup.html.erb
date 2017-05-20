@@ -10,7 +10,7 @@
     </div>
     <div class="col-md-2">
       <%= button_tag(type: :submit, class: 'btn btn-lg btn-success') do %>
-      <i class='fa fa-search'></i> Busca un producto
+      <i class='fa fa-search'></i> Buscar
       <% end %>
     </div>
   </div>
@@ -24,7 +24,7 @@
           <thead>
           <tr>
             <th>Nombre</th>
-            <th>Cantidad</th>
+            <th>Cantidad disponible</th>
             <th>Valor unitario</th>
           </tr>
         <% @product.each do |product| %>

@@ -18,7 +18,6 @@
 <% total = 0 %>
 
 
-<%= text_field_tag 'hidden'  %>
 
 <table class="table table-hover">
   <thead>
@@ -48,8 +47,12 @@
   </tbody>
 </table>
 
+<p align="right">
+  <strong>Valor Total: </strong><input id="valor_total" disabled="false" name="valor_total" value=<%= total %>>
+  <input type="hidden" name="precio_total" id="precio_total" value=<%= total %>>
+  <input type="hidden" name="precio_total" id="precio_total" value=<%= total %>>
 
-<input id="valor_total" name="valor_total" value=<%= total %>>
+</p>
 <br>
 <%= submit_tag "finalizar" %>
 <!-- <%= link_to 'New Line item', new_line_item_path %> -->
