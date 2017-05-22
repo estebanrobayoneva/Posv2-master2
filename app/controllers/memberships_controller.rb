@@ -17,6 +17,7 @@ class MembershipsController < ApplicationController
     @membership = Membership.new
     @society_options = Society.all.map{ |u| [ u.nombre, u.id ] }
     @formasDePago = Payment.all
+    
 
   end
 
@@ -35,6 +36,7 @@ class MembershipsController < ApplicationController
     
     respond_to do |format|
       if @membership.save
+        ReceiptNotifier.afiliacion(@membership, @membership.clients.last).deliver
         format.html { redirect_to @receipt, notice: 'Se ha afiliado exitosamente' }
         format.json { render :show, status: :created, location: @membership }
       else

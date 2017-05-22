@@ -12,6 +12,13 @@ class ReceiptNotifier < ApplicationMailer
     @receipt = receipt
     mail to: receipt.client.correo, subject: 'Compra centro de meditacion yamantaka'
   end
+  
+  def afiliacion(membership, client)
+    puts("esta llegando al correo de afiliacion??")
+    @client = client
+    @membership = membership
+    mail to: client.correo, subject: 'Afiliacion al centro de meditacion yamantaka'
+  end
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
