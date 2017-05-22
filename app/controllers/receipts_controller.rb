@@ -6,10 +6,19 @@ class ReceiptsController < ApplicationController
   def index
     @receipts = Receipt.all
   end
+  
+  def send_receipt_mail
+  receipt = Receipt.find(params[:receipt_id])
+  ReceiptNotifier.received(receipt).deliver
+
+  flash[:notice] = "El recibo fue enviado"
+  redirect_to receipts_path()
+  end
 
   # GET /receipts/1
   # GET /receipts/1.json
   def show
+    
   end
 
   # GET /receipts/new
@@ -31,6 +40,8 @@ class ReceiptsController < ApplicationController
   # GET /receipts/1/edit
   def edit
   end
+  
+  
 
   # POST /receipts
   # POST /receipts.json
@@ -41,6 +52,7 @@ class ReceiptsController < ApplicationController
       if @receipt.save
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
+        ReceiptNotifier.received(@receipt).deliver
         format.html { redirect_to tienda_path , notice:
             'Gracias por tu compra.' }
         format.json { render json: @receipt, status: :created,
@@ -70,6 +82,9 @@ class ReceiptsController < ApplicationController
 
   # DELETE /receipts/1
   # DELETE /receipts/1.json
+  
+  
+  
   def destroy
     @receipt.destroy
     respond_to do |format|
