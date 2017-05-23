@@ -35,7 +35,7 @@
 <%= link_to "<i class='fa fa-print' aria-hidden='true'></i> Imprimir".html_safe,
             receipts_path, class: 'btn btn-success btn-sm', onclick: 'PrintDiv()'%>
 <%= link_to "<i class='fa fa-envelope' aria-hidden='true'></i> Eviar a Email".html_safe,
-            receipts_path, class: 'btn btn-success btn-sm'%>
+             send_receipt_mail_path(receipt_id: @receipt.id) , class: 'btn btn-success btn-sm'%>
 <!--<%= link_to "<i class='fa fa-pencil-square-o' aria-hidden='true'></i> Editar".html_safe,
             edit_receipt_path(@receipt), class: 'btn btn-success btn-sm'%>-->
 <!--<%= image_tag("print.jpg", :width=>50, :height=>30, :onclick=>"PrintDiv();", :class=>'btn') %>-->

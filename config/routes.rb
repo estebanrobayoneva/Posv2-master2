@@ -74,6 +74,9 @@ Rails.application.routes.draw do
 
   get 'findParticipante' => 'line_items#findParticipante'
   post 'findParticipante' => 'line_items#findParticipante'
+  
+  get :send_receipt_mail, to: 'receipts#send_receipt_mail', as: :send_receipt_mail
+ 
 
 
   # The priority is based upon order of creation: first created -> highest priority.

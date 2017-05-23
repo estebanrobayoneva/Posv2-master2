@@ -17,6 +17,7 @@ class MembershipsController < ApplicationController
     @membership = Membership.new
     @society_options = Society.all.map{ |u| [ u.nombre, u.id ] }
     @formasDePago = Payment.all
+    
 
   end
 
@@ -35,6 +36,7 @@ class MembershipsController < ApplicationController
     
     respond_to do |format|
       if @membership.save
+        ReceiptNotifier.afiliacion(@membership, @membership.clients.last).deliver
         format.html { redirect_to @receipt, notice: 'Se ha afiliado exitosamente' }
         format.json { render :show, status: :created, location: @membership }
       else
@@ -68,7 +70,12 @@ class MembershipsController < ApplicationController
     end
   end
   def payQuota
+      puts(:client_id)
+      @client = Client.find(params[:client_id])
+      puts("VENGAAAAAAAAAAAAAAAAAAAAAAAAA")
+      puts(@client.inspect)
       @membership = Membership.find(params[:membership_id])
+      ReceiptNotifier.pago_cuota(@membership, @client).deliver
       @formasDePago = Payment.all
       if @membership.periodicidad=='Mensual'
         @valor_pago = @membership.society.valor_mensual
