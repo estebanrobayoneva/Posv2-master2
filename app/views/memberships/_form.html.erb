@@ -1,4 +1,14 @@
+<script>
+  function selectChange(sel) {
+    if (sel.value == 'Mensual'){
 
+      $("#valor_pago").val(75000);
+    }else{
+
+      $("#valor_pago").val(1220000);
+    }
+  }
+</script>
 <script>
   $("#membership_periodicidad").on('change', function() {
     var a = $("#membership_society_id").val();
@@ -41,7 +51,7 @@
     </div>
   <div class="field">
     <%= f.label :periodicidad %><br>
-    <%= f.select :periodicidad, ['Anual', 'Mensual']%>
+    <%= f.select :periodicidad, ['Anual', 'Mensual'],{}, {:onchange => 'selectChange(this)'}%>
   </div>
     <div class="field">
       <%= f.label :fecha_afiliacion %><br>
@@ -53,7 +63,7 @@
   <div>
     <strong>Valor a pagar </strong>
 
-    <input id="valor_pago" name="valor_pago" type="number" >
+    <input id="valor_pago" name="valor_pago" type="number" value="1220000" >
   </div><br>
   <div>
    <strong>Forma de pago:</strong> <select name="formaDePago">

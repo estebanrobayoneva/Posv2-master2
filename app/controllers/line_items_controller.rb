@@ -4,26 +4,48 @@ class LineItemsController < ApplicationController
   # GET /line_items
   # GET /line_items.json
   def index
+
     @line_items = LineItem.all
+    var2 = session[:var1]
+
+    @client = Client.where("numero_documento = ?", var2)
+
+    puts(var2)
     def total_cuenta
       line_items.to_a.sum { |item| item.total_price }
     end
   end
   def send_receipt
-    valorTfactura = "#{params[:valor_total]}"
+    valorTfactura = "#{params[:precio_total]}"
+    puts(valorTfactura)
+    cedulaParticipante = session[:var1]
+
+    #LineItem.create_receipt_cart(valorTfactura, cedulaParticipante)
+    @participanteR = Client.where("numero_documento = ?", cedulaParticipante)
+    t = Time.new
+    @pago = Payment.where("nombre = 'Efectivo'")
+    Receipt.create(fecha: t, valor: valorTfactura, client_id: @participanteR.first.id, payment_id: @pago.first.id)
+
+    @lineall = LineItem.all
+
+    @lineall.each do |detalle|
+      Detail.create(cantidad_producto: detalle.quantity, precio: detalle.product.valor_unitario* detalle.quantity , product_id: detalle.product_id, receipt_id: Receipt.last.id )
+    end
 
   end
 
   def findParticipante
 
-    puts('ggggggggggggggggggggg')
+
     numD = "#{params[:cedula_participante]}"
-    puts(numD)
+    session[:var1] = numD
+
     @participante = Client.where("numero_documento = ?", numD)
     respond_to do |format|
-      format.html { redirect_to findParticipante_path }
+      format.html { render line_items_path }
       format.js
     end
+
   end
   # GET /line_items/1
   # GET /line_items/1.json
@@ -50,7 +72,7 @@ class LineItemsController < ApplicationController
 
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to tienda_url }
+        format.html { redirect_to tienda_path }
         format.json { render json: @line_item,
                              status: :created, location: @line_item }
       else
@@ -93,6 +115,6 @@ class LineItemsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def line_item_params
-    params.require(:line_item).permit(:product_id, :cart_id, :receipt_id, :cedula_participante, :valor_total)
+    params.require(:line_item).permit(:product_id, :cart_id, :receipt_id, :cedula_participante, :precio_total)
   end
 end

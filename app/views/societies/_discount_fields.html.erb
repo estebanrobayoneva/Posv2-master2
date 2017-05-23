@@ -1,7 +1,11 @@
 
 <li class="control-group nested-fields">
   <div class="controls">
-    <table width="500" >
+    <table width="500" class="table">
+      <tr>
+        <td>Categoria</td>
+        <td>Valor decuento %</td>
+      </tr>
       <tr>
         <td><%= f.collection_select :category_id, Category.order(:nombre), :id, :nombre, include_blank: true%></td>
         <td> <%= f.number_field :porcentaje_descuento %>

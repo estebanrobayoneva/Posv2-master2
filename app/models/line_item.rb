@@ -10,4 +10,11 @@ class LineItem < ActiveRecord::Base
     line_items.to_a.sum { |item| item.total_price }
   end
 
+  def create_receipt_cart(precio_total, cedula_client)
+    @participanteR = Client.where("numero_documento = ?", cedula_client)
+    t = Time.new
+    @pago = Payment.where("nombre = Efectivo")
+    Receipt.create(fecha: t, valor: precio_total, client_id: @participanteR.first.id, payment_id: @pago.first.id)
+  end
+
 end

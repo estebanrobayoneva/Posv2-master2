@@ -2,6 +2,8 @@ class Product < ActiveRecord::Base
   has_many :detail_purchase_receipts
   has_many :purchase_receipts, through: :detail_purchase_receipts
   belongs_to :category
+  has_many :details
+  has_many :receipts, through: :details
 
   has_many :line_items
   before_destroy :ensure_not_referenced_by_any_line_item

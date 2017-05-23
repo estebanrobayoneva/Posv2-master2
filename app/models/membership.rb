@@ -55,12 +55,10 @@ class Membership < ActiveRecord::Base
     fecha = self.fecha_cuota
     if self.periodicidad == 'Anual'
 
-      #self.update(fecha_vencimiento: t+(60*60*24*365))
-      #self.update(fecha_cuota: t+(60*60*24*365))
     elsif self.periodicidad == 'Mensual'
-      puts (self.fecha_cuota + 2592000)
-      #self.update(fecha_vencimiento: fecha+2592000)
-      #self.update(fecha_cuota: fecha+2592000 )
+      f = self.fecha_cuota
+      self.update(fecha_vencimiento: f.next_month())
+      self.update(fecha_cuota:  f.next_month)
 
     end
 
