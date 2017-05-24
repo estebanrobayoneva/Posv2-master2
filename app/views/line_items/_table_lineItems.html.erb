@@ -1,0 +1,92 @@
+<h1>Compra</h1>
+<% total = 0 %>
+
+<% if @client.first != nil %>
+
+
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <td colspan="2">Cantidad</td>
+        <td colspan="2">Nombre</td>
+        <td colspan="2">Valor Unitario</td>
+        <td colspan="2">Valor X Cantidad</td>
+        <td colspan="2">Valor con Descuento</td>
+
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr>
+        <% @line_items.each do |line_item| %>
+
+            <% if @client.first.membership.society.discounts.where(category_id: line_item.product.category_id).exists?(conditions =:none) %>
+                <%@descuento = ((@client.first.membership.society.discounts.where(category_id: line_item.product.category_id).first.porcentaje_descuento).to_f)/100 %>
+                <%@descuento = line_item.product.valor_unitario*@descuento%>
+                <%@descuento = line_item.product.valor_unitario-@descuento%>
+
+                <% @valdesc = @descuento * line_item.quantity %>
+
+                <td colspan="2"><%= line_item.quantity %></td>
+                <td colspan="2"><%= line_item.product.nombre %></td>
+                <td colspan="2" class="total_cell"><h4><%= number_to_currency(line_item.product.valor_unitario) %></h4></td>
+                <td colspan="2" class="total_cell"><h4><%= number_to_currency(line_item.total_price) %></h4></td>
+                <td colspan="2" class="total_cell"><h4><%= number_to_currency(@valdesc) %></h4></td>
+                </tr>
+                <% total = total + @valdesc  %>
+
+
+                </tr>
+            <% end %>
+
+
+        <% end %>
+        </tbody>
+    </table>
+
+
+
+<% else %>
+
+
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <td colspan="2">Cantidad</td>
+        <td colspan="2">Nombre</td>
+        <td colspan="2">Valor Unitario</td>
+        <td colspan="2">Valor X Cantidad</td>
+
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr>
+        <% @line_items.each do |line_item| %>
+
+            <td colspan="2"><%= line_item.quantity %></td>
+            <td colspan="2"><%= line_item.product.nombre %></td>
+            <td colspan="2" class="total_cell"><h4><%= number_to_currency(line_item.product.valor_unitario) %></h4></td>
+            <td colspan="2" class="total_cell"><h4><%= number_to_currency(line_item.total_price) %></h4></td>
+            </tr>
+
+            <% total = total + line_item.total_price  %>
+
+            </tr>
+        <% end %>
+        </tbody>
+    </table>
+
+
+<% end %>
+
+<p align="right">
+  <strong>Valor Total: </strong><input id="valor_total" disabled="false" name="valor_total" value=<%= total %>>
+  <input type="hidden" name="precio_total" id="precio_total" value=<%= total %>>
+
+
+</p>
+
+<%= submit_tag "finalizar" %>
+
+

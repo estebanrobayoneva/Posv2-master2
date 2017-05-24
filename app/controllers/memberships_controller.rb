@@ -72,7 +72,7 @@ class MembershipsController < ApplicationController
   def payQuota
       puts(:client_id)
       @client = Client.find(params[:client_id])
-      puts("VENGAAAAAAAAAAAAAAAAAAAAAAAAA")
+
       puts(@client.inspect)
       @membership = Membership.find(params[:membership_id])
       ReceiptNotifier.pago_cuota(@membership, @client).deliver

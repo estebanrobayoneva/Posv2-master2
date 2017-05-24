@@ -1,6 +1,7 @@
 class Membership < ActiveRecord::Base
   belongs_to :society
   has_many :clients
+  has_many :details
 
   after_create :afilia
   after_create :fechas
@@ -25,7 +26,10 @@ class Membership < ActiveRecord::Base
     Client.find(@numeroid).update(membership_id: self.id)
   end
   def create_receipt( valor, formaPago)
+
+
     Receipt.create(fecha: self.fecha_afiliacion, valor: valor, client_id: @numeroid, payment_id: formaPago)
+    Detail.create(cantidad_producto: 1, precio: valor, receipt_id: Receipt.last.id, membership_id: Membership.last.id )
 
   end
   def fechas
@@ -43,6 +47,7 @@ class Membership < ActiveRecord::Base
   end
   def s_receipt(fecha, cliente_id, formaPago, membership_id, valor)
     Receipt.create(fecha: fecha, client_id: cliente_id, payment_id: formaPago, valor: valor)
+    Detail.create(cantidad_producto: 1, precio: valor, receipt_id: Receipt.last.id, membership_id: membership_id )
   end
 
   def updateAcomulado(valor)

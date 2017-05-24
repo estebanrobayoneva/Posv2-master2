@@ -1,7 +1,9 @@
 
 
-<% if @participante != nil %>
-<%= @participante.first.nombre %>
-<% elsif @participante == '' %>
+<% if @participante.first != nil %>
+    <br>
+    <strong>Nombre: </strong><%= @participante.first.nombre %><br>
+    <strong>Membresia: </strong><%= @participante.first.membership.society.nombre  %>
+<% else @participante %>
 <h4>No se encontro al participante</h4>
 <% end %>
