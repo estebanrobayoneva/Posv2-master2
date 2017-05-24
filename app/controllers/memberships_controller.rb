@@ -31,6 +31,7 @@ class MembershipsController < ApplicationController
 
     @membership = Membership.new(membership_params)
     @membership.afiliarCliente = params[:client_id]
+    @membership.detailval  = params[:valor_pago]
     @membership.create_receipt( params[:valor_pago], params[:formaDePago]  )
     @receipt = Receipt.last
     

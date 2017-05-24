@@ -5,6 +5,7 @@ class Membership < ActiveRecord::Base
 
   after_create :afilia
   after_create :fechas
+  after_create :create_detail
 
 
 
@@ -22,14 +23,20 @@ class Membership < ActiveRecord::Base
     @numeroid= id4
 
   end
+  def detailval=(val)
+    @valor = val
+  end
   def afilia
     Client.find(@numeroid).update(membership_id: self.id)
+  end
+  def create_detail()
+    Detail.create(cantidad_producto: 1, precio: @valor, receipt_id: Receipt.last.id, membership_id: self.id )
+
   end
   def create_receipt( valor, formaPago)
 
 
     Receipt.create(fecha: self.fecha_afiliacion, valor: valor, client_id: @numeroid, payment_id: formaPago)
-    Detail.create(cantidad_producto: 1, precio: valor, receipt_id: Receipt.last.id, membership_id: Membership.last.id )
 
   end
   def fechas
