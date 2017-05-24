@@ -183,352 +183,355 @@
     <column id="65" parent="7" name="receipt_id">
       <data-type>INTEGER(0,-1)|4</data-type>
     </column>
-    <key id="66" parent="7">
+    <column id="66" parent="7" name="membership_id">
+      <data-type>INTEGER(0,-1)|4</data-type>
+    </column>
+    <key id="67" parent="7">
       <columns>id</columns>
       <primary>1</primary>
     </key>
-    <column id="67" parent="8" name="id">
+    <column id="68" parent="8" name="id">
       <mandatory>1</mandatory>
       <data-type>INTEGER(0,-1)|4</data-type>
     </column>
-    <column id="68" parent="8" name="porcentaje_descuento">
+    <column id="69" parent="8" name="porcentaje_descuento">
       <data-type>INTEGER(8)(0,-1)|4</data-type>
     </column>
-    <column id="69" parent="8" name="created_at">
+    <column id="70" parent="8" name="created_at">
       <mandatory>1</mandatory>
       <data-type>DATETIME(0,-1)|12</data-type>
     </column>
-    <column id="70" parent="8" name="updated_at">
+    <column id="71" parent="8" name="updated_at">
       <mandatory>1</mandatory>
       <data-type>DATETIME(0,-1)|12</data-type>
     </column>
-    <column id="71" parent="8" name="society_id">
+    <column id="72" parent="8" name="society_id">
       <data-type>INTEGER(0,-1)|4</data-type>
     </column>
-    <column id="72" parent="8" name="category_id">
+    <column id="73" parent="8" name="category_id">
       <data-type>INTEGER(0,-1)|4</data-type>
     </column>
-    <key id="73" parent="8">
+    <key id="74" parent="8">
       <columns>id</columns>
       <primary>1</primary>
     </key>
-    <column id="74" parent="9" name="id">
+    <column id="75" parent="9" name="id">
       <mandatory>1</mandatory>
       <data-type>INTEGER(0,-1)|4</data-type>
     </column>
-    <column id="75" parent="9" name="product_id">
+    <column id="76" parent="9" name="product_id">
       <data-type>INTEGER(0,-1)|4</data-type>
     </column>
-    <column id="76" parent="9" name="cart_id">
+    <column id="77" parent="9" name="cart_id">
       <data-type>INTEGER(0,-1)|4</data-type>
     </column>
-    <column id="77" parent="9" name="created_at">
-      <mandatory>1</mandatory>
-      <data-type>DATETIME(0,-1)|12</data-type>
-    </column>
-    <column id="78" parent="9" name="updated_at">
+    <column id="78" parent="9" name="created_at">
       <mandatory>1</mandatory>
       <data-type>DATETIME(0,-1)|12</data-type>
     </column>
-    <column id="79" parent="9" name="quantity">
+    <column id="79" parent="9" name="updated_at">
+      <mandatory>1</mandatory>
+      <data-type>DATETIME(0,-1)|12</data-type>
+    </column>
+    <column id="80" parent="9" name="quantity">
       <data-type>INTEGER(0,-1)|4</data-type>
       <default-expression>1</default-expression>
     </column>
-    <column id="80" parent="9" name="receipt_id">
+    <column id="81" parent="9" name="receipt_id">
       <data-type>INTEGER(0,-1)|4</data-type>
     </column>
-    <key id="81" parent="9">
+    <key id="82" parent="9">
       <columns>id</columns>
       <primary>1</primary>
     </key>
-    <column id="82" parent="10" name="id">
+    <column id="83" parent="10" name="id">
       <mandatory>1</mandatory>
       <data-type>INTEGER(0,-1)|4</data-type>
     </column>
-    <column id="83" parent="10" name="periodicidad">
+    <column id="84" parent="10" name="periodicidad">
       <data-type>VARCHAR(0,-1)|12</data-type>
     </column>
-    <column id="84" parent="10" name="fecha_afiliacion">
+    <column id="85" parent="10" name="fecha_afiliacion">
       <data-type>DATE(0,-1)|12</data-type>
     </column>
-    <column id="85" parent="10" name="fecha_vencimiento">
+    <column id="86" parent="10" name="fecha_vencimiento">
       <data-type>DATE(0,-1)|12</data-type>
     </column>
-    <column id="86" parent="10" name="fecha_cuota">
+    <column id="87" parent="10" name="fecha_cuota">
       <data-type>DATE(0,-1)|12</data-type>
     </column>
-    <column id="87" parent="10" name="estado">
+    <column id="88" parent="10" name="estado">
       <data-type>BOOLEAN(0,-1)|4</data-type>
     </column>
-    <column id="88" parent="10" name="created_at">
+    <column id="89" parent="10" name="created_at">
       <mandatory>1</mandatory>
       <data-type>DATETIME(0,-1)|12</data-type>
     </column>
-    <column id="89" parent="10" name="updated_at">
+    <column id="90" parent="10" name="updated_at">
       <mandatory>1</mandatory>
       <data-type>DATETIME(0,-1)|12</data-type>
     </column>
-    <column id="90" parent="10" name="society_id">
+    <column id="91" parent="10" name="society_id">
       <data-type>INTEGER(0,-1)|4</data-type>
     </column>
-    <key id="91" parent="10">
+    <key id="92" parent="10">
       <columns>id</columns>
       <primary>1</primary>
     </key>
-    <column id="92" parent="11" name="id">
+    <column id="93" parent="11" name="id">
       <mandatory>1</mandatory>
       <data-type>INTEGER(0,-1)|4</data-type>
     </column>
-    <column id="93" parent="11" name="nombre">
+    <column id="94" parent="11" name="nombre">
       <data-type>VARCHAR(0,-1)|12</data-type>
     </column>
-    <column id="94" parent="11" name="created_at">
+    <column id="95" parent="11" name="created_at">
       <mandatory>1</mandatory>
       <data-type>DATETIME(0,-1)|12</data-type>
     </column>
-    <column id="95" parent="11" name="updated_at">
+    <column id="96" parent="11" name="updated_at">
       <mandatory>1</mandatory>
       <data-type>DATETIME(0,-1)|12</data-type>
     </column>
-    <key id="96" parent="11">
+    <key id="97" parent="11">
       <columns>id</columns>
       <primary>1</primary>
     </key>
-    <column id="97" parent="12" name="id">
+    <column id="98" parent="12" name="id">
       <mandatory>1</mandatory>
       <data-type>INTEGER(0,-1)|4</data-type>
     </column>
-    <column id="98" parent="12" name="nombre">
+    <column id="99" parent="12" name="nombre">
       <data-type>VARCHAR(0,-1)|12</data-type>
     </column>
-    <column id="99" parent="12" name="cantidad">
+    <column id="100" parent="12" name="cantidad">
       <data-type>INTEGER(8)(0,-1)|4</data-type>
     </column>
-    <column id="100" parent="12" name="valor_unitario">
+    <column id="101" parent="12" name="valor_unitario">
       <data-type>DECIMAL(0,-1)|6</data-type>
     </column>
-    <column id="101" parent="12" name="valor_total_curso">
+    <column id="102" parent="12" name="valor_total_curso">
       <data-type>DECIMAL(0,-1)|6</data-type>
     </column>
-    <column id="102" parent="12" name="created_at">
+    <column id="103" parent="12" name="created_at">
       <mandatory>1</mandatory>
       <data-type>DATETIME(0,-1)|12</data-type>
     </column>
-    <column id="103" parent="12" name="updated_at">
+    <column id="104" parent="12" name="updated_at">
       <mandatory>1</mandatory>
       <data-type>DATETIME(0,-1)|12</data-type>
     </column>
-    <column id="104" parent="12" name="tipo_producto">
+    <column id="105" parent="12" name="tipo_producto">
       <data-type>INTEGER(0,-1)|4</data-type>
     </column>
-    <column id="105" parent="12" name="category_id">
+    <column id="106" parent="12" name="category_id">
       <data-type>INTEGER(0,-1)|4</data-type>
     </column>
-    <key id="106" parent="12">
+    <key id="107" parent="12">
       <columns>id</columns>
       <primary>1</primary>
     </key>
-    <column id="107" parent="13" name="id">
+    <column id="108" parent="13" name="id">
       <mandatory>1</mandatory>
       <data-type>INTEGER(0,-1)|4</data-type>
     </column>
-    <column id="108" parent="13" name="nit">
+    <column id="109" parent="13" name="nit">
       <data-type>INTEGER(8)(0,-1)|4</data-type>
     </column>
-    <column id="109" parent="13" name="nombre">
+    <column id="110" parent="13" name="nombre">
       <data-type>VARCHAR(0,-1)|12</data-type>
     </column>
-    <column id="110" parent="13" name="telefono">
+    <column id="111" parent="13" name="telefono">
       <data-type>INTEGER(8)(0,-1)|4</data-type>
     </column>
-    <column id="111" parent="13" name="direccion">
+    <column id="112" parent="13" name="direccion">
       <data-type>TEXT(0,-1)|12</data-type>
     </column>
-    <column id="112" parent="13" name="created_at">
+    <column id="113" parent="13" name="created_at">
       <mandatory>1</mandatory>
       <data-type>DATETIME(0,-1)|12</data-type>
     </column>
-    <column id="113" parent="13" name="updated_at">
+    <column id="114" parent="13" name="updated_at">
       <mandatory>1</mandatory>
       <data-type>DATETIME(0,-1)|12</data-type>
     </column>
-    <key id="114" parent="13">
+    <key id="115" parent="13">
       <columns>id</columns>
       <primary>1</primary>
     </key>
-    <column id="115" parent="14" name="id">
+    <column id="116" parent="14" name="id">
       <mandatory>1</mandatory>
       <data-type>INTEGER(0,-1)|4</data-type>
     </column>
-    <column id="116" parent="14" name="fecha">
+    <column id="117" parent="14" name="fecha">
       <data-type>DATE(0,-1)|12</data-type>
     </column>
-    <column id="117" parent="14" name="numero_factura">
+    <column id="118" parent="14" name="numero_factura">
       <data-type>INTEGER(8)(0,-1)|4</data-type>
     </column>
-    <column id="118" parent="14" name="valor_total">
+    <column id="119" parent="14" name="valor_total">
       <data-type>DECIMAL(0,-1)|6</data-type>
     </column>
-    <column id="119" parent="14" name="created_at">
+    <column id="120" parent="14" name="created_at">
       <mandatory>1</mandatory>
       <data-type>DATETIME(0,-1)|12</data-type>
     </column>
-    <column id="120" parent="14" name="updated_at">
+    <column id="121" parent="14" name="updated_at">
       <mandatory>1</mandatory>
       <data-type>DATETIME(0,-1)|12</data-type>
     </column>
-    <column id="121" parent="14" name="provider_id">
+    <column id="122" parent="14" name="provider_id">
       <data-type>INTEGER(0,-1)|4</data-type>
     </column>
-    <key id="122" parent="14">
+    <key id="123" parent="14">
       <columns>id</columns>
       <primary>1</primary>
     </key>
-    <column id="123" parent="15" name="id">
+    <column id="124" parent="15" name="id">
       <mandatory>1</mandatory>
       <data-type>INTEGER(0,-1)|4</data-type>
     </column>
-    <column id="124" parent="15" name="fecha">
+    <column id="125" parent="15" name="fecha">
       <data-type>DATE(0,-1)|12</data-type>
     </column>
-    <column id="125" parent="15" name="valor">
+    <column id="126" parent="15" name="valor">
       <data-type>DECIMAL(0,-1)|6</data-type>
     </column>
-    <column id="126" parent="15" name="created_at">
+    <column id="127" parent="15" name="created_at">
       <mandatory>1</mandatory>
       <data-type>DATETIME(0,-1)|12</data-type>
     </column>
-    <column id="127" parent="15" name="updated_at">
+    <column id="128" parent="15" name="updated_at">
       <mandatory>1</mandatory>
       <data-type>DATETIME(0,-1)|12</data-type>
     </column>
-    <column id="128" parent="15" name="client_id">
+    <column id="129" parent="15" name="client_id">
       <data-type>INTEGER(0,-1)|4</data-type>
     </column>
-    <column id="129" parent="15" name="payment_id">
+    <column id="130" parent="15" name="payment_id">
       <data-type>INTEGER(0,-1)|4</data-type>
     </column>
-    <key id="130" parent="15">
+    <key id="131" parent="15">
       <columns>id</columns>
       <primary>1</primary>
     </key>
-    <column id="131" parent="16" name="version">
+    <column id="132" parent="16" name="version">
       <mandatory>1</mandatory>
       <data-type>VARCHAR(0,-1)|12</data-type>
     </column>
-    <index id="132" parent="16" name="unique_schema_migrations">
+    <index id="133" parent="16" name="unique_schema_migrations">
       <columns>version</columns>
       <desc-columns></desc-columns>
       <unique>1</unique>
     </index>
-    <column id="133" parent="17" name="id">
+    <column id="134" parent="17" name="id">
       <mandatory>1</mandatory>
       <data-type>INTEGER(0,-1)|4</data-type>
     </column>
-    <column id="134" parent="17" name="nombre">
+    <column id="135" parent="17" name="nombre">
       <data-type>VARCHAR(0,-1)|12</data-type>
     </column>
-    <column id="135" parent="17" name="descripcio">
+    <column id="136" parent="17" name="descripcio">
       <data-type>TEXT(0,-1)|12</data-type>
     </column>
-    <column id="136" parent="17" name="valor_anual">
+    <column id="137" parent="17" name="valor_anual">
       <data-type>DECIMAL(0,-1)|6</data-type>
     </column>
-    <column id="137" parent="17" name="valor_semestral">
+    <column id="138" parent="17" name="valor_semestral">
       <data-type>DECIMAL(0,-1)|6</data-type>
     </column>
-    <column id="138" parent="17" name="valor_mensual">
+    <column id="139" parent="17" name="valor_mensual">
       <data-type>DECIMAL(0,-1)|6</data-type>
     </column>
-    <column id="139" parent="17" name="created_at">
+    <column id="140" parent="17" name="created_at">
       <mandatory>1</mandatory>
       <data-type>DATETIME(0,-1)|12</data-type>
     </column>
-    <column id="140" parent="17" name="updated_at">
+    <column id="141" parent="17" name="updated_at">
       <mandatory>1</mandatory>
       <data-type>DATETIME(0,-1)|12</data-type>
     </column>
-    <key id="141" parent="17">
+    <key id="142" parent="17">
       <columns>id</columns>
       <primary>1</primary>
     </key>
-    <column id="142" parent="18" name="name">
+    <column id="143" parent="18" name="name">
       <data-type>(0,-1)|12</data-type>
     </column>
-    <column id="143" parent="18" name="seq">
+    <column id="144" parent="18" name="seq">
       <data-type>(0,-1)|12</data-type>
     </column>
-    <column id="144" parent="19" name="id">
+    <column id="145" parent="19" name="id">
       <mandatory>1</mandatory>
       <data-type>INTEGER(0,-1)|4</data-type>
     </column>
-    <column id="145" parent="19" name="admin">
+    <column id="146" parent="19" name="admin">
       <data-type>BOOLEAN(0,-1)|4</data-type>
     </column>
-    <column id="146" parent="19" name="email">
+    <column id="147" parent="19" name="email">
       <mandatory>1</mandatory>
       <data-type>VARCHAR(0,-1)|12</data-type>
       <default-expression>&apos;&apos;</default-expression>
     </column>
-    <column id="147" parent="19" name="encrypted_password">
+    <column id="148" parent="19" name="encrypted_password">
       <mandatory>1</mandatory>
       <data-type>VARCHAR(0,-1)|12</data-type>
       <default-expression>&apos;&apos;</default-expression>
     </column>
-    <column id="148" parent="19" name="reset_password_token">
+    <column id="149" parent="19" name="reset_password_token">
       <data-type>VARCHAR(0,-1)|12</data-type>
     </column>
-    <column id="149" parent="19" name="reset_password_sent_at">
+    <column id="150" parent="19" name="reset_password_sent_at">
       <data-type>DATETIME(0,-1)|12</data-type>
     </column>
-    <column id="150" parent="19" name="remember_created_at">
+    <column id="151" parent="19" name="remember_created_at">
       <data-type>DATETIME(0,-1)|12</data-type>
     </column>
-    <column id="151" parent="19" name="sign_in_count">
+    <column id="152" parent="19" name="sign_in_count">
       <mandatory>1</mandatory>
       <data-type>INTEGER(0,-1)|4</data-type>
       <default-expression>0</default-expression>
     </column>
-    <column id="152" parent="19" name="current_sign_in_at">
+    <column id="153" parent="19" name="current_sign_in_at">
       <data-type>DATETIME(0,-1)|12</data-type>
     </column>
-    <column id="153" parent="19" name="last_sign_in_at">
+    <column id="154" parent="19" name="last_sign_in_at">
       <data-type>DATETIME(0,-1)|12</data-type>
     </column>
-    <column id="154" parent="19" name="current_sign_in_ip">
+    <column id="155" parent="19" name="current_sign_in_ip">
       <data-type>VARCHAR(0,-1)|12</data-type>
     </column>
-    <column id="155" parent="19" name="last_sign_in_ip">
+    <column id="156" parent="19" name="last_sign_in_ip">
       <data-type>VARCHAR(0,-1)|12</data-type>
     </column>
-    <column id="156" parent="19" name="created_at">
+    <column id="157" parent="19" name="created_at">
       <mandatory>1</mandatory>
       <data-type>DATETIME(0,-1)|12</data-type>
     </column>
-    <column id="157" parent="19" name="updated_at">
+    <column id="158" parent="19" name="updated_at">
       <mandatory>1</mandatory>
       <data-type>DATETIME(0,-1)|12</data-type>
     </column>
-    <column id="158" parent="19" name="roles_mask">
+    <column id="159" parent="19" name="roles_mask">
       <data-type>INTEGER(0,-1)|4</data-type>
     </column>
-    <column id="159" parent="19" name="first_name">
+    <column id="160" parent="19" name="first_name">
       <data-type>VARCHAR(0,-1)|12</data-type>
     </column>
-    <column id="160" parent="19" name="last_name">
+    <column id="161" parent="19" name="last_name">
       <data-type>VARCHAR(0,-1)|12</data-type>
     </column>
-    <index id="161" parent="19" name="index_users_on_email">
+    <index id="162" parent="19" name="index_users_on_email">
       <columns>email</columns>
       <desc-columns></desc-columns>
       <unique>1</unique>
     </index>
-    <index id="162" parent="19" name="index_users_on_reset_password_token">
+    <index id="163" parent="19" name="index_users_on_reset_password_token">
       <columns>reset_password_token</columns>
       <desc-columns></desc-columns>
       <unique>1</unique>
     </index>
-    <key id="163" parent="19">
+    <key id="164" parent="19">
       <columns>id</columns>
       <primary>1</primary>
     </key>

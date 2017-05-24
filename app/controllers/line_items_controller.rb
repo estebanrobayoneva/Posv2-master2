@@ -33,9 +33,10 @@ class LineItemsController < ApplicationController
       Detail.create(cantidad_producto: detalle.quantity, precio: detalle.product.valor_unitario* detalle.quantity , product_id: detalle.product_id, receipt_id: Receipt.last.id )
     end
 
+
     @receipt = Receipt.last
 
-    redirect_to(@receipt)
+    redirect_to @receipt
 
 
   end
