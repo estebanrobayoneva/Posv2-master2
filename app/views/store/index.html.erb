@@ -17,7 +17,7 @@
           <tbody>
           <% @products.each do |product|%>
               <tr>
-                <% if product.tipo_producto == 1 %>
+
                     <td><h3><%= product.nombre%></h3></td>
                     <td><%= product.cantidad %></td>
                     <td><div class="price_line">
@@ -26,7 +26,7 @@
                     </div>
                     </td>
                     </tr>
-                <% end %>
+
                 </tbody>
           <% end %>
           </table>

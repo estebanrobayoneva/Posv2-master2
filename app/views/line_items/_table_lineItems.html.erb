@@ -1,5 +1,7 @@
 <h1>Compra</h1>
 <% total = 0 %>
+<% total1 = 0 %>
+<% totalf = 0 %>
 
 <% if @client.first != nil %>
 
@@ -36,8 +38,17 @@
                 <% total = total + @valdesc  %>
 
 
-                </tr>
+
+                <% else %>
+                  <td colspan="2"><%= line_item.quantity %></td>
+                  <td colspan="2"><%= line_item.product.nombre %></td>
+                  <td colspan="2" class="total_cell"><h4><%= number_to_currency(line_item.product.valor_unitario) %></h4></td>
+                  <td colspan="2" class="total_cell"><h4><%= number_to_currency(line_item.total_price) %></h4></td>
+                <% total1 = total1 + line_item.total_price %>
+
+
             <% end %>
+            <% totalf = (total1+total) %>
 
 
         <% end %>
@@ -81,8 +92,8 @@
 <% end %>
 
 <p align="right">
-  <strong>Valor Total: </strong><input id="valor_total" disabled="false" name="valor_total" value=<%= total %>>
-  <input type="hidden" name="precio_total" id="precio_total" value=<%= total %>>
+  <strong>Valor Total: </strong><input id="valor_total" disabled="false" name="valor_total" value=<%= totalf %>>
+  <input type="hidden" name="precio_total" id="precio_total" value=<%= totalf %>>
 
 
 </p>

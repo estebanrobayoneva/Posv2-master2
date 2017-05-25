@@ -30,8 +30,20 @@ class LineItemsController < ApplicationController
     @lineall = LineItem.all
 
     @lineall.each do |detalle|
-      Detail.create(cantidad_producto: detalle.quantity, precio: detalle.product.valor_unitario* detalle.quantity , product_id: detalle.product_id, receipt_id: Receipt.last.id )
+      if @participanteR.first.membership.society.discounts.where(category_id: detalle.product.category_id).exists?(conditions=:none)
+        descuento = ((@participanteR.first.membership.society.discounts.where(category_id: detalle.product.category_id).first.porcentaje_descuento).to_f)/100
+        descuento = detalle.product.valor_unitario*descuento
+        descuento = detalle.product.valor_unitario-descuento
+        valdescuento = descuento * detalle.quantity
+        Detail.create(cantidad_producto: detalle.quantity, precio: valdescuento , product_id: detalle.product_id, receipt_id: Receipt.last.id )
+      else
+        Detail.create(cantidad_producto: detalle.quantity, precio: detalle.product.valor_unitario * detalle.quantity , product_id: detalle.product_id, receipt_id: Receipt.last.id )
+
+      end
     end
+
+    LineItem.delete_all
+
 
 
     @receipt = Receipt.last
