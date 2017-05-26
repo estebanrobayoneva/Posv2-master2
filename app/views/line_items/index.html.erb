@@ -1,23 +1,36 @@
+
 <div class="jumbotron nuevo">
   <%= render 'form_find_paricipante' %>
-  <div id="clientefound">
-    <br>
-    <% if @client.first != nil %>
+
+
+<div id="clientefound">
+  <br>
+  <% if @client.first != nil %>
       <strong>Nombre: </strong><%= @client.first.nombre %><br>
-        <strong>Membresia: </strong><%= @client.first.membership.society.nombre  %>
-    <% end %>
-  </div>
+      <strong>Membresia: </strong><%= @client.first.membership.society.nombre  %>
+  <% end %>
 </div>
-<%= form_tag url_for(:controller => 'line_items', :action => 'send_receipt'), remote: true do %>
-        <p id="notice"><%= notice %></p>
+</div>
+<div id="refresh">
+  <%= form_tag url_for(:controller => 'line_items', :action => 'send_receipt'), remote: true do %>
+      <p id="notice"><%= notice %></p>
 
-    <div class="container">
-      <div class="jumbotron">
-        <%= render 'table_lineItems' %>
-          <br>
-          <!-- <%= link_to 'New Line item', new_line_item_path %> -->
+      <div class="container">
+        <div class="jumbotron">
+          <%= render 'table_lineItems' %>
+        </div>
+
       </div>
-    </div>
-<% end %>
+
+  <% end %>
+
+</div>
 
 
+<script>
+    $(document).ready(function() {
+        setInterval(function() {
+            $("#refresh").load("line_items #refresh");
+        }, 1000);
+    });
+</script>
