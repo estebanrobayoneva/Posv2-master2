@@ -12,7 +12,7 @@
 </div>
 </div>
 <div id="refresh">
-  <%= form_tag url_for(:controller => 'line_items', :action => 'send_receipt'), remote: true do %>
+  <%= form_tag url_for(:controller => 'line_items', :action => 'send_receipt') do %>
       <p id="notice"><%= notice %></p>
 
       <div class="container">
@@ -21,6 +21,8 @@
         </div>
 
       </div>
+
+      <%= submit_tag "finalizar" %>
 
   <% end %>
 

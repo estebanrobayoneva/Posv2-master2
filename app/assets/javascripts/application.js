@@ -11,6 +11,7 @@
 // about supported directives.
 //// = requiere Chart.bundle
 
+
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
@@ -18,6 +19,7 @@
 // = requiere Chart.bundle
 // = requiere chartkick
 //= require_tree .
+
 
 
 var hide_spinner = function(){

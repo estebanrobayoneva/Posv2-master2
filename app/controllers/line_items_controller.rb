@@ -48,7 +48,7 @@ class LineItemsController < ApplicationController
 
     @receipt = Receipt.last
 
-    render line_items_path
+    redirect_to @receipt
 
 
   end
@@ -96,10 +96,10 @@ class LineItemsController < ApplicationController
 
     respond_to do |format|
       if @line_item.save
-
         format.html { redirect_to tienda_path }
         format.json { render json: @line_item,
                              status: :created, location: @line_item }
+
       else
         format.html { render action: "new" }
         format.json { render json: @line_item.errors,

@@ -18,7 +18,7 @@
           <tbody>
           <% @products.each do |product|%>
               <tr>
-                <%= form_tag url_for(:controller => 'line_items', :action => 'create'), remote: true do %>
+                <%= form_tag url_for(:controller => 'line_items', :action => 'create') do %>
                     <td><h3><%= product.nombre%></h3></td>
                     <td><%= product.cantidad %></td>
                     <td><input id="cantidadC" name="cantidadC" type="number" min="1" value="1"></td>
