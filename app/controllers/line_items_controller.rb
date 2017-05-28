@@ -43,12 +43,12 @@ class LineItemsController < ApplicationController
     end
 
     LineItem.delete_all
-
+    session[:var1] = 0
 
 
     @receipt = Receipt.last
 
-    redirect_to @receipt
+    render line_items_path
 
 
   end
@@ -97,7 +97,7 @@ class LineItemsController < ApplicationController
     respond_to do |format|
       if @line_item.save
 
-        format.html { redirect_to line_items_path }
+        format.html { redirect_to tienda_path }
         format.json { render json: @line_item,
                              status: :created, location: @line_item }
       else
