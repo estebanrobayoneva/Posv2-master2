@@ -88,17 +88,25 @@ class ProductsController < ApplicationController
 
   end
   def createCourse
+    nombre = params[:nombre]
     @product = Product.new(product_params)
+
     respond_to do |format|
       if @product.save
         format.html { redirect_to cursos_path, notice: 'Se ha creado exitosamente.' }
         format.json { render :show, status: :created, location: @product }
-        Product.last.update(tipo_producto: 2)
+        newName = Product.last.nombre + ' sesion'
+        newNameComplete = Product.last.nombre + ' completo'
+        Product.last.update(nombre: newName, tipo_producto: 2)
+        Product.create(nombre: newNameComplete, cantidad: 1, valor_unitario: Product.last.valor_total_curso, valor_total_curso: Product.last.valor_total_curso, tipo_producto: 2, category_id: Product.last.category_id)
+
       else
         format.html { render :new }
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end
     end
+
+
   end
 
   # PATCH/PUT /products/1
@@ -118,7 +126,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     respond_to do |format|
       if @product.update(product_params)
-        format.html { redirect_to @product, notice: 'Se ha editado exitosamente.' }
+        format.html { redirect_to cursos_path, notice: 'Se ha editado exitosamente.' }
         format.json { render :show, status: :ok, location: @product }
       else
         format.html { render :edit }

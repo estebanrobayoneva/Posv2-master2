@@ -43,7 +43,9 @@ class LineItemsController < ApplicationController
     end
 
     LineItem.delete_all
-    session[:var1] = 0
+    newValue = 0
+    session[:var1] = newValue
+    puts(session[:var1])
 
 
     @receipt = Receipt.last

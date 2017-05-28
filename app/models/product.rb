@@ -8,6 +8,15 @@ class Product < ActiveRecord::Base
   has_many :line_items
   before_destroy :ensure_not_referenced_by_any_line_item
 
+
+
+  def courseComplete
+    newName = self.nombre + 'sesion'
+    newNameComplete = self.nombre + 'completo'
+    self.update(nombre: newName)
+    Product.create(nombre: newNameComplete, cantidad: 1, valor_unitario: self.valor_total_curso, valor_total_curso: self.valor_total_curso, tipo_producto: 2, category_id: self.category_id)
+
+  end
   private # ensure
     def ensure_not_referenced_by_any_line_item
      if line_items.empty?

@@ -19,7 +19,7 @@
           <% @products.each do |product|%>
               <tr>
                 <%= form_tag url_for(:controller => 'line_items', :action => 'create') do %>
-                    <td><h3><%= product.nombre%></h3></td>
+                    <td><strong><%= product.nombre%></strong></td>
                     <td><%= product.cantidad %></td>
                     <td><input id="cantidadC" name="cantidadC" type="number" min="1" value="1"></td>
                     <td><input id="id" name="id" type="hidden" value=<%= product.id %>></td>
