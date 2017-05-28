@@ -3,7 +3,7 @@
     <h1>Productos y Cursos</h1>
     <%= render 'products/lookup' %>
 
-
+  <div class="refresha">
     <table>
       <td width="950">
         <table class = "table table-hover" >
@@ -11,28 +11,31 @@
           <tr>
             <th>Nombre</th>
             <th>Cantidad disponible</th>
+            <th># a comprar</th>
             <th>Valor unitario</th>
           </tr>
           </thead>
           <tbody>
           <% @products.each do |product|%>
               <tr>
-
+                <%= form_tag url_for(:controller => 'line_items', :action => 'create'), remote: true do %>
                     <td><h3><%= product.nombre%></h3></td>
                     <td><%= product.cantidad %></td>
+                    <td><input id="cantidadC" name="cantidadC" type="number" min="1" value="1"></td>
+                    <td><input id="id" name="id" type="hidden" value=<%= product.id %>></td>
                     <td><div class="price_line">
                       <span class="price"><%= number_to_currency(product.valor_unitario)%></span>
-                      <%= button_to 'Añadir a carrito', line_items_path(product_id: product)%>
+                      <%= submit_tag 'Agregar' %>
                     </div>
                     </td>
                     </tr>
-
+                    <% end %>
                 </tbody>
           <% end %>
           </table>
       </td>
     </table>
-
+  </div>
     <%= will_paginate @products %>
   </div><!-- fin lisa productos -->
   <div class="col-sm-5"><!-- inicio carrito -->
@@ -41,6 +44,14 @@
 
 </div>
 
+
+<script>
+  $(document).ready(function() {
+    setInterval(function() {
+      $("#refresha").load("tienda #refresha");
+    }, 1000);
+  });
+</script>
 
 
 

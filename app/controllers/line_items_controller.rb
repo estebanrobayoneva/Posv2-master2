@@ -87,13 +87,17 @@ class LineItemsController < ApplicationController
 
   def create
     @cart = current_cart
-    product = Product.find(params[:product_id])
-    @line_item = @cart.add_product(product.id)
+    product = Product.find(params[:id])
+    cantidadC = params[:cantidadC]
+    puts(cantidadC)
+    puts('LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL')
+    @line_item = @cart.add_product(product.id, cantidadC)
     @line_item.product = product
 
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to tienda_path }
+
+        format.html { redirect_to line_items_path }
         format.json { render json: @line_item,
                              status: :created, location: @line_item }
       else
@@ -102,6 +106,7 @@ class LineItemsController < ApplicationController
                              status: :unprocessable_entity }
       end
     end
+
   end
 
 
@@ -137,6 +142,6 @@ class LineItemsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def line_item_params
-    params.require(:line_item).permit(:product_id, :cart_id, :receipt_id, :cedula_participante, :precio_total)
+    params.require(:line_item).permit(:product_id, :cart_id, :receipt_id, :cedula_participante, :precio_total, :cantidadC)
   end
 end
