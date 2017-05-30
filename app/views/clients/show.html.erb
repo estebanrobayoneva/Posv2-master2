@@ -1,54 +1,51 @@
 <div class="container">
-  
-  <div id="accordion" class="panel-group">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-                <a data-toggle="collapse" data-parent="#accordion"  href="#collapseOne"><h1 class="titulo">Datos Personales</h1></a>
-        </div>
-        <div id="collapseOne" class="panel-collapse collapse">
-            <div class="panel-body">
-              <br>
-<p>
-  <strong>Tipo documento:</strong>
-  <%= @client.tipo_documento %>
-</p>
 
-<p>
-  <strong>Numero documento:</strong>
-  <%= @client.numero_documento %>
-</p>
-
-<p>
-  <strong>Nombre:</strong>
-  <%= @client.nombre %>
-</p>
-
-<p>
-  <strong>Apellido:</strong>
-  <%= @client.apellido %>
-</p>
-
-<p>
-  <strong>Correo:</strong>
-  <%= @client.correo %>
-</p>
-
-<p>
-  <strong>Direccion:</strong>
-  <%= @client.direccion %>
-</p>
-
-<p>
-  <strong>Telefono:</strong>
-  <%= @client.telefono %>
-</p>
-
-
-</div>
-            </div>
-        </div>
+  <!----div-->
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <a role="button"><h1 class="titulo" id="vJ">Datos Personales</h1></a>
     </div>
-  
+    <div class="panel-body" id="valorres_j">
+      <p>
+        <strong>Tipo documento:</strong>
+        <%= @client.tipo_documento %>
+      </p>
+
+      <p>
+        <strong>Numero documento:</strong>
+        <%= @client.numero_documento %>
+      </p>
+
+      <p>
+        <strong>Nombre:</strong>
+        <%= @client.nombre %>
+      </p>
+
+      <p>
+        <strong>Apellido:</strong>
+        <%= @client.apellido %>
+      </p>
+
+      <p>
+        <strong>Correo:</strong>
+        <%= @client.correo %>
+      </p>
+
+      <p>
+        <strong>Direccion:</strong>
+        <%= @client.direccion %>
+      </p>
+
+      <p>
+        <strong>Telefono:</strong>
+        <%= @client.telefono %>
+      </p>
+
+    </div>
+  </div>
+
+  <!----div-->
+
   
   
 
@@ -98,27 +95,39 @@
 
 <% end %>
 <br>
-<%= link_to "<i class='fa fa-reply' aria-hidden='true'></i> Volver".html_safe,
-            clients_path, class: 'btn btn-success btn-sm'%>
 
-<%= link_to "<i class='fa fa-pencil-square-o' aria-hidden='true'></i> Editar".html_safe,
-            edit_client_path(@client), class: 'btn btn-success btn-sm'%>
-
-<% if @client.membership == nil  %>
-
-<%= link_to "<i class='fa fa-users' aria-hidden='true'></i> Afiliar".html_safe,
-            membership_client_path, class: 'btn btn-success btn-sm'%>
-<% end %>
-<% if @client.membership != nil %>
-<%= link_to "<i class='fa fa-money' aria-hidden='true'></i> Pagar cuota".html_safe,
-            pagocuota_client_path(:membership_id => @client.membership_id, :client_id => @client.id ), class: 'btn btn-success btn-sm'%>
-<% end %>
 
     
     </div>
   </div>
-  </div></div>
+  </div>
+  <%= link_to "<i class='fa fa-reply' aria-hidden='true'></i> Volver".html_safe,
+              clients_path, class: 'btn btn-success btn-sm'%>
 
+  <%= link_to "<i class='fa fa-pencil-square-o' aria-hidden='true'></i> Editar".html_safe,
+              edit_client_path(@client), class: 'btn btn-success btn-sm'%>
+
+  <% if @client.membership == nil  %>
+
+      <%= link_to "<i class='fa fa-users' aria-hidden='true'></i> Afiliar".html_safe,
+                  membership_client_path, class: 'btn btn-success btn-sm'%>
+  <% end %>
+  <% if @client.membership != nil %>
+      <%= link_to "<i class='fa fa-money' aria-hidden='true'></i> Pagar cuota".html_safe,
+                  pagocuota_client_path(:membership_id => @client.membership_id, :client_id => @client.id ), class: 'btn btn-success btn-sm'%>
+  <% end %>
+</div>
+
+
+
+<script>
+
+  $(document).ready(function(){
+    $('#vJ').on('click',function(){
+      $('#valorres_j').toggle();
+    });
+  });
+</script>
 
 
     

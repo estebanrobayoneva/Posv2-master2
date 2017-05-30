@@ -1,0 +1,22 @@
+
+
+  <table class="table table-hover">
+    <tr>
+      <td><strong>Fecha</strong></td>
+      <td><strong>Valor</strong></td>
+
+
+
+    </tr>
+    <% @result.each do |model| %>
+        <tr>
+          <td><%=  model.fecha %></td>
+          <td><%= model.valor %></td>
+
+
+
+
+        </tr>
+    <% end %>
+
+  </table>

@@ -1,0 +1,2 @@
+module SearchaHelper
+end

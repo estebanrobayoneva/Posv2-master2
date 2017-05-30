@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'search_receipt/create'
+
   resources :details
   resources :line_items
   resources :carts
@@ -76,6 +78,9 @@ Rails.application.routes.draw do
   post 'findParticipante' => 'line_items#findParticipante'
   
   get :send_receipt_mail, to: 'receipts#send_receipt_mail', as: :send_receipt_mail
+
+  get 'reporterecibos' => 'search_receipt#reporterecibos'
+  post 'reporterecibos' => 'search_receipt#reporterecibos'
  
 
 

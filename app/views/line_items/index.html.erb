@@ -4,10 +4,13 @@
 
 
 <div id="clientefound">
-  <br>
+
   <% if @client.first != nil %>
-      <strong>Nombre: </strong><%= @client.first.nombre %><br>
-      <strong>Membresia: </strong><%= @client.first.membership.society.nombre  %>
+
+      <hr color="white">
+      <h3><strong>Nombre: </strong><%= @client.first.nombre %> <strong>Apellido: </strong><%= @client.first.apellido %></h3>
+
+      <h3><strong>Membresía: </strong><%= @client.first.membership.society.nombre  %></h3>
   <% end %>
 </div>
 </div>
@@ -18,11 +21,20 @@
       <div class="container">
         <div class="jumbotron">
           <%= render 'table_lineItems' %>
+          <div id="botones" class="row">
+            <div class="col-sm-6">
+            <%= link_to "<i class='fa fa-reply' aria-hidden='true'></i> Volver al carrito".html_safe,
+                        tienda_path, class: 'btn btn-success btn-sm'%>
+            </div>
+            <div class="col-sm-6">
+          <p align="right"><%= submit_tag "Finalizar compra", class:'btn btn-success' %> </p>
+            </div>
+          </div>
         </div>
 
       </div>
 
-      <%= submit_tag "finalizar" %>
+
 
   <% end %>
 

@@ -20,7 +20,9 @@ class LineItemsController < ApplicationController
     valorTfactura = "#{params[:precio_total]}"
     puts(valorTfactura)
     cedulaParticipante = session[:var1]
-
+    if cedulaParticipante == 0 || cedulaParticipante == nil
+    
+    end
     #LineItem.create_receipt_cart(valorTfactura, cedulaParticipante)
     @participanteR = Client.where("numero_documento = ?", cedulaParticipante)
     t = Time.new
@@ -43,6 +45,7 @@ class LineItemsController < ApplicationController
     end
 
     LineItem.delete_all
+
     newValue = 0
     session[:var1] = newValue
     puts(session[:var1])
@@ -92,7 +95,7 @@ class LineItemsController < ApplicationController
     product = Product.find(params[:id])
     cantidadC = params[:cantidadC]
     puts(cantidadC)
-    puts('LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL')
+
     @line_item = @cart.add_product(product.id, cantidadC)
     @line_item.product = product
 

@@ -1,9 +1,10 @@
 
 
 <% if @participante.first != nil %>
-    <br>
-    <strong>Nombre: </strong><%= @participante.first.nombre %><br>
-    <strong>Membresia: </strong><%= @participante.first.membership.society.nombre  %>
+    <hr color="white">
+    <h3><strong>Nombre: </strong><%= @participante.first.nombre %> <strong>Apellido: </strong><%= @participante.first.apellido %></h3>
+
+    <h3><strong>Membresía: </strong><%= @participante.first.membership.society.nombre  %></h3>
 <% else @participante %>
 <h4>No se encontro al participante</h4>
 <% end %>

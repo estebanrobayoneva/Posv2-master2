@@ -1,0 +1,23 @@
+<% if @guardar == 'Buscar' || @lineal == 'Lineal'%>
+    <%= line_chart @result.pluck(:fecha, :valor), xtitle: "Fecha", ytitle: "Valor" %>
+
+<% end %>
+
+<% if @area == 'Area' %>
+    <%= area_chart @result.pluck(:fecha, :valor), xtitle: "Fecha", ytitle: "Valor" %>
+
+<% end %>
+
+
+
+<% if @barra == 'Barra' %>
+    <%= column_chart @result.pluck(:fecha, :valor), xtitle: "Fecha", ytitle: "Valor" %>
+
+<% end %>
+
+
+
+<% if @torta == 'Torta' %>
+    <%= pie_chart @result.group(:fecha).count() %>
+
+<% end %>

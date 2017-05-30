@@ -1,5 +1,11 @@
+
+
+
+
 <div class=" jumbotron nuevo div-cart">
-<table class="table">
+  <p align="center"><i class="fa fa-shopping-cart fa-4x" aria-hidden="true"></i>
+  </p><br>
+  <table class="table">
 <thead>
 <tr>
   <td colspan="2">Cantidad</td>
@@ -17,9 +23,14 @@
 
   </tr>
  </table>
-  <%= button_to "Comprar", line_items_path, method: :get %>
+  <div class="row">
+    <div class="col-sm-6">
+  <%= button_to "Comprar",   line_items_path, method: :get, class: 'btn btn-lg btn-success' %>
+    </div>
+    <div class="col-sm-6">
   <%= button_to 'Vaciar carrito', @cart, method: :delete,
-              data: { confirm: '¿Estas seguro?' } %>
-
+              data: { confirm: '¿Estas seguro?' }, class: 'btn btn-lg btn-danger' %>
+    </div>
+  </div>
 
 </div>

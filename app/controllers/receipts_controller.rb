@@ -6,7 +6,7 @@ class ReceiptsController < ApplicationController
   def index
     @receipts = Receipt.all
   end
-  
+
   def send_receipt_mail
   receipt = Receipt.find(params[:receipt_id])
   ReceiptNotifier.received(receipt).deliver

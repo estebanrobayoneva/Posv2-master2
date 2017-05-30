@@ -1,0 +1,112 @@
+<%= form_tag({controller: "search_receipt", action: "create" },
+             method: 'get', remote: true, id: "search-form") do %>
+<!-- iii -->
+<div class="row">
+  <div class="col-sm-3">
+    <div class="sidebar-nav">
+      <div class="navbar navbar-default div-search" role="navigation">
+
+        <h3 align="center">Busqueda</h3>
+
+            <div>
+
+              <strong>Fecha: </strong><br><br><%= text_field_tag :keyword1, nil,
+                                                                 placeholder: '2017-01-01' %><br><hr>
+              <!--
+              <strong>Indicadores</strong><br><br>
+              <table>
+                <tr>
+                  <td>
+                    <input type="checkbox" name="productos" value="productos">
+                  </td>
+                  <td>
+                    <strong>Productos</strong>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <input type="checkbox" name="cuarsos" value="cursos">
+                  </td>
+                  <td>
+                    <strong>Cursos</strong>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <input type="checkbox" name="membresias" value="membresias">
+                  </td>
+                  <td>
+                    <strong>Membresia</strong>
+                  </td>
+                </tr>
+
+              </table>
+              -->
+
+
+
+              <!-- <%= select_tag 'Indicador1', options_for_select(['Rotacion Mensual','Numero OPS','Volumen Toatla'],'Rotacion mensual') %>
+              <%= select_tag 'Indicador2', options_for_select(['Numero OPS','Rotacion Mensual','Volumen Toatla'],'Numero OPS') %>
+              -->
+              <br><br>
+
+             <!-- <%= content_tag :button,class:"btn btn-warning" , type: :submit, :name => 'guardar' do%>
+                  Buscar
+
+              <% end %>-->
+
+              <%= submit_tag 'Buscar', :name => 'guardar', class: 'btn btn-primary btn-lg' %>
+              <br><br><br><br>
+            </div>
+
+
+        <!--Formulario fecha -->
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-9">
+    <nav class="navbar navbar-default div-search">
+      <div >
+        <div class="navbar-header">
+          <div >
+            <p align="center"><strong>Tipo de  gráfica</strong></p>
+
+            <%= image_submit_tag("barraf.png", width: "40", height: "40", :name => 'btnBarra', :value => 'Barra')  %>
+
+            <%= image_submit_tag("lineaf.png", width: "40", height: "40", :name => 'btnLineal', :value => 'Lineal')  %>
+            <%= image_submit_tag("areaA.png", width: "40", height: "40", :name => 'btnArea', :value => 'Area')  %>
+
+
+            <%= image_submit_tag("tortaf.png", width: "40", height: "40", :name => 'btnTorta', :value => 'Torta')  %>
+
+          </div>
+
+        </div >
+        <div class="navbar-header" >
+
+        </div>
+
+      </div>
+    </nav>
+
+
+    <div id="graficas">
+    </div>
+
+    <div class="container">
+
+      <div id="resulados">
+        <table class="table">
+          <thead>
+          <td>Fecha</td>
+          <td>Valor</td>
+          </thead>
+        </table>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
+        <% end %>
