@@ -6,6 +6,7 @@ gem 'rails', '4.2.6'
 
 gem 'sendgrid-ruby'
 
+gem 'kaminari'
 
 gem 'will_paginate', '3.0.7'
 
