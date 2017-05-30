@@ -23,11 +23,15 @@ class Client < ActiveRecord::Base
   end
   
   def self.numero_documento_matches(param)
-    matches('numero_documento', param)
+    matches_int('numero_documento', param)
   end
     
   def self.matches(field_name, param)
     where("lower(#{field_name}) like ?", "%#{param}%")
+  end
+  
+  def self.matches_int(field_name, param)
+    where("#{field_name} like ?", "%#{param}%")
   end
   
   

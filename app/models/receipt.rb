@@ -22,6 +22,27 @@ class Receipt < ActiveRecord::Base
     end
     current_item
   end
+  
+  
+  def self.search(param)
+    return Receipt.none if param.blank?
+    param.strip!
+    param.downcase!
+    (fecha_matches(param)).uniq
+  end
+    
+  
+  def self.fecha_matches(param)
+    matches('fecha', param)
+  end
+  
+    
+  def self.matches(field_name, param)
+    where("#{field_name} like ?", "%#{param}%")
+  end
+  
+  
+  
 
   end
 
