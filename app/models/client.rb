@@ -10,7 +10,7 @@ class Client < ActiveRecord::Base
     return Client.none if param.blank?
     param.strip!
     param.downcase!
-    (nombre_matches(param)+ apellido_matches(param) + numero_documento_matches(param)).uniq
+    (numero_documento_matches(param)).uniq
   end
     
   
