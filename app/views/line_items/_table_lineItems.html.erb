@@ -53,20 +53,20 @@
 
 
         <% else %>
-              <tr>
-                <% @line_items.each do |line_item| %>
 
+                <% @line_items.each do |line_item| %>
+                 <tr>
                     <td colspan="2"><%= line_item.quantity %></td>
                     <td colspan="2"><%= line_item.product.nombre %></td>
                     <td colspan="2" class="total_cell"><h4><%= number_to_currency(line_item.product.valor_unitario) %></h4></td>
                     <td colspan="2" class="total_cell"><h4><%= number_to_currency(line_item.total_price) %></h4></td>
                     <td colspan="2" class="total_cell"><h4><%= number_to_currency(line_item.total_price) %></h4></td>
+                 </tr>
 
 
-                    <% total = total + line_item.total_price  %>
+          <% total = total + line_item.total_price  %>
                     <% totalf = total %>
                 <% end %>
-              </tr>
 
         <% end %>
   </table>
