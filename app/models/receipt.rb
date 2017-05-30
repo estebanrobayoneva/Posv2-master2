@@ -38,7 +38,7 @@ class Receipt < ActiveRecord::Base
   
     
   def self.matches(field_name, param)
-    where("#{field_name} like ?", "%#{param}%")
+    where("#{field_name} like ?", "#{param}")
   end
   
   
