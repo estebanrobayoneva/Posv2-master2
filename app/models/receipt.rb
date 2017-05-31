@@ -28,7 +28,7 @@ class Receipt < ActiveRecord::Base
     return Receipt.none if param.blank?
     param.strip!
     param.downcase!
-    (fecha_matches(param)).uniq
+    (fecha_matches(param))
   end
     
   
@@ -38,7 +38,9 @@ class Receipt < ActiveRecord::Base
   
     
   def self.matches(field_name, param)
-    where("#{field_name} like ?", "%#{param}%")
+    where("#{field_name} = ? ", "#{param}")
+    
+
   end
   
   
