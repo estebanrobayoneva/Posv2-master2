@@ -41,12 +41,18 @@ class LineItemsController < ApplicationController
         Detail.create(cantidad_producto: detalle.quantity, precio: valdescuento , product_id: detalle.product_id, receipt_id: Receipt.last.id )
         n = Product.find(detalle.product_id).cantidad
         nr = detalle.quantity
+         if Product.find(detalle.product_id).tipo_producto == 1
         Product.find(detalle.product_id).update(cantidad: n-nr)
+        end
+        # Product.find(detalle.product_id).update(cantidad: n-nr)
       else
         Detail.create(cantidad_producto: detalle.quantity, precio: detalle.product.valor_unitario * detalle.quantity , product_id: detalle.product_id, receipt_id: Receipt.last.id )
         n = Product.find(detalle.product_id).cantidad
         nr = detalle.quantity
+        if Product.find(detalle.product_id).tipo_producto == 1
         Product.find(detalle.product_id).update(cantidad: n-nr)
+        end
+        
       end
     end
 
