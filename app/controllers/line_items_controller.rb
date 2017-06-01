@@ -29,14 +29,13 @@ class LineItemsController < ApplicationController
     @pago = Payment.where("nombre = 'Efectivo'")
     puts(@pago.first.nombre)
 
-    puts(@participanteR.first.id)
     Receipt.create(fecha: t, valor: valorTfactura, client_id: @participanteR.first.id, payment_id: @pago.first.id)
 
 
     @lineall = LineItem.all
 
     @lineall.each do |detalle|
-      if @participanteR.first.membership.society.discounts.where(category_id: detalle.product.category_id).exists?(conditions=:none)
+      if @participanteR.first.membership != nil && @participanteR.first.membership.society.discounts.where(category_id: detalle.product.category_id).exists?(conditions=:none)
         descuento = ((@participanteR.first.membership.society.discounts.where(category_id: detalle.product.category_id).first.porcentaje_descuento).to_f)/100
         descuento = detalle.product.valor_unitario*descuento
         descuento = detalle.product.valor_unitario-descuento
@@ -44,16 +43,29 @@ class LineItemsController < ApplicationController
         Detail.create(cantidad_producto: detalle.quantity, precio: valdescuento , product_id: detalle.product_id, receipt_id: Receipt.last.id )
         n = Product.find(detalle.product_id).cantidad
         nr = detalle.quantity
+
         if detalle.product.tipo_producto == 1
           Product.find(detalle.product_id).update(cantidad: n-nr)
         end
+
+         if Product.find(detalle.product_id).tipo_producto == 1
+        Product.find(detalle.product_id).update(cantidad: n-nr)
+        end
+        # Product.find(detalle.product_id).update(cantidad: n-nr)
+
       else
         Detail.create(cantidad_producto: detalle.quantity, precio: detalle.product.valor_unitario * detalle.quantity , product_id: detalle.product_id, receipt_id: Receipt.last.id )
         n = Product.find(detalle.product_id).cantidad
         nr = detalle.quantity
+
         if detalle.product.tipo_producto == 1
           Product.find(detalle.product_id).update(cantidad: n-nr)
         end
+
+        if Product.find(detalle.product_id).tipo_producto == 1
+        Product.find(detalle.product_id).update(cantidad: n-nr)
+        end
+
       end
     end
 
@@ -78,6 +90,7 @@ class LineItemsController < ApplicationController
     session[:var1] = numD
 
     @participante = Client.where("numero_documento = ?", numD)
+    puts(@participante.first.nombre)
     respond_to do |format|
       format.html { redirect_to line_items_path }
       format.js

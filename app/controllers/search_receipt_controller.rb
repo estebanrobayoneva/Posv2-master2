@@ -1,4 +1,5 @@
 class SearchReceiptController < ApplicationController
+ 
   def create
     palabra = "%#{params[:keyword]}%"
     palabra1 = "%#{params[:keyword1]}%"
@@ -10,28 +11,15 @@ class SearchReceiptController < ApplicationController
     @productos = "#{params[:productos]}"
     @cursos = "#{params[:cursos]}"
     @membresia = "#{params[:membresia]}"
-    if palabra != "" && palabra1 != ""
-      @result = Receipt.where('valor LIKE ? AND fecha LIKE ?', palabra, palabra1)
+    if palabra1 != nil
+      @result = Receipt.search(palabra1)
       respond_to do |format|
         format.html { redirect_to reporterecibos_path}
         format.json {render json: @models}
         format.js
-      end
-    elsif palabra !="" && palabra1 == ""
-      @result = Receipt.where('valor LIKE ?', palabra)
-      respond_to do |format|
-        format.html { redirect_to reporterecibos_path}
-        format.json {render json: @models}
-        format.js
-      end
-    else
-      @result = Receipt.where('fecha LIKE ?', palabra1)
-      respond_to do |format|
-        format.html { redirect_to reporterecibos_path}
-        format.json {render json: @models}
-        format.js
-      end
     end
+      
+  end
 
 
   end
