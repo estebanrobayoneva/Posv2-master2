@@ -1,8 +1,6 @@
 <h4>Gráfica</h4>
-<hr>
-<table width="800">
-  <tr>
-    <td width="700"><%= pie_chart @memberships.group(:fecha_afiliacion).count%></td>
-  </tr>
-</table>
+
+<%= pie_chart @memberships.group(:fecha_afiliacion).count%>
+
 <h4>Tabla</h4>
+

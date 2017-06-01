@@ -1,25 +1,30 @@
-<div class="col-sm-3">
- <table>
-  <tr><td>
+
+
 <h3>Busqueda</h3>
+    <div class="row">
+        <div class="col-sm-6">
+          <%= form_tag "/search/createmembership", method: 'get', remote: true, id:"search-form" do %>
 
-<%= form_tag "/search/createmembership", method: 'get', remote: true, id:"search-form" do %>
-    <div>
-      <strong>Fecha de Afiliación: </strong><br><br><%= date_field_tag :keyword, nil, :size => 40 %><br><br>
+                <strong>Fecha de Afiliación: </strong><br><%= date_field_tag :keyword, nil %><br><br>
 
-      <strong>Membresía: </strong><br><br><strong>Fecha de Afiliación: </strong><br><br>
+                <strong>Membresía: </strong><br><br>
 
-      <%=select("",:keyword1,Society.all.collect {|p| [ p.nombre, p.id ] })%> <br><br><br>
-
-
-      <%= content_tag :button,class:"btn btn-primary btn-lg" , type: :submit do%> Buscar <% end %>
+                <%=select("",:keyword1,Society.all.collect {|p| [ p.nombre, p.id ] })%> <br><br><br>
 
 
+                <%= content_tag :button,class:"btn btn-primary btn-lg" , type: :submit do%> Buscar <% end %>
 
-  <% end %>
-</div>
-  </td>
- </table>
+
+
+            <% end %>
+        </div>
+      <div class="col-sm-6">
+        <div id="graficasmembership">
+
+        </div>
+      </div>
+    </div>
+
   <div class="container">
   <table class="table table-striped" width="300">
     <thead>
@@ -41,4 +46,4 @@
 
 
 
-</div>
+

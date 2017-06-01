@@ -27,6 +27,9 @@ class LineItemsController < ApplicationController
     @participanteR = Client.where("numero_documento = ?", cedulaParticipante)
     t = Time.new
     @pago = Payment.where("nombre = 'Efectivo'")
+    puts(@pago.first.nombre)
+
+    puts(@participanteR.first.id)
     Receipt.create(fecha: t, valor: valorTfactura, client_id: @participanteR.first.id, payment_id: @pago.first.id)
 
 
@@ -41,12 +44,16 @@ class LineItemsController < ApplicationController
         Detail.create(cantidad_producto: detalle.quantity, precio: valdescuento , product_id: detalle.product_id, receipt_id: Receipt.last.id )
         n = Product.find(detalle.product_id).cantidad
         nr = detalle.quantity
-        Product.find(detalle.product_id).update(cantidad: n-nr)
+        if detalle.product.tipo_producto == 1
+          Product.find(detalle.product_id).update(cantidad: n-nr)
+        end
       else
         Detail.create(cantidad_producto: detalle.quantity, precio: detalle.product.valor_unitario * detalle.quantity , product_id: detalle.product_id, receipt_id: Receipt.last.id )
         n = Product.find(detalle.product_id).cantidad
         nr = detalle.quantity
-        Product.find(detalle.product_id).update(cantidad: n-nr)
+        if detalle.product.tipo_producto == 1
+          Product.find(detalle.product_id).update(cantidad: n-nr)
+        end
       end
     end
 
