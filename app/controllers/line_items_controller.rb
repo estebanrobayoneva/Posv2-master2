@@ -106,7 +106,11 @@ class LineItemsController < ApplicationController
     @cart = current_cart
     product = Product.find(params[:id])
     cantidadC = params[:cantidadC]
+    puts(" que carajossssssssssssssssssssssssss")
     puts(cantidadC)
+    if cantidadC == nil
+      cantidadC = 1
+    end
 
     @line_item = @cart.add_product(product.id, cantidadC)
     @line_item.product = product
