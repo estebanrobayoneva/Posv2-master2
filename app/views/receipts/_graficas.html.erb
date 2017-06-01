@@ -1,23 +1,24 @@
 <% if @guardar == 'Buscar' || @lineal == 'Lineal'%>
-    <%= line_chart @result.pluck(:fecha, :valor), xtitle: "Fecha", ytitle: "Valor" %>
+<%= line_chart @result.group(:fecha).count(), xtitle: "Fecha", ytitle: "Cantidad" %>
 
 <% end %>
 
 <% if @area == 'Area' %>
-    <%= area_chart @result.pluck(:fecha, :valor), xtitle: "Fecha", ytitle: "Valor" %>
+<%= area_chart @result.group(:fecha).count(), xtitle: "Fecha", ytitle: "Cantidad" %>
 
 <% end %>
 
 
 
 <% if @barra == 'Barra' %>
-    <%= column_chart @result.pluck(:fecha, :valor), xtitle: "Fecha", ytitle: "Valor" %>
+<%= column_chart @result.group(:fecha).count(), xtitle: "Fecha", ytitle: "Cantidad" %>
 
 <% end %>
 
 
 
 <% if @torta == 'Torta' %>
-    <%= pie_chart @result.group(:fecha).count() %>
+<%= pie_chart @result.group(:fecha).count() %>
 
 <% end %>
+
