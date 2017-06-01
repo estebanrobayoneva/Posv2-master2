@@ -58,6 +58,7 @@ Rails.application.routes.draw do
   
   get 'search_products', to: 'products#search'
   get 'search_clients', to: 'clients#search'
+  get 'search_societies', to: 'societies#search'
 
 
   root 'home#index'
@@ -81,6 +82,12 @@ Rails.application.routes.draw do
 
   get 'reporterecibos' => 'search_receipt#reporterecibos'
   post 'reporterecibos' => 'search_receipt#reporterecibos'
+  
+  
+  get 'afiliar_mensual', to: 'societies#afiliar_mensual'
+  post 'afiliar_mensual', to: 'societies#afiliar_mensual'
+  get 'afiliar_anual', to: 'societies#afiliar_anual'
+  post 'afiliar_anual', to: 'societies#afiliar_anual'
  
 
 

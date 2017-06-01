@@ -14,6 +14,8 @@ class MembershipsController < ApplicationController
 
   # GET /memberships/new
   def new
+    @client = Client.find(params[:id])
+    session[:current_client_id] = @client.id
     @membership = Membership.new
     @society_options = Society.all.map{ |u| [ u.nombre, u.id ] }
     @formasDePago = Payment.all
