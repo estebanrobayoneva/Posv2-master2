@@ -1,24 +1,20 @@
-<% if @guardar == 'Buscar' || @lineal == 'Lineal'%>
-<%= line_chart @result.group(:fecha).count(), xtitle: "Fecha", ytitle: "Cantidad" %>
-
-<% end %>
-
-<% if @area == 'Area' %>
-<%= area_chart @result.group(:fecha).count(), xtitle: "Fecha", ytitle: "Cantidad" %>
-
-<% end %>
 
 
 
-<% if @barra == 'Barra' %>
-<%= column_chart @result.group(:fecha).count(), xtitle: "Fecha", ytitle: "Cantidad" %>
+  <% if @guardar == 'Buscar' || @lineal == 'Lineal'%>
+    <%= line_chart @result.group(:fecha).count(), xtitle: "Fecha", ytitle: "Cantidad" %>
+  <% end %>
 
-<% end %>
+  <% if @area == 'Area' %>
+    <%= area_chart @result.group(:fecha).count(), xtitle: "Fecha", ytitle: "Cantidad" %>
+  <% end %>
 
+  <% if @barra == 'Barra' %>
 
+    <%= column_chart @result.group(:fecha).count(), xtitle: "Fecha", ytitle: "Cantidad" %>
+  <% end %>
 
-<% if @torta == 'Torta' %>
-<%= pie_chart @result.group(:fecha).count() %>
-
-<% end %>
+  <% if @torta == 'Torta' %>
+    <%= pie_chart @result.group(:fecha).count() %>
+  <% end %>
 

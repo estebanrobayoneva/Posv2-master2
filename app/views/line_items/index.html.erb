@@ -9,8 +9,9 @@
 
       <hr color="white">
       <h3><strong>Nombre: </strong><%= @client.first.nombre %> <strong>Apellido: </strong><%= @client.first.apellido %></h3>
-
+      <% if @client.first.membership != nil %>
       <h3><strong>Membresía: </strong><%= @client.first.membership.society.nombre  %></h3>
+      <% end %>
   <% end %>
 </div>
 </div>
@@ -42,9 +43,9 @@
 
 
 <script>
-    $(document).ready(function() {
-        setInterval(function() {
-            $("#refresh").load("line_items #refresh");
-        }, 1000);
-    });
+  $(document).ready(function() {
+    setInterval(function() {
+      $("#refresh").load("line_items #refresh");
+    }, 1000);
+  });
 </script>
