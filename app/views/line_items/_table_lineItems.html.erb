@@ -19,7 +19,7 @@
 
                 <% @line_items.each do |line_item| %>
 
-                    <% if @client.first.membership.society.discounts.where(category_id: line_item.product.category_id).exists?(conditions =:none) %>
+                    <% if @client.first.membership != nil && @client.first.membership.society.discounts.where(category_id: line_item.product.category_id).exists?(conditions =:none) %>
                         <%@descuento = ((@client.first.membership.society.discounts.where(category_id: line_item.product.category_id).first.porcentaje_descuento).to_f)/100 %>
                         <%@descuento = line_item.product.valor_unitario*@descuento%>
                         <%@descuento = line_item.product.valor_unitario-@descuento%>
