@@ -106,7 +106,6 @@ class LineItemsController < ApplicationController
     @cart = current_cart
     product = Product.find(params[:id])
     cantidadC = params[:cantidadC]
-    puts(" que carajossssssssssssssssssssssssss")
     puts(cantidadC)
     if cantidadC == nil
       cantidadC = 1
