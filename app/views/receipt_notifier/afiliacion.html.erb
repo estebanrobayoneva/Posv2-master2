@@ -4,3 +4,93 @@
 <%= @membership.society.nombre %>
 <h2>La membresia tiene los siguientes beneficios</h2>
 <%= @membership.society.descripcio%>
+
+<div class="jumbotron" id="recibo">
+
+  <div align="center">
+        <h3>Centro de Meditación Budista Yamantaka</h3>
+        <h5>NIT. ########</h5>
+        <h5> Dirección Cra. 27 #61D-27, Bogotá</h5>
+        <h5>teléfono 305 7068754</h5>
+  </div>
+  <h4 align="left">
+    <strong>Fecha:</strong>
+    <%= @receipt.fecha %>
+  </h4>
+    <h4 align="left"><strong>Detalle</strong></h4>
+
+
+
+
+
+
+
+  <% id = @receipt.id %>
+
+  <% @detalles = Detail.where(receipt_id: id) %>
+
+  <% if @detalles.first.product != nil %>
+  <table class="table">
+    <tr>
+      <td>Concepto</td>
+      <td>Cantidad</td>
+      <td>Valor</td>
+    </tr>
+  <% @detalles.each do |detalle| %>
+
+        <tr>
+          <td>
+            <%= detalle.product.nombre %>
+          </td>
+          <td>
+            <%= detalle.cantidad_producto %>
+          </td>
+          <td><%= detalle.precio %></td>
+        </tr>
+
+
+
+
+
+  <% end %>
+
+  </table>
+  <% else %>
+
+      <table class="table">
+        <tr>
+          <td>Concepto</td>
+          <td>Cantidad</td>
+          <td>Valor</td>
+        </tr>
+        <% @detalles.each do |detalle| %>
+
+            <tr>
+              <td>
+                <%= detalle.membership.society.nombre %>
+              </td>
+              <td>
+                <%= detalle.cantidad_producto %>
+              </td>
+              <td><%= detalle.precio %></td>
+            </tr>
+
+
+
+
+
+        <% end %>
+
+      </table>
+
+
+
+
+<% end %>
+
+  <strong>Valor Total</strong>
+  <%= @receipt.valor %>
+  <br>
+
+
+</div>
