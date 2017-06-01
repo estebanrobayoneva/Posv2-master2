@@ -21,41 +21,57 @@
      <div id="society-lookup-results" class="well results-block col-md-10">
        
     <h1 class="titulo">Membresía </h1>
-<p>
-  <strong>Nombre:</strong>
-  <%= @society.first.nombre %>
-</p>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Cuota anual</th>
 
-<p>
-  <strong>Descripcio:</strong>
-  <%= @society.first.descripcio %>
-</p>
+      <th>Couta mensual</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
 
-<p>
-  <strong>Valor anual:</strong>
-  <%= @society.first.valor_anual %>
-</p>
-
-
-<p>
-  <strong>Valor mensual:</strong>
-  <%= @society.first.valor_mensual %>
-</p>
+<tbody>
+      <tr>
+        <td><%= @society.first.nombre %></td>
+        <td><%= @society.first.valor_anual %></td>
+        <td><%= @society.first.valor_mensual %></td>
+      </tr>
+      <th>Descripcion</th>
+      <tr>
+        <td><%= @society.first.descripcio %></td>
+      </tr>
+  </tbody>
+</table>
 
 <h3>La membrecia tiene los siguientes descuentos: </h3>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>categoria</th>
+      <th>porcentaje de descuento</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
 
 <% @society.first.discounts.each do |discount| %>
 
 <% @categoria = Category.find(discount.category_id)%>
 
-<p>
-  <strong>categoria:</strong>
-  <%= @categoria.nombre %>
-  <strong>porcentaje de descuento</strong>
-  <%= discount.porcentaje_descuento %>
-</p>
+      <tr>
+        <td><%= @categoria.nombre %></td>
+        <td><%= discount.porcentaje_descuento %></td>
+      </tr>
+
+
 
 <% end %>
+<tbody>
+  
+</table>
     
     <%= link_to "Afiliacion mensual", {:controller => "societies", :action => "afiliar_mensual", :society_id => @society.first.id },
     class: 'btn btn-default btn-success'%>
