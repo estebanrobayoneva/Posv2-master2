@@ -83,7 +83,7 @@ class MembershipsController < ApplicationController
       if @membership.periodicidad=='Mensual'
         @valor_pago = @membership.society.valor_mensual
       elsif @membership.periodicidad=='Anual'
-        @valor_pago = 0
+        @valor_pago = @membership.society.valor_anual
       end
 
 
