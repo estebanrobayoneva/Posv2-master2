@@ -70,7 +70,12 @@ Rails.application.routes.draw do
   get 'reportes'=>'products#reports'
   get 'reportmembresias'=>'memberships#reports'
   get 'tienda' => 'store#index'
-
+  get 'ayudaM' => 'societies#help'
+  get 'ayudaC' => 'categories#help'
+  get 'ayudaCu' => 'products#helpA'
+  get 'ayudaP' => 'products#helpB'
+  get 'ayudaPa' => 'clients#help'
+  get 'ayudaTi' => 'store#help'
 
   get 'send_receipt' => 'line_items#send_receipt'
   post 'send_receipt' => 'line_items#send_receipt'
