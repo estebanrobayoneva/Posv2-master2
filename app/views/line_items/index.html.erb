@@ -8,9 +8,9 @@
 <!--  <#% if @client.first != nil %>
 
       <hr color="white">
-      <h3><strong>Nombre: </strong><%= @client.first.nombre %> <strong>Apellido: </strong><%= @client.first.apellido %></h3>
+      <h3><strong>Nombre: </strong><#%= @client.first.nombre %> <strong>Apellido: </strong><%#= @client.first.apellido %></h3>
       <#% if @client.first.membership != nil %>
-      <h3><strong>Membresía: </strong><%= @client.first.membership.society.nombre  %></h3>
+      <h3><strong>Membresía: </strong><#%= @client.first.membership.society.nombre  %></h3>
       <#% end %>
   <#% end %> -->
 </div>
