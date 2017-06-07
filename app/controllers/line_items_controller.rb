@@ -19,9 +19,6 @@ class LineItemsController < ApplicationController
   def send_receipt
     valorTfactura = "#{params[:precio_total]}"
     puts(valorTfactura)
-    @participante1 = Client.find_by_numero_documento(session[:var1])
-    puts("participanteeeeeeeeeeeeeeeeee session")
-    puts(@participante1.nombre)
     cedulaParticipante = session[:var1]
     if cedulaParticipante == 0 || cedulaParticipante == nil
     
