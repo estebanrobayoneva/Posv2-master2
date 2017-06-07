@@ -19,6 +19,9 @@ class LineItemsController < ApplicationController
   def send_receipt
     valorTfactura = "#{params[:precio_total]}"
     puts(valorTfactura)
+    @participante1 = Client.find_by_numero_documento(session[:var1])
+    puts("participanteeeeeeeeeeeeeeeeee session")
+    puts(@participante1.nombre)
     cedulaParticipante = session[:var1]
     if cedulaParticipante == 0 || cedulaParticipante == nil
     
@@ -28,7 +31,10 @@ class LineItemsController < ApplicationController
     t = Time.new
     @pago = Payment.where("nombre = 'Efectivo'")
     puts(@pago.first.nombre)
-
+    puts("este es el participanteeeeeeeeee")
+    puts(@participanteR.first.id)
+    puts("este es el pagoooooooooooo")
+    puts(@pago.first.id)
     Receipt.create(fecha: t, valor: valorTfactura, client_id: @participanteR.first.id, payment_id: @pago.first.id)
 
 
@@ -71,9 +77,9 @@ class LineItemsController < ApplicationController
 
     LineItem.delete_all
 
-    newValue = 0
-    session[:var1] = newValue
-    puts(session[:var1])
+    #newValue = 0
+    #session[:var1] = newValue
+    #puts(session[:var1])
 
 
     @receipt = Receipt.last
@@ -87,6 +93,8 @@ class LineItemsController < ApplicationController
 
 
     numD = "#{params[:cedula_participante]}"
+    puts("numerooooooooooooooooooooooooooooo")
+    puts(numD)
     session[:var1] = numD
 
     @participante = Client.where("numero_documento = ?", numD)
