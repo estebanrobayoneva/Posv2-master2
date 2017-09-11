@@ -3,9 +3,9 @@ class Membership < ActiveRecord::Base
   has_many :clients
   has_many :details
 
-  after_create :afilia
-  after_create :fechas
-  after_create :create_detail
+  # after_create :afilia
+  # after_create :fechas
+  # after_create :create_detail
 
 
 

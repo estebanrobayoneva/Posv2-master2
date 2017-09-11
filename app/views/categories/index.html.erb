@@ -1,5 +1,10 @@
 
 
+<div align="right">
+  <%= link_to "Ayuda".html_safe,
+              ayudaC_path , class: 'btn btn-danger btn-xs'%>
+
+</div>
 <h1 align="center">Categorías</h1>
 <%= link_to "<i class='fa fa-plus-circle'></i> Nueva Categoría".html_safe,
             new_category_path, class: 'btn btn-primary btn-lg'%>
@@ -19,16 +24,13 @@
         <td><%= category.descripcion %></td>
         <td><%= link_to 'Ver', category,class:"btn btn-primary btn-xs" %></td>
         <td><%= link_to 'Editar', edit_category_path(category), class:"btn btn-success btn-xs" %></td>
-        <td><%= link_to 'Eliminar',category, method: :delete, data: { confirm: 'Elimiar?' }, class:"btn btn-danger btn-xs" %></td>
+        <td><%= link_to 'Eliminar',category, method: :delete, data: { confirm: 'Eliminar?' }, class:"btn btn-danger btn-xs" %></td>
 
       </tr>
     <% end %>
   </tbody>
 </table>
-
 <br>
 
-
-      
 
 

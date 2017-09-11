@@ -14,6 +14,8 @@ class MembershipsController < ApplicationController
 
   # GET /memberships/new
   def new
+    @client = Client.find(params[:id])
+    session[:current_client_id] = @client.id
     @membership = Membership.new
     @society_options = Society.all.map{ |u| [ u.nombre, u.id ] }
     @formasDePago = Payment.all
@@ -37,7 +39,7 @@ class MembershipsController < ApplicationController
     
     respond_to do |format|
       if @membership.save
-        ReceiptNotifier.afiliacion(@membership, @membership.clients.last).deliver
+        ReceiptNotifier.afiliacion(@membership, @membership.clients.last, @receipt).deliver
         format.html { redirect_to @receipt, notice: 'Se ha afiliado exitosamente' }
         format.json { render :show, status: :created, location: @membership }
       else
@@ -74,19 +76,21 @@ class MembershipsController < ApplicationController
       puts(:client_id)
       @client = Client.find(params[:client_id])
 
-
+      
       @membership = Membership.find(params[:membership_id])
-      ReceiptNotifier.pago_cuota(@membership, @client).deliver
+      
       @formasDePago = Payment.all
       if @membership.periodicidad=='Mensual'
         @valor_pago = @membership.society.valor_mensual
       elsif @membership.periodicidad=='Anual'
-        @valor_pago = 0
+        @valor_pago = @membership.society.valor_anual
       end
 
 
   end
+  
   def payQuotaReceipt
+    
     @membership = Membership.find(params[:id])
     if @membership.periodicidad=='Mensual'
       @valor_pago = @membership.society.valor_mensual
@@ -100,8 +104,10 @@ class MembershipsController < ApplicationController
     end
     @membership.s_receipt(t, id, params[:formaDePago], @membership.id, @valor_pago)
     @membership.updateAcomulado(@valor_pago)
+    @client = @membership.clients.first
 
     @receipt = Receipt.last
+    ReceiptNotifier.pago_cuota(@membership, @client, @receipt).deliver
     redirect_to @receipt, notice: 'Pago de cuota exitoso.'
   end
 

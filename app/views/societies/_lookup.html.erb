@@ -1,0 +1,95 @@
+<div id="society-lookup">
+  <%= form_tag search_societies_path, remote: true, method: :get, id: 'society-lookup-form' do %>
+  <div class="form-group row no-padding text-center col-md-12">
+    <div class="col-md-10">
+      <%= text_field_tag :search_param,
+      params[:search_param],
+      placeholder: 'Puedes buscar por el nombre de la membresia',
+      autofocus: true,
+      class: 'form-control search-box input-lg' %>
+    </div>
+    <div class="col-md-2">
+      <%= button_tag(type: :submit, class: 'btn btn-lg btn-success') do %>
+      <i class='fa fa-search'></i> Busca una membresia para afilar
+      <% end %>
+    </div>
+  </div>
+  <% end %>
+  <%= render 'common/spinner' %>
+ <% if @society %>
+     <% if @society.size > 0 %>
+     <div id="society-lookup-results" class="well results-block col-md-10">
+       
+    <h1 class="titulo">Membresía </h1>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Cuota anual</th>
+
+      <th>Couta mensual</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+<tbody>
+      <tr>
+        <td><%= @society.first.nombre %></td>
+        <td><%= @society.first.valor_anual %></td>
+        <td><%= @society.first.valor_mensual %></td>
+      </tr>
+      <th>Descripcion</th>
+      <tr>
+        <td><%= @society.first.descripcio %></td>
+      </tr>
+  </tbody>
+</table>
+
+<h3>La membrecia tiene los siguientes descuentos: </h3>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>categoria</th>
+      <th>porcentaje de descuento</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+
+<% @society.first.discounts.each do |discount| %>
+
+<% @categoria = Category.find(discount.category_id)%>
+
+      <tr>
+        <td><%= @categoria.nombre %></td>
+        <td><%= discount.porcentaje_descuento %></td>
+      </tr>
+
+
+
+<% end %>
+<tbody>
+  
+</table>
+    
+    <%= link_to "Afiliacion mensual", {:controller => "societies", :action => "afiliar_mensual", :society_id => @society.first.id },
+    class: 'btn btn-default btn-success'%>
+    
+    <%= link_to "Afiliacion anual", {:controller => "societies", :action => "afiliar_anual", :society_id => @society.first.id },
+    class: 'btn btn-default btn-success'%>
+       
+       
+       
+<% else %>
+<p class="lead col-md-12">
+Ningun society coincide con la busqueda
+</p>
+<div id="society-lookup-errors">
+</div>
+    <%  end %>
+ <% end %>
+ </div>
+</div>
+ 
+ 

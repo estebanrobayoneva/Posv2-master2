@@ -21,6 +21,53 @@ class SocietiesController < ApplicationController
   # GET /societies/1/edit
   def edit
   end
+  
+  
+  def search
+    
+      @society = Society.search(params[:search_param])
+       @client = Client.find(session[:current_client_id])
+
+    puts(@client)
+      if @society
+       
+      render partial: 'memberships/form'
+      else
+      render status: :not_found, nothing: true
+      end
+  end
+  
+  
+   def afiliar_mensual
+    t = Time.new
+    Membership.create(periodicidad: "Mensual" ,fecha_afiliacion: t,fecha_vencimiento: t.next_month, fecha_cuota: t.next_month, estado: true, society_id: params[:society_id])
+    @client_a = Client.find(session[:current_client_id])
+    @membership = Membership.last
+    @society = Society.find(params[:society_id])
+    @forma_pago = Payment.where("nombre = 'Efectivo'")
+    @client_a.update(membership_id: @membership.id)
+    Receipt.create(fecha: t, :valor => @society.valor_mensual, client_id: @client_a.id, :payment_id => @forma_pago.first.id) 
+    Detail.create(cantidad_producto: 1, precio: @society.valor_mensual, receipt_id: Receipt.last.id, membership_id: Membership.last.id )
+    @receipt = Receipt.last
+    redirect_to @receipt
+   end
+   
+   def afiliar_anual
+     
+     t = Time.new
+    Membership.create(periodicidad: "Anual" ,fecha_afiliacion: t,fecha_vencimiento: t.next_year, fecha_cuota: t.next_year, estado: true, society_id: params[:society_id])
+    @client_a = Client.find(session[:current_client_id])
+    @membership = Membership.last
+    @society = Society.find(params[:society_id])
+    @forma_pago = Payment.where("nombre = 'Efectivo'")
+    @client_a.update(membership_id: @membership.id)
+    Receipt.create(fecha: t, :valor => @society.valor_anual, client_id: @client_a.id, :payment_id => @forma_pago.first.id) 
+    Detail.create(cantidad_producto: 1, precio: @society.valor_anual, receipt_id: Receipt.last.id, membership_id: Membership.last.id )
+    @receipt = Receipt.last
+    redirect_to @receipt
+     
+   end
+  
 
   # POST /societies
   # POST /societies.json

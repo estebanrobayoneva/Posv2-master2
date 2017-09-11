@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170524183702) do
+ActiveRecord::Schema.define(version: 20170604205407) do
 
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20170524183702) do
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.integer  "membership_id"
+    t.date     "fecha_nacimiento"
   end
 
   create_table "courses", force: :cascade do |t|
