@@ -11,12 +11,12 @@
     </div>
   <% end %>
     <div class="jumbotron nuevo div-formulario" >
-<div class="row" >
-  <div class="form-group col-md-offset-1">
-    <%= f.label :tipo_documento %><br>
+  <div class="row" >
+    <div class="form-group col-md-offset-1">
+      <%= f.label :tipo_documento %><br>
 
-    <%= f.select :tipo_documento, ['C.C', 'T.I', 'C.E'], :prompt => 'Tipo de documento'  %>
-  </div>
+      <%= f.select :tipo_documento, ['C.C', 'T.I', 'C.E'], :prompt => 'Tipo de documento'  %>
+    </div>
   <div class="form-group col-md-offset-1">
     <%= f.label :numero_documento %><br>
     <%= f.number_field :numero_documento, autofocus: true, class: 'form-control', :required => true %>
